@@ -16,3 +16,7 @@ body {
   object-fit: cover;
   border-radius: 50%;
 }
+
+.paper-title {
+  color: #7b1e3a;
+}
