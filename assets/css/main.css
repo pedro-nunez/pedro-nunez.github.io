@@ -27,3 +27,7 @@ body {
   color: inherit;
   text-decoration: none;
 }
+
+#map {
+  height: 400px;
+}
