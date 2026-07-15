@@ -2,3 +2,7 @@ title: Pedro Núñez
 description: Personal academic website of Pedro Núñez, mathematician.
 baseurl: ""
 url: "https://pedro-nunez.github.io"
+
+# Explicitly disable the github-pages gem's default theme
+# (jekyll-theme-primer) since we're hand-writing our own layout.
+theme: null
