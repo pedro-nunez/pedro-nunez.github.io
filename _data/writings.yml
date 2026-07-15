@@ -1,0 +1,75 @@
+seminar_scripts:
+  - title: "Differential Galois correspondence"
+    topic: "differential Galois theory"
+    organizer:
+      name: "Annette Huber-Klavitter"
+      url: "https://home.mathematik.uni-freiburg.de/arithgeom/huber.html"
+    institution: "the University of Freiburg"
+    term: "SS 22"
+
+  - title: "Sites and Topologies"
+    topic: "Topos Theory and Logic"
+    organizer:
+      name: "Luca Terenzi"
+    institution: "the University of Freiburg"
+    term: "WS 21/22"
+
+  - title: "Thom Isomorphism theorem"
+    topic: "K-theory"
+    organizer:
+      name: "Luca Terenzi"
+    institution: "the University of Freiburg"
+    term: "SS 21"
+
+  - title: "Hilbert Schemes of points on surfaces"
+    topic: "Heisenberg algebras and Hilbert schemes of points on surfaces"
+    organizer:
+      name: "Mara Ungureanu"
+      url: "https://home.mathematik.uni-freiburg.de/mathphys/mitarbeiter/ungureanu/index.html"
+    institution: "the University of Freiburg"
+    term: "SS 21"
+
+  - title: "Zariski Cancellation"
+    topic: "insightful examples"
+    organizer:
+      name: "Oliver Braunling"
+      url: "https://www.braunling.org"
+    institution: "the University of Freiburg"
+    term: "WS 20/21"
+
+  - title: "Hitchin–Kobayashi correspondence"
+    topic: "Higgs bundles"
+    organizer:
+      name: "Andriy Haydys"
+      url: "http://haydys.net"
+    institution: "the University of Freiburg"
+    term: "SS 20"
+
+  - title: "Condensed Abelian Groups"
+    topic: "condensed mathematics"
+    organizer:
+      name: "Johan Commelin"
+      url: "https://math.commelin.net"
+    institution: "the University of Freiburg"
+    term: "WS 19/20"
+
+  - title: "Projective bundle formula"
+    topic: "characteristic classes of topological vector bundles"
+    organizer:
+      name: "Fabian Hebestreit"
+      url: "https://www.math.uni-bonn.de/people/fhebestr"
+    institution: "the University of Bonn"
+    term: "WS 18/19"
+
+  - title: "Riemann–Roch theorem for surfaces"
+    topic: "the classification of algebraic surfaces"
+    organizer:
+      name: "Luca Tasin"
+      url: "https://sites.google.com/site/lucatasin"
+    institution: "the University of Bonn"
+    term: "SS 18"
+
+other_notes:
+  - title: "Enumerative Geometry"
+    institution: "the University of Freiburg"
+    term: "WS 20/21"
