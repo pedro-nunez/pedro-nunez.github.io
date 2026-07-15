@@ -9,3 +9,10 @@ body {
   font-family: sans-serif;
   line-height: 1.5;
 }
+
+.profile-photo {
+  width: 10rem;
+  height: 10rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
