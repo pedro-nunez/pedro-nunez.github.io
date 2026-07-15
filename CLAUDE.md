@@ -82,3 +82,69 @@ be responsive and readable on mobile. Language: English.
 - Commit early and often; one logical step per commit.
 - Comment non-obvious code, especially Liquid templates and the map JS.
 - Keep file and directory names lowercase with hyphens.
+
+## Progress so far
+
+Built, committed, step by step (see git log for the full sequence):
+
+- Minimal Jekyll scaffold, default layout, header/nav include, basic CSS
+  (default theme disabled).
+- Home/About page (`index.md`) with bio, photo, research interests.
+- Research/Publications page (`research.md`) reading from
+  `_data/publications.yml`; a compact Papers list also on Home.
+- Teaching page (`teaching.md`) reading from `_data/teaching.yml`.
+- Other writings page (`writings.md`) reading from `_data/writings.yml`.
+- Travel map page (`travel-map.md`): bare Leaflet map (OSM tile layer,
+  centered `[20, 10]` zoom 2) with **no markers yet** — this is where we
+  paused to change plans (see below). Leaflet is loaded conditionally via
+  `page.extra_head == "leaflet"` in `_layouts/default.html`.
+
+Not yet started: Blog (Jekyll posts), external profile links
+(MathSciNet, ORCID, Math Genealogy, GitHub, LaTeX templates repo).
+Local commits are ahead of `origin/master` and have not been pushed yet.
+
+## In-progress plan: data-driven CV page + travel map reuse
+
+Decided (2026-07-15): instead of just linking a static CV PDF, the CV
+will be a Jekyll page rendered from data files, same pattern as
+Research/Teaching/Writings. Key decisions made together:
+
+- **PDF download**: keep a manually-exported static PDF asset (e.g.
+  `assets/cv.pdf`) that gets re-uploaded whenever the CV changes
+  meaningfully; the CV page just links/buttons to it. Rejected:
+  print-stylesheet/`window.print()` and automated GitHub Actions PDF
+  generation (both add complexity not worth it right now).
+- **Data layout**: one small YAML file per CV section, matching the
+  existing one-file-per-section convention — new files
+  `_data/positions.yml`, `_data/talks.yml`, `_data/education.yml` — the
+  CV page also reuses the *existing* `_data/publications.yml` and
+  `_data/teaching.yml` rather than duplicating them.
+- **Map data reuse**: `_data/positions.yml` and `_data/talks.yml`
+  entries include `lat`/`lon` fields (even though the CV page itself
+  won't display them). The travel map reads markers straight out of
+  those two files instead of a separate `_data/locations.yml`, so
+  location data is entered once. Entries without `lat`/`lon` are simply
+  skipped by the map. Legend/marker styling should distinguish
+  category (affiliation vs. talk/conference) and status (current/past,
+  and future for talks).
+
+### Next steps, in order
+
+1. Create `_data/positions.yml` (one entry per academic position: role,
+   note, institution, city, lat, lon, start, end, status
+   current/past, url). A first draft was proposed (NTU postdoc,
+   Freiburg PhD, Bonn — dates/roles need Pedro to confirm/fill in) but
+   was **not yet saved** when we paused — recreate and fill it in first.
+2. Create `_data/talks.yml` (conferences/talks, same idea, with
+   `lat`/`lon`, and a status of past/future).
+3. Create `_data/education.yml` if needed for CV entries not covered by
+   positions (e.g. degrees without a lat/lon-worthy "position").
+4. Build the CV page (e.g. `cv.md`) that reads positions, education,
+   talks, and reuses publications/teaching data; add the "Download PDF"
+   button linking to the static asset.
+5. Wire up `travel-map.md`: loop over `site.data.positions` and
+   `site.data.talks`, add markers with popups, and a legend (current
+   affiliation / past affiliation / past talk / future talk).
+
+To resume this work in a new session, just say "continue where we left
+off" — this section has the full context.
