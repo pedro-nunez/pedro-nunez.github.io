@@ -33,24 +33,51 @@ extra_head: leaflet
   // If a location has entries in several categories, the marker uses the
   // color of whichever category comes first in this list, and categories
   // earlier in the list are drawn on top when pins visually overlap.
-  var priority = ["current-affiliation", "past-affiliation", "upcoming", "past-trip"];
+  var priority = ["upcoming", "current-affiliation", "past-affiliation", "past-trip"];
 
   var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-  // Builds a teardrop-shaped pin icon (like Google Maps) in the given
-  // color, as an inline SVG. iconAnchor points at the pin's tip, so it
-  // lines up with the actual coordinates instead of its center.
+  // Lightens (positive percent) or darkens (negative percent) a "#rrggbb"
+  // color, used to derive the pin's gradient and border shades from its
+  // base category color.
+  function shadeColor(hex, percent) {
+    var num = parseInt(hex.slice(1), 16);
+    var amt = Math.round(2.55 * percent);
+    var r = Math.min(255, Math.max(0, (num >> 16) + amt));
+    var g = Math.min(255, Math.max(0, ((num >> 8) & 0x00ff) + amt));
+    var b = Math.min(255, Math.max(0, (num & 0x0000ff) + amt));
+    return "#" + (0x1000000 + r * 0x10000 + g * 0x100 + b).toString(16).slice(1);
+  }
+
+  // Builds a classic map-pin icon (circle sitting on a point, like the old
+  // Leaflet color markers) in the given color, as an inline SVG. The path
+  // is a circle with two tangent lines running down to a tip, which is
+  // what gives the pin its sharp "shoulder" instead of a smooth teardrop
+  // curve. iconAnchor points at that tip, so it lines up with the actual
+  // coordinates instead of the icon's center.
+  var pinIconCounter = 0;
   function pinIcon(color) {
-    var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="13" height="19" viewBox="0 0 26 38">' +
-      '<path d="M13 0C5.8 0 0 5.8 0 13c0 9.5 13 25 13 25s13-15.5 13-25C26 5.8 20.2 0 13 0z" ' +
-      'fill="' + color + '" stroke="#333" stroke-width="1"/>' +
-      '<circle cx="13" cy="13" r="5.5" fill="#fff"/></svg>';
+    pinIconCounter++;
+    var gradId = "pin-gradient-" + pinIconCounter;
+    var light = shadeColor(color, 25);
+    var dark = shadeColor(color, -20);
+    var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="19.5" height="30.75" viewBox="0 0 26 41">' +
+      '<defs>' +
+        '<linearGradient id="' + gradId + '" x1="0" y1="0" x2="1" y2="1">' +
+          '<stop offset="0" stop-color="' + light + '"/>' +
+          '<stop offset="1" stop-color="' + color + '"/>' +
+        '</linearGradient>' +
+      '</defs>' +
+      '<path d="M24.08 18.79A12.5 12.5 0 1 0 1.92 18.79L13 40Z" ' +
+        'fill="url(#' + gradId + ')" stroke="' + dark + '" stroke-width="1"/>' +
+      '<circle cx="13" cy="13" r="5.5" fill="#fff" stroke="' + dark + '" stroke-width="1"/>' +
+      '</svg>';
     return L.divIcon({
       html: svg,
       className: "map-pin",
-      iconSize: [13, 19],
-      iconAnchor: [6.5, 19],
-      popupAnchor: [0, -17]
+      iconSize: [19.5, 30.75],
+      iconAnchor: [9.75, 30],
+      popupAnchor: [0, -27]
     });
   }
 
