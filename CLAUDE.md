@@ -92,59 +92,44 @@ Built, committed, step by step (see git log for the full sequence):
 - Home/About page (`index.md`) with bio, photo, research interests.
 - Research/Publications page (`research.md`) reading from
   `_data/publications.yml`; a compact Papers list also on Home.
-- Teaching page (`teaching.md`) reading from `_data/teaching.yml`.
+- Teaching page (`teaching.md`) reading from `_data/teaching.yml`, which
+  is a hash of two lists — `courses:` (previous teaching) and
+  `materials:` (e.g. the Lean Algebra Exercises) — mirroring the
+  multi-list pattern already used in `writings.yml`.
 - Other writings page (`writings.md`) reading from `_data/writings.yml`.
-- Travel map page (`travel-map.md`): bare Leaflet map (OSM tile layer,
-  centered `[20, 10]` zoom 2) with **no markers yet** — this is where we
-  paused to change plans (see below). Leaflet is loaded conditionally via
+- CV page (`cv.md`, at `/cv/`, linked in the nav): renders the full CV
+  — work experience, research projects, publications, teaching,
+  education, languages, invited/contributed talks, academic visits,
+  other academic activities, funding, conferences/workshops/schools/
+  courses attended, and "Additional Formation" (non-academic training
+  and activities) — from data files `_data/positions.yml` (positions +
+  degrees, `category: work|education`, `status: current|past`, with
+  `lat`/`lon`), `_data/talks.yml`, `_data/activities.yml`,
+  `_data/service.yml`, `_data/funding.yml`, `_data/projects.yml`, and
+  `_data/miscellanea.yml`, plus the existing publications/teaching data.
+  Dates in all these files are ISO (`YYYY-MM-DD`), with an optional
+  `precision: month` flag on entries where only month/year is known
+  (day defaults to the 1st for `start`, last day of the month for
+  `end`); a shared `_includes/date-range.html` formats start/end pairs
+  consistently everywhere. Has a "Download PDF" button linking to
+  `assets/cv.pdf`, which **does not exist yet** — Pedro needs to export
+  and add that file for the link to work.
+- Travel map (`travel-map.md`): interactive Leaflet map with one pin
+  per unique location, built from `_data/positions.yml`, `talks.yml`,
+  and `activities.yml` (grouped by lat/lon; each pin's popup lists
+  everything that happened there). Custom teardrop-shaped SVG pin icons
+  (see `pinIcon()` in `travel-map.md`), 4-category color legend
+  (current affiliation / past affiliation / past trip / upcoming trip),
+  with a priority order (current affiliation, then past affiliation,
+  then upcoming, then past trip) used both to pick a pin's color when a
+  location has several categories, and to keep higher-priority pins on
+  top when they visually overlap. Leaflet is loaded conditionally via
   `page.extra_head == "leaflet"` in `_layouts/default.html`.
 
 Not yet started: Blog (Jekyll posts), external profile links
-(MathSciNet, ORCID, Math Genealogy, GitHub, LaTeX templates repo).
-Local commits are ahead of `origin/master` and have not been pushed yet.
-
-## In-progress plan: data-driven CV page + travel map reuse
-
-Decided (2026-07-15): instead of just linking a static CV PDF, the CV
-will be a Jekyll page rendered from data files, same pattern as
-Research/Teaching/Writings. Key decisions made together:
-
-- **PDF download**: keep a manually-exported static PDF asset (e.g.
-  `assets/cv.pdf`) that gets re-uploaded whenever the CV changes
-  meaningfully; the CV page just links/buttons to it. Rejected:
-  print-stylesheet/`window.print()` and automated GitHub Actions PDF
-  generation (both add complexity not worth it right now).
-- **Data layout**: one small YAML file per CV section, matching the
-  existing one-file-per-section convention — new files
-  `_data/positions.yml`, `_data/talks.yml`, `_data/education.yml` — the
-  CV page also reuses the *existing* `_data/publications.yml` and
-  `_data/teaching.yml` rather than duplicating them.
-- **Map data reuse**: `_data/positions.yml` and `_data/talks.yml`
-  entries include `lat`/`lon` fields (even though the CV page itself
-  won't display them). The travel map reads markers straight out of
-  those two files instead of a separate `_data/locations.yml`, so
-  location data is entered once. Entries without `lat`/`lon` are simply
-  skipped by the map. Legend/marker styling should distinguish
-  category (affiliation vs. talk/conference) and status (current/past,
-  and future for talks).
-
-### Next steps, in order
-
-1. Create `_data/positions.yml` (one entry per academic position: role,
-   note, institution, city, lat, lon, start, end, status
-   current/past, url). A first draft was proposed (NTU postdoc,
-   Freiburg PhD, Bonn — dates/roles need Pedro to confirm/fill in) but
-   was **not yet saved** when we paused — recreate and fill it in first.
-2. Create `_data/talks.yml` (conferences/talks, same idea, with
-   `lat`/`lon`, and a status of past/future).
-3. Create `_data/education.yml` if needed for CV entries not covered by
-   positions (e.g. degrees without a lat/lon-worthy "position").
-4. Build the CV page (e.g. `cv.md`) that reads positions, education,
-   talks, and reuses publications/teaching data; add the "Download PDF"
-   button linking to the static asset.
-5. Wire up `travel-map.md`: loop over `site.data.positions` and
-   `site.data.talks`, add markers with popups, and a legend (current
-   affiliation / past affiliation / past talk / future talk).
+(MathSciNet, ORCID, Math Genealogy, GitHub, LaTeX templates repo), and
+`assets/cv.pdf` itself. Local commits are ahead of `origin/master` and
+have not been pushed yet.
 
 To resume this work in a new session, just say "continue where we left
 off" — this section has the full context.
