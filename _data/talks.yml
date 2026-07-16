@@ -1,0 +1,202 @@
+# Invited and contributed talks, newest first.
+# lat/lon are used to place markers on the travel map (see travel-map.md);
+# status is "past" or "future" (relative to when the site is built);
+# online: true marks talks given remotely (city/institution is the host's).
+
+- title: "Indecomposability of derived categories of hyperelliptic varieties"
+  event: "2026 Higher Dimensional Algebraic Geometry"
+  type: invited
+  institution: "National Taiwan University"
+  city: "Taipei, Taiwan"
+  lat: 25.0330
+  lon: 121.5654
+  date: 2026-04-17
+  status: past
+
+- title: "Campana orbifolds and their morphisms"
+  event: "61st Annual Meeting of the Taiwan Mathematical Society"
+  type: invited
+  institution: "National Chung Cheng University"
+  city: "Chiayi, Taiwan"
+  lat: 23.4801
+  lon: 120.4491
+  date: 2026-01-22
+  status: past
+
+- title: "Campana orbifolds: between projective and logarithmic geometry"
+  event: "Taipei Postdoc Seminar"
+  type: invited
+  city: "Taipei, Taiwan"
+  lat: 25.0330
+  lon: 121.5654
+  date: 2025-11-05
+  status: past
+
+- title: "Adapted differentials on Campana orbifolds"
+  event: "KIAS Algebraic Geometry Seminar"
+  type: invited
+  institution: "Korea Institute for Advanced Study"
+  city: "Seoul, South Korea"
+  lat: 37.5665
+  lon: 126.9780
+  date: 2025-10-31
+  status: past
+
+- title: "Derived categories and birational geometry"
+  event: "Colloquium talk at National Central University"
+  type: invited
+  institution: "National Central University"
+  city: "Taoyuan, Taiwan"
+  lat: 24.9676
+  lon: 121.1950
+  date: 2025-10-23
+  status: past
+
+- title: "Derived categories of threefolds on the Noether line"
+  event: "SJTU Algebraic Geometry Seminar"
+  type: invited
+  institution: "Shanghai Jiao Tong University"
+  city: "Shanghai, China"
+  lat: 31.2304
+  lon: 121.4737
+  date: 2025-10-10
+  status: past
+
+- title: "Derived categories of threefolds on the Noether line"
+  event: "Fudan University Algebraic Geometry Seminar"
+  type: invited
+  institution: "Fudan University"
+  city: "Shanghai, China"
+  lat: 31.2304
+  lon: 121.4737
+  date: 2025-10-08
+  status: past
+
+- title: "Derived categories and birational geometry"
+  event: "Mathematics Seminar at CUNEF University"
+  type: invited
+  institution: "CUNEF University"
+  city: "Madrid, Spain"
+  lat: 40.4168
+  lon: -3.7038
+  date: 2025-09-22
+  status: past
+
+- title: "Derived categories of hyperelliptic varieties"
+  event: "Algebraic Geometry meets Machine Learning"
+  type: invited
+  institution: "National Cheng Kung University"
+  city: "Tainan, Taiwan"
+  lat: 22.9908
+  lon: 120.2133
+  date: 2025-04-29
+  status: past
+
+- title: "Indecomposability of derived categories of threefolds on the Noether line"
+  event: "Younger Generation of Algebraic Geometry 2025"
+  type: invited
+  city: "Penghu, Taiwan"
+  lat: 23.5711
+  lon: 119.5793
+  date: 2025-04-19
+  status: past
+
+- title: "On the Albanese morphism of hyperelliptic varieties"
+  event: "NCTS One-Day Workshop on Arithmetic and Algebraic Geometry"
+  type: invited
+  institution: "National Taiwan University"
+  city: "Taipei, Taiwan"
+  lat: 25.0330
+  lon: 121.5654
+  date: 2025-02-20
+  status: past
+
+- title: "Indecomposability of derived categories of threefolds on the Noether line"
+  event: "NCKU Algebraic Geometry Seminar"
+  type: invited
+  institution: "National Cheng Kung University"
+  city: "Tainan, Taiwan"
+  lat: 22.9908
+  lon: 120.2133
+  date: 2024-04-18
+  status: past
+
+- title: "Indecomposability of derived categories of hyperelliptic manifolds"
+  event: "NCTS Seminar in Algebraic Geometry"
+  type: invited
+  institution: "National Center for Theoretical Sciences"
+  city: "Taipei, Taiwan"
+  lat: 25.0330
+  lon: 121.5654
+  date: 2023-10-20
+  status: past
+
+- title: "Adapted differentials on Campana orbifolds"
+  event: "Luxembourg Algebraic Geometry Seminar"
+  type: invited
+  city: "Esch-sur-Alzette, Luxembourg"
+  lat: 49.4958
+  lon: 5.9805
+  date: 2023-03-22
+  status: past
+
+- title: "Adapted differentials on Campana orbifolds"
+  event: "NCTS Seminar in Algebraic Geometry"
+  type: invited
+  institution: "National Center for Theoretical Sciences"
+  city: "Taipei, Taiwan"
+  lat: 25.0330
+  lon: 121.5654
+  date: 2023-02-06
+  status: past
+  online: true
+
+- title: "Categorías derivadas y geometría birracional"
+  event: "Red de Doctorandos en Matemáticas UCM"
+  type: invited
+  city: "Madrid, Spain"
+  lat: 40.4168
+  lon: -3.7038
+  date: 2022-03-22
+  status: past
+  online: true
+
+- title: "Indecomposability of derived categories of hyperelliptic varieties"
+  event: "2025 Summer Research Institute in Algebraic Geometry"
+  type: contributed
+  institution: "Colorado State University"
+  city: "Fort Collins, CO, USA"
+  lat: 40.5853
+  lon: -105.0844
+  date: 2025-07-22
+  status: past
+
+- title: "Adapted differentials as a qfh-sheaf"
+  event: "9th European Congress of Mathematics"
+  type: contributed
+  institution: "Universidad de Sevilla"
+  city: "Seville, Spain"
+  lat: 37.3891
+  lon: -5.9845
+  date: 2024-07-15
+  status: past
+
+- title: "Semiorthogonal decompositions on Fano fibrations"
+  event: "Géométrie Algébrique en Liberté XXIX"
+  type: contributed
+  institution: "Laboratoire de Mathématiques d'Orsay"
+  city: "Orsay, France"
+  lat: 48.6989
+  lon: 2.1739
+  date: 2022-05-24
+  status: past
+
+- title: "Derived categories of Fano varieties and Mori fibre spaces"
+  event: "2nd BYMAT Conference"
+  type: contributed
+  institution: "Instituto de Ciencias Matemáticas"
+  city: "Madrid, Spain"
+  lat: 40.4168
+  lon: -3.7038
+  date: 2019-05-21
+  status: past

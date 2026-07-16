@@ -1,0 +1,46 @@
+# Academic service: seminars, reading groups, and conferences organized,
+# newest first. Not used on the travel map (organizing an event at your
+# own institution doesn't need a new pin); Tour de Formosa is the
+# exception and is duplicated in activities.yml as an attended event.
+
+- title: "Organization of the international conference Tour de Formosa"
+  role: co-organizer
+  note: "Organized jointly with Flora Poon"
+  city: "Hualien, Taiwan"
+  start: 2026-01-12
+  end: 2026-01-16
+
+- title: "Organization of the NCTS Seminar in Algebraic Geometry"
+  role: organizer
+  note: "Invited external speakers to talk about their research"
+  institution: "National Taiwan University"
+  city: "Taipei, Taiwan"
+  term: "Summer Term 2025"
+
+- title: "Organization of a seminar on deformation theory"
+  role: co-organizer
+  note: "Organized jointly with Flora Poon"
+  institution: "National Taiwan University"
+  city: "Taipei, Taiwan"
+  term: "Summer Term 2025"
+
+- title: "Organization of a seminar on Hodge theory"
+  role: co-organizer
+  note: "Organized jointly with Hsueh-Yung Lin"
+  institution: "National Taiwan University"
+  city: "Taipei and Xitou, Taiwan"
+  term: "Summer 2025"
+
+- title: "Organization of a seminar on enumerative geometry"
+  role: organizer
+  note: "Notes for the seminar are available on my homepage"
+  institution: "University of Freiburg"
+  city: "Freiburg, Germany"
+  term: "Winter Term 2020/2021"
+
+- title: "Organization of a reading group on Grothendieck's EGA"
+  role: organizer
+  note: "Informal reading group with various other students"
+  institution: "University of Bonn"
+  city: "Bonn, Germany"
+  term: "Winter Term 2017/2018"

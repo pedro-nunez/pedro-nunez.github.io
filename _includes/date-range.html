@@ -1,0 +1,19 @@
+{%- comment -%}
+Formats a start/end date pair for display. Parameters:
+  start     - required, an ISO date
+  end       - optional; omitted or blank means "ongoing" (prints "Present")
+  precision - optional; "month" hides the day (e.g. "Sep 2023" instead of
+              "1 Sep 2023"), used for entries where only month/year is known
+{%- endcomment -%}
+{%- if include.precision == "month" -%}
+  {%- assign fmt = "%b %Y" -%}
+{%- else -%}
+  {%- assign fmt = "%-d %b %Y" -%}
+{%- endif -%}
+{%- if include.end == nil or include.end == "" -%}
+{{ include.start | date: fmt }} &ndash; Present
+{%- elsif include.start == include.end -%}
+{{ include.start | date: fmt }}
+{%- else -%}
+{{ include.start | date: fmt }} &ndash; {{ include.end | date: fmt }}
+{%- endif -%}
