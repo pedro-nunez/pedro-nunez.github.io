@@ -117,19 +117,27 @@ Built, committed, step by step (see git log for the full sequence):
 - Travel map (`travel-map.md`): interactive Leaflet map with one pin
   per unique location, built from `_data/positions.yml`, `talks.yml`,
   and `activities.yml` (grouped by lat/lon; each pin's popup lists
-  everything that happened there). Custom teardrop-shaped SVG pin icons
-  (see `pinIcon()` in `travel-map.md`), 4-category color legend
-  (current affiliation / past affiliation / past trip / upcoming trip),
-  with a priority order (current affiliation, then past affiliation,
-  then upcoming, then past trip) used both to pick a pin's color when a
-  location has several categories, and to keep higher-priority pins on
-  top when they visually overlap. Leaflet is loaded conditionally via
-  `page.extra_head == "leaflet"` in `_layouts/default.html`.
+  everything that happened there). Custom SVG pin icons (see
+  `pinIcon()` in `travel-map.md`): a classic circle-and-point marker
+  shape (a circle with two tangent lines down to a tip, giving a sharp
+  "shoulder" rather than a smooth teardrop), with a subtle gradient
+  fill, a same-color border on both the pin and its inner white circle,
+  and no drop shadow, sized at 75% of the pin's initial redesign.
+  4-category color legend (current affiliation / past affiliation /
+  past trip / upcoming trip), with a priority order (upcoming, then
+  current affiliation, then past affiliation, then past trip) used both
+  to pick a pin's color when a location has several categories, and to
+  keep higher-priority pins on top when they visually overlap. Leaflet
+  is loaded conditionally via `page.extra_head == "leaflet"` in
+  `_layouts/default.html`. Current/past affiliation coordinates in
+  `_data/positions.yml` point at the precise department building (NTU,
+  Freiburg, Bonn, LMU Munich, UCM), not just the city center; other
+  trip locations still use approximate coordinates.
 
 Not yet started: Blog (Jekyll posts), external profile links
 (MathSciNet, ORCID, Math Genealogy, GitHub, LaTeX templates repo), and
-`assets/cv.pdf` itself. Local commits are ahead of `origin/master` and
-have not been pushed yet.
+`assets/cv.pdf` itself. All local commits have been pushed to
+`origin/master`.
 
 To resume this work in a new session, just say "continue where we left
 off" — this section has the full context.
