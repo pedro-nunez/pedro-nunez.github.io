@@ -12,8 +12,8 @@
   institution: "National Taiwan University"
   note: "In the group of Jungkai Alfred Chen"
   city: "Taipei, Taiwan"
-  lat: 25.0330
-  lon: 121.5654
+  lat: 25.0213395
+  lon: 121.5380920
   start: 2023-09-01
   end:
   status: current
@@ -26,8 +26,8 @@
   institution: "University of Freiburg"
   note: "Thesis: Categorical aspects of Campana orbifolds, supervised by Stefan Kebekus"
   city: "Freiburg, Germany"
-  lat: 47.9990
-  lon: 7.8421
+  lat: 48.0008740
+  lon: 7.8459886
   start: 2019-09-01
   end: 2023-07-31
   status: past
@@ -40,8 +40,8 @@
   institution: "University of Bonn"
   note: "Thesis: Derived categories of Fano fibrations"
   city: "Bonn, Germany"
-  lat: 50.7374
-  lon: 7.0982
+  lat: 50.7284705
+  lon: 7.0839849
   start: 2017-10-01
   end: 2019-07-31
   status: past
@@ -53,8 +53,8 @@
   institution: "LMU Munich"
   note: "Exchange year during the Bachelor's"
   city: "Munich, Germany"
-  lat: 48.1351
-  lon: 11.5820
+  lat: 48.1481105
+  lon: 11.5728508
   start: 2016-09-01
   end: 2017-07-31
   status: past
@@ -64,8 +64,8 @@
   institution: "Complutense University of Madrid"
   note: "Thesis: Blow-ups in algebraic geometry"
   city: "Madrid, Spain"
-  lat: 40.4168
-  lon: -3.7038
+  lat: 40.4493053
+  lon: -3.7261006
   start: 2013-09-01
   end: 2017-08-31
   status: past
