@@ -44,5 +44,5 @@ of algebraic varieties. More specifically:</p>
 <ul>
   <li><i><a href="{{ '/assets/pdfs/phd-thesis.pdf' | relative_url }}">Categorical aspects of Campana orbifolds</a></i>, PhD thesis written under the supervision of <a href="https://cplx.vm.uni-freiburg.de">Stefan Kebekus</a> at the University of Freiburg (2023).</li>
   <li><i><a href="{{ '/assets/pdfs/master-thesis.pdf' | relative_url }}">Derived categories of Fano fibrations</a></i>, master's thesis written under the supervision of <a href="https://sites.google.com/site/lucatasin">Luca Tasin</a> and <a href="https://pbelmans.ncag.info">Pieter Belmans</a> at the University of Bonn (2019).</li>
-  <li><i><a href="{{ '/assets/pdfs/bachelor-thesis.pdf' | relative_url }}">Blow-ups in algebraic geometry</a></i>, bachelor's thesis written under the supervision of <a href="https://www.mathematik.uni-muenchen.de/~semenov">Nikita Semenov</a> at the Ludwig-Maximilians-University of Munich (2017).</li>
+  <li><i><a href="{{ '/assets/pdfs/bachelor-thesis.pdf' | relative_url }}">Blow-ups in algebraic geometry</a></i>, bachelor's thesis written under the supervision of <a href="https://www.math.lmu.de/~geldhauser/">Nikita Geldhauser</a> at the Ludwig-Maximilians-University of Munich (2017).</li>
 </ul>
