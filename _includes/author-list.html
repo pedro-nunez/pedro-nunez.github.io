@@ -1,1 +1,1 @@
-{% for author in include.authors %}{% unless forloop.first %}{% if forloop.last %} and {% else %}, {% endif %}{% endunless %}{% if author.url %}<a href="{{ author.url }}">{{ author.name }}</a>{% else %}{{ author.name }}{% endif %}{% endfor %}
+{% for name in include.authors %}{% unless forloop.first %}{% if forloop.last %} and {% else %}, {% endif %}{% endunless %}{{ name }}{% endfor %}

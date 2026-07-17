@@ -93,58 +93,81 @@ Built, committed, step by step (see git log for the full sequence):
   (default theme disabled).
 - Home/About page (`index.md`) with bio, photo, research interests.
 - Research/Publications page (`research.md`) reading from
-  `_data/publications.yml`; a compact Papers list also on Home.
-- Teaching page (`teaching.md`) reading from `_data/teaching.yml`, which
-  is a hash of two lists — `courses:` (previous teaching) and
-  `materials:` (e.g. the Lean Algebra Exercises) — mirroring the
-  multi-list pattern already used in `writings.yml`.
-- Other writings page (`writings.md`) reading from `_data/writings.yml`.
+  `_data/cv.yml` (`site.data.cv.sections.publications`); a compact
+  Papers list also on Home.
+- Teaching page (`teaching.md`) reading from `_data/cv.yml`
+  (`site.data.cv.sections.teaching_courses` for previous teaching and
+  `.teaching_materials` for e.g. the Lean Algebra Exercises) —
+  mirroring the multi-list pattern still used in `writings.yml`.
+- Other writings page (`writings.md`) reading from `_data/writings.yml`
+  (not CV content, so it stayed out of the `cv.yml` consolidation
+  below).
 - CV page (`cv.md`, at `/cv/`, linked in the nav): renders the full CV
   — work experience, research projects, publications, teaching,
   education, languages, invited/contributed talks, academic visits,
   other academic activities, funding, conferences/workshops/schools/
   courses attended, and "Additional Formation" (non-academic training
-  and activities) — from data files `_data/positions.yml` (positions +
-  degrees, `category: work|education`, `status: current|past`, with
-  `lat`/`lon`), `_data/talks.yml`, `_data/activities.yml`,
-  `_data/service.yml`, `_data/funding.yml`, `_data/projects.yml`, and
-  `_data/miscellanea.yml`, plus the existing publications/teaching data.
-  Dates in all these files are ISO (`YYYY-MM-DD`), with an optional
-  `precision: month` flag on entries where only month/year is known
-  (day defaults to the 1st for `start`, last day of the month for
-  `end`); a shared `_includes/date-range.html` formats start/end pairs
-  consistently everywhere. Has a "Download PDF" button linking to
+  and activities). Has a "Download PDF" button linking to
   `assets/cv.pdf`, which **does not exist yet** — Pedro needs to export
   and add that file for the link to work.
+- **`_data/cv.yml`**: all CV content (everything the CV page, Research,
+  Teaching, and the travel map draw on) was consolidated from nine
+  separate top-level data files (`positions.yml`, `publications.yml`,
+  `talks.yml`, `activities.yml`, `teaching.yml`, `service.yml`,
+  `funding.yml`, `projects.yml`, `additional-formation.yml`) into this
+  one file, under `sections:`, to have a single source of truth with no
+  duplicated data. Its shape follows rendercv's own YAML schema (see
+  <https://docs.rendercv.com/user_guide/yaml_input_structure/cv/>) —
+  `sections.education`/`experience` use rendercv's `EducationEntry`/
+  `ExperienceEntry` field names (`institution`/`degree`/`area`,
+  `company`/`position`, `location`, `start_date`/`end_date`);
+  `sections.publications` uses `PublicationEntry` (`title`, `authors`
+  as a flat list of name strings — co-author links the site used to
+  show were dropped, since rendercv's `authors` doesn't support them;
+  `journal`, `doi`, `date`); every other section (`talks`, `activities`,
+  `teaching_courses`, `teaching_materials`, `service`, `funding`,
+  `projects`, `extra`) uses the generic `NormalEntry`
+  (`name`/`summary`/`date`/`start_date`/`end_date`/`location`), since
+  rendercv has no dedicated entry type for talks, service, etc. `extra`
+  is the former `additional-formation.yml` — renamed now that it lives
+  under a plain key, so `site.data.cv.sections.extra` works directly
+  and no longer needs the bracket-notation workaround
+  (`site.data['additional-formation']`) a hyphenated top-level file
+  required. rendercv ignores extra keys it doesn't recognize, so the
+  site's own fields ride alongside the standard ones on each entry:
+  `lat`/`lon` (travel map pins), `status` (`current`/`past`/`future`,
+  drives map pin color and the Invited/Contributed or Academic
+  Visits/Conferences split on the CV page), `precision: month` (used
+  where only month/year is known — see `_includes/date-range.html`),
+  plus per-section extras like `type`, `role`, `institution`, `url`,
+  `online`. This file isn't fed to rendercv yet (no PDF is generated
+  from it) — schema alignment is preparatory, in case that becomes the
+  way `assets/cv.pdf` gets produced later.
 - Travel map (`travel-map.md`): interactive Leaflet map with one pin
-  per unique location, built from `_data/positions.yml`, `talks.yml`,
-  and `activities.yml` (grouped by lat/lon; each pin's popup lists
-  everything that happened there). Custom SVG pin icons (see
-  `pinIcon()` in `travel-map.md`): a classic circle-and-point marker
-  shape (a circle with two tangent lines down to a tip, giving a sharp
-  "shoulder" rather than a smooth teardrop), with a subtle gradient
-  fill, a same-color border on both the pin and its inner white circle,
-  and no drop shadow, sized at 75% of the pin's initial redesign.
-  4-category color legend (current affiliation / past affiliation /
-  past trip / upcoming trip), with a priority order (upcoming, then
-  current affiliation, then past affiliation, then past trip) used both
-  to pick a pin's color when a location has several categories, and to
-  keep higher-priority pins on top when they visually overlap. Leaflet
-  is loaded conditionally via `page.extra_head == "leaflet"` in
-  `_layouts/default.html`. Current/past affiliation coordinates in
-  `_data/positions.yml` point at the precise department building (NTU,
+  per unique location, built from `_data/cv.yml`'s `education`,
+  `experience`, `talks`, and `activities` sections (grouped by lat/lon;
+  each pin's popup lists everything that happened there). Custom SVG
+  pin icons (see `pinIcon()` in `travel-map.md`): a classic
+  circle-and-point marker shape (a circle with two tangent lines down
+  to a tip, giving a sharp "shoulder" rather than a smooth teardrop),
+  with a subtle gradient fill, a same-color border on both the pin and
+  its inner white circle, and no drop shadow, sized at 75% of the pin's
+  initial redesign. 4-category color legend (current affiliation / past
+  affiliation / past trip / upcoming trip), with a priority order
+  (upcoming, then current affiliation, then past affiliation, then past
+  trip) used both to pick a pin's color when a location has several
+  categories, and to keep higher-priority pins on top when they
+  visually overlap. Leaflet is loaded conditionally via
+  `page.extra_head == "leaflet"` in `_layouts/default.html`.
+  Current/past affiliation coordinates in `_data/cv.yml`'s `education`/
+  `experience` sections point at the precise department building (NTU,
   Freiburg, Bonn, LMU Munich, UCM), not just the city center; other
   trip locations still use approximate coordinates.
 - Miscellanea page (`miscellanea.md`, at `/miscellanea/`, linked in the
   nav): a "Links" subsection with external profile links (MathSciNet,
   ORCID, Mathematics Genealogy Project, GitHub, LaTeX templates repo).
-  The CV's non-academic "Additional Formation" data file was renamed
-  from `_data/miscellanea.yml` to `_data/additional-formation.yml` to
-  free up the "miscellanea" name for this page (referenced in `cv.md`
-  via bracket notation, `site.data['additional-formation']`, since
-  Liquid dot-notation can't parse a hyphenated key). The home page's
-  "CV (coming soon)" placeholder link was removed now that the CV page
-  exists and is in the nav.
+  The home page's "CV (coming soon)" placeholder link was removed now
+  that the CV page exists and is in the nav.
 - "Algebraic Geometry in Madrid" events page
   (`algebraic-geometry-in-madrid.md`, at `/algebraic-geometry-in-madrid/`,
   linked in the nav as "AG in Madrid"): a curated list of AG conferences,

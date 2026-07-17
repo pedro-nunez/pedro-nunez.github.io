@@ -17,11 +17,12 @@ extra_head: leaflet
 </ul>
 
 <script>
-  // The three data files below carry lat/lon for every entry that should
-  // appear on the map (see the comments at the top of each _data file).
-  var positions = {{ site.data.positions | jsonify }};
-  var talks = {{ site.data.talks | jsonify }};
-  var activities = {{ site.data.activities | jsonify }};
+  // The data below carries lat/lon for every entry that should appear on
+  // the map (see the comments at the top of each source).
+  var education = {{ site.data.cv.sections.education | jsonify }};
+  var experience = {{ site.data.cv.sections.experience | jsonify }};
+  var talks = {{ site.data.cv.sections.talks | jsonify }};
+  var activities = {{ site.data.cv.sections.activities | jsonify }};
 
   // Colors per category, also used in the legend above.
   var colors = {
@@ -109,16 +110,30 @@ extra_head: leaflet
   // entries within a location's popup.
   var points = [];
 
-  positions.forEach(function (p) {
+  education.forEach(function (p) {
     if (!p.lat || !p.lon) return;
     points.push({
       lat: p.lat,
       lon: p.lon,
-      city: p.city,
-      title: p.role + ", " + p.institution,
+      city: p.location,
+      title: p.degree + " in " + p.area + ", " + p.institution,
       url: null,
-      date: formatRange(p.start, p.end, "month"),
-      sortKey: p.start,
+      date: formatRange(p.start_date, p.end_date, "month"),
+      sortKey: p.start_date,
+      category: p.status === "current" ? "current-affiliation" : "past-affiliation"
+    });
+  });
+
+  experience.forEach(function (p) {
+    if (!p.lat || !p.lon) return;
+    points.push({
+      lat: p.lat,
+      lon: p.lon,
+      city: p.location,
+      title: p.position + ", " + p.company,
+      url: null,
+      date: formatRange(p.start_date, p.end_date, "month"),
+      sortKey: p.start_date,
       category: p.status === "current" ? "current-affiliation" : "past-affiliation"
     });
   });
@@ -128,8 +143,8 @@ extra_head: leaflet
     points.push({
       lat: t.lat,
       lon: t.lon,
-      city: t.city,
-      title: t.title + " — " + t.event,
+      city: t.location,
+      title: t.name + " — " + t.summary,
       url: null,
       date: formatDate(t.date),
       sortKey: t.date,
@@ -142,11 +157,11 @@ extra_head: leaflet
     points.push({
       lat: a.lat,
       lon: a.lon,
-      city: a.city,
-      title: a.title,
+      city: a.location,
+      title: a.name,
       url: a.url || null,
-      date: formatRange(a.start, a.end, a.precision),
-      sortKey: a.start,
+      date: formatRange(a.start_date, a.end_date, a.precision),
+      sortKey: a.start_date,
       category: a.status === "future" ? "upcoming" : "past-trip"
     });
   });

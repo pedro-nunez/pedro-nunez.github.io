@@ -11,30 +11,28 @@ permalink: /cv/
 <h2>Work Experience</h2>
 
 <ul>
-{% for pos in site.data.positions %}
-  {% if pos.category == "work" %}
+{% for pos in site.data.cv.sections.experience %}
   <li>
-    <strong>{{ pos.role }}</strong>, {{ pos.institution }} ({{ pos.city }})<br>
-    {% include date-range.html start=pos.start end=pos.end precision="month" %}
-    {% if pos.note %}<br>{{ pos.note }}.{% endif %}
+    <strong>{{ pos.position }}</strong>, {{ pos.company }} ({{ pos.location }})<br>
+    {% include date-range.html start=pos.start_date end=pos.end_date precision="month" %}
+    {% if pos.summary %}<br>{{ pos.summary }}.{% endif %}
     {% if pos.highlights %}
     <ul>
       {% for h in pos.highlights %}<li>{{ h }}</li>{% endfor %}
     </ul>
     {% endif %}
   </li>
-  {% endif %}
 {% endfor %}
 </ul>
 
 <h2>Participation in Research Projects</h2>
 
 <ul>
-{% for proj in site.data.projects %}
+{% for proj in site.data.cv.sections.projects %}
   <li>
-    <strong>{{ proj.title }}</strong>, {{ proj.institution }} ({{ proj.city }})<br>
-    {% include date-range.html start=proj.start end=proj.end precision="month" %}
-    {% if proj.note %}<br>{{ proj.note }}{% endif %}
+    <strong>{{ proj.name }}</strong>, {{ proj.institution }} ({{ proj.location }})<br>
+    {% include date-range.html start=proj.start_date end=proj.end_date precision="month" %}
+    {% if proj.summary %}<br>{{ proj.summary }}{% endif %}
   </li>
 {% endfor %}
 </ul>
@@ -42,14 +40,14 @@ permalink: /cv/
 <h2>Publications</h2>
 
 <ol reversed>
-{% for pub in site.data.publications %}
+{% for pub in site.data.cv.sections.publications %}
   <li>
     <i>{{ pub.title }}</i>.
     {% if pub.authors.size > 0 %}
     <br>with {% include author-list.html authors=pub.authors %}.
     {% endif %}
-    {% if pub.venue %}
-    <br>{{ pub.venue }} ({{ pub.year }}).
+    {% if pub.journal %}
+    <br>{{ pub.journal }} ({{ pub.date }}).
     {% if pub.doi %} <a href="https://doi.org/{{ pub.doi }}">DOI:{{ pub.doi }}</a>.{% endif %}
     {% else %}
     <br>(Submitted.)
@@ -64,27 +62,25 @@ permalink: /cv/
 <h2>Teaching Experience</h2>
 
 <ul>
-{% for course in site.data.teaching.courses %}
-  <li>{{ course.role }} for <i>{% if course.url %}<a href="{{ course.url }}">{{ course.course }}</a>{% else %}{{ course.course }}{% endif %}</i>{% if course.note %} {{ course.note }}{% endif %} during the {{ course.term }} at {{ course.institution }}.</li>
+{% for course in site.data.cv.sections.teaching_courses %}
+  <li>{{ course.position }} for <i>{% if course.url %}<a href="{{ course.url }}">{{ course.summary }}</a>{% else %}{{ course.summary }}{% endif %}</i>{% if course.note %} {{ course.note }}{% endif %} during the {{ course.date }} at {{ course.company }}.</li>
 {% endfor %}
 </ul>
 
 <h2>Education</h2>
 
 <ul>
-{% for pos in site.data.positions %}
-  {% if pos.category == "education" %}
+{% for pos in site.data.cv.sections.education %}
   <li>
-    <strong>{{ pos.role }}</strong>, {{ pos.institution }} ({{ pos.city }})<br>
-    {% include date-range.html start=pos.start end=pos.end precision="month" %}
-    {% if pos.note %}<br>{{ pos.note }}.{% endif %}
+    <strong>{{ pos.degree }} in {{ pos.area }}</strong>, {{ pos.institution }} ({{ pos.location }})<br>
+    {% include date-range.html start=pos.start_date end=pos.end_date precision="month" %}
+    {% if pos.summary %}<br>{{ pos.summary }}.{% endif %}
     {% if pos.highlights %}
     <ul>
       {% for h in pos.highlights %}<li>{{ h }}</li>{% endfor %}
     </ul>
     {% endif %}
   </li>
-  {% endif %}
 {% endfor %}
 </ul>
 
@@ -100,11 +96,11 @@ permalink: /cv/
 <h2>Invited Talks</h2>
 
 <ul>
-{% for talk in site.data.talks %}
+{% for talk in site.data.cv.sections.talks %}
   {% if talk.type == "invited" %}
   <li>
-    <i>{{ talk.title }}</i>, {{ talk.event }}{% if talk.online %} (online){% endif %}
-    ({{ talk.date | date: "%-d %b %Y" }}), {{ talk.city }}.
+    <i>{{ talk.name }}</i>, {{ talk.summary }}{% if talk.online %} (online){% endif %}
+    ({{ talk.date | date: "%-d %b %Y" }}), {{ talk.location }}.
   </li>
   {% endif %}
 {% endfor %}
@@ -113,10 +109,10 @@ permalink: /cv/
 <h2>Contributed Talks</h2>
 
 <ul>
-{% for talk in site.data.talks %}
+{% for talk in site.data.cv.sections.talks %}
   {% if talk.type == "contributed" %}
   <li>
-    <i>{{ talk.title }}</i>, {{ talk.event }} ({{ talk.date | date: "%-d %b %Y" }}), {{ talk.city }}.
+    <i>{{ talk.name }}</i>, {{ talk.summary }} ({{ talk.date | date: "%-d %b %Y" }}), {{ talk.location }}.
   </li>
   {% endif %}
 {% endfor %}
@@ -125,12 +121,12 @@ permalink: /cv/
 <h2>Academic Visits</h2>
 
 <ul>
-{% for item in site.data.activities %}
+{% for item in site.data.cv.sections.activities %}
   {% if item.type == "visit" %}
   <li>
-    {{ item.title }}{% if item.institution %}, {{ item.institution }}{% endif %}, {{ item.city }}
-    ({% include date-range.html start=item.start end=item.end %}).
-    {% if item.note %}{{ item.note }}.{% endif %}
+    {{ item.name }}{% if item.institution %}, {{ item.institution }}{% endif %}, {{ item.location }}
+    ({% include date-range.html start=item.start_date end=item.end_date %}).
+    {% if item.summary %}{{ item.summary }}.{% endif %}
   </li>
   {% endif %}
 {% endfor %}
@@ -139,11 +135,11 @@ permalink: /cv/
 <h2>Other Academic Activities</h2>
 
 <ul>
-{% for item in site.data.service %}
+{% for item in site.data.cv.sections.service %}
   <li>
-    {{ item.title }}{% if item.role %} ({{ item.role }}){% endif %}{% if item.institution %}, {{ item.institution }}{% endif %}, {{ item.city }}
-    ({% if item.term %}{{ item.term }}{% else %}{% include date-range.html start=item.start end=item.end %}{% endif %}).
-    {% if item.note %}{{ item.note }}.{% endif %}
+    {{ item.name }}{% if item.role %} ({{ item.role }}){% endif %}{% if item.institution %}, {{ item.institution }}{% endif %}, {{ item.location }}
+    ({% if item.date %}{{ item.date }}{% else %}{% include date-range.html start=item.start_date end=item.end_date %}{% endif %}).
+    {% if item.summary %}{{ item.summary }}.{% endif %}
   </li>
 {% endfor %}
 </ul>
@@ -151,11 +147,11 @@ permalink: /cv/
 <h2>Scholarships &amp; Funding Received</h2>
 
 <ul>
-{% for item in site.data.funding %}
+{% for item in site.data.cv.sections.funding %}
   <li>
-    {{ item.title }}, {{ item.city }}
-    ({% include date-range.html start=item.start end=item.end precision=item.precision %}).
-    {{ item.note }}
+    {{ item.name }}, {{ item.location }}
+    ({% include date-range.html start=item.start_date end=item.end_date precision=item.precision %}).
+    {{ item.summary }}
   </li>
 {% endfor %}
 </ul>
@@ -163,12 +159,12 @@ permalink: /cv/
 <h2>Conferences, Workshops, Schools and Courses Attended</h2>
 
 <ul>
-{% for item in site.data.activities %}
+{% for item in site.data.cv.sections.activities %}
   {% if item.type != "visit" %}
   <li>
-    {% if item.url %}<a href="{{ item.url }}">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %} ({{ item.type }}){% if item.institution %}, {{ item.institution }}{% endif %}, {{ item.city }}
-    ({% include date-range.html start=item.start end=item.end %}{% if item.online %}, online{% endif %}).
-    {% if item.note %}{{ item.note }}.{% endif %}
+    {% if item.url %}<a href="{{ item.url }}">{{ item.name }}</a>{% else %}{{ item.name }}{% endif %} ({{ item.type }}){% if item.institution %}, {{ item.institution }}{% endif %}, {{ item.location }}
+    ({% include date-range.html start=item.start_date end=item.end_date %}{% if item.online %}, online{% endif %}).
+    {% if item.summary %}{{ item.summary }}.{% endif %}
   </li>
   {% endif %}
 {% endfor %}
@@ -177,11 +173,11 @@ permalink: /cv/
 <h2>Additional Formation</h2>
 
 <ul>
-{% for item in site.data['additional-formation'] %}
+{% for item in site.data.cv.sections.extra %}
   <li>
-    {% if item.url %}<a href="{{ item.url }}">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %} ({{ item.type }}), {{ item.city }}
-    ({% include date-range.html start=item.start end=item.end precision=item.precision %}).
-    {{ item.note }}
+    {% if item.url %}<a href="{{ item.url }}">{{ item.name }}</a>{% else %}{{ item.name }}{% endif %} ({{ item.type }}), {{ item.location }}
+    ({% include date-range.html start=item.start_date end=item.end_date precision=item.precision %}).
+    {{ item.summary }}
   </li>
 {% endfor %}
 </ul>

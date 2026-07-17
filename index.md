@@ -16,9 +16,9 @@ of algebraic varieties.
 ## Papers
 
 <ul class="papers-list">
-{% for pub in site.data.publications %}
+{% for pub in site.data.cv.sections.publications %}
   <li>
-    <a href="{% if pub.doi %}https://doi.org/{{ pub.doi }}{% else %}https://arxiv.org/abs/{{ pub.arxiv }}{% endif %}" class="paper-title">{{ pub.title }}</a>{% if pub.authors.size > 0 %} (with {% include author-list.html authors=pub.authors %}){% endif %},<br>{% if pub.venue %}in {{ pub.venue }} ({{ pub.year }}){% else %}available on arXiv ({{ pub.year }}) and submitted for publication{% endif %}.
+    <a href="{% if pub.doi %}https://doi.org/{{ pub.doi }}{% else %}https://arxiv.org/abs/{{ pub.arxiv }}{% endif %}" class="paper-title">{{ pub.title }}</a>{% if pub.authors.size > 0 %} (with {% include author-list.html authors=pub.authors %}){% endif %},<br>{% if pub.journal %}in {{ pub.journal }} ({{ pub.date }}){% else %}available on arXiv ({{ pub.date }}) and submitted for publication{% endif %}.
   </li>
 {% endfor %}
 </ul>

@@ -19,14 +19,14 @@ of algebraic varieties. More specifically:</p>
 <h2>Publications and preprints</h2>
 
 <ol reversed>
-{% for pub in site.data.publications %}
+{% for pub in site.data.cv.sections.publications %}
   <li>
     <i>{{ pub.title }}</i>.
     {% if pub.authors.size > 0 %}
     <br>with {% include author-list.html authors=pub.authors %}.
     {% endif %}
-    {% if pub.venue %}
-    <br>{{ pub.venue }} ({{ pub.year }}).
+    {% if pub.journal %}
+    <br>{{ pub.journal }} ({{ pub.date }}).
     {% if pub.doi %} <a href="https://doi.org/{{ pub.doi }}">DOI:{{ pub.doi }}</a>.{% endif %}
     {% else %}
     <br>(Submitted.)
