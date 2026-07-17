@@ -19,8 +19,8 @@ you edit files.
 
 ## Regenerating the CV PDF
 
-The "Download PDF" button on `/cv/` links to `assets/cv.pdf`, which is
-generated from `_data/cv.yml` via [rendercv](https://rendercv.com) by
+The "PDF version" button on `/cv/` links to `assets/pdfs/cv.pdf`, which
+is generated from `_data/cv.yml` via [rendercv](https://rendercv.com) by
 `scripts/export_cv_pdf.py`. This is a separate step from the Jekyll
 build above — nothing regenerates the PDF automatically, so after
 editing `_data/cv.yml` you need to re-run the script by hand and
@@ -42,7 +42,7 @@ source .venv/bin/activate   # if not already active
 python scripts/export_cv_pdf.py
 ```
 
-This writes `assets/cv.pdf`. See the module docstring at the top of
+This writes `assets/pdfs/cv.pdf`. See the module docstring at the top of
 `scripts/export_cv_pdf.py` for how the script works, and the
 `scripts/export_cv_pdf.py` entry in `CLAUDE.md` for why each
 section/formatting choice is the way it is.

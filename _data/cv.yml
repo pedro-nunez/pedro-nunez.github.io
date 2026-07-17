@@ -1,14 +1,14 @@
 # CV content, structured to match rendercv's YAML schema (see
 # https://docs.rendercv.com/user_guide/yaml_input_structure/cv/) so it
 # can be fed to rendercv (via scripts/export_cv_pdf.py) to produce
-# assets/cv.pdf, as well as backing the website's CV/Research/Teaching
-# pages and the travel map. rendercv ignores extra keys it doesn't know
-# about, so we keep our own fields (lat/lon for the travel map, status)
-# alongside the standard ones — except non-string ones (numbers,
-# booleans), which crash rendercv's template step; the export script
-# strips those before handing this file to rendercv.
+# assets/pdfs/cv.pdf, as well as backing the website's CV/Research/
+# Teaching pages and the travel map. rendercv ignores extra keys it
+# doesn't know about, so we keep our own fields (lat/lon for the
+# travel map, status) alongside the standard ones — except non-string
+# ones (numbers, booleans), which crash rendercv's template step; the
+# export script strips those before handing this file to rendercv.
 #
-# After editing this file, regenerate assets/cv.pdf by running
+# After editing this file, regenerate assets/pdfs/cv.pdf by running
 # `python scripts/export_cv_pdf.py` (see that file's module docstring
 # for one-time setup) and commit the updated PDF alongside your edit —
 # nothing regenerates it automatically.

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Export _data/cv.yml to assets/cv.pdf via rendercv (https://rendercv.com).
+"""Export _data/cv.yml to assets/pdfs/cv.pdf via rendercv (https://rendercv.com).
 
 WHAT THIS DOES
 _data/cv.yml is written primarily for the Jekyll site (see CLAUDE.md): its
@@ -18,8 +18,8 @@ installs automatically — no separate system package required).
 This script is NOT part of the Jekyll build (`bundle exec jekyll serve`
 never runs it) and there's no CI hook calling it either. Whenever
 _data/cv.yml changes in a way that should show up in the PDF, re-run
-this script by hand and commit the resulting assets/cv.pdf alongside
-the data change.
+this script by hand and commit the resulting assets/pdfs/cv.pdf
+alongside the data change.
 
 SETUP (one-time, needs Python 3; tested on 3.12)
     python3 -m venv .venv
@@ -30,7 +30,7 @@ USAGE (every time _data/cv.yml changes)
     source .venv/bin/activate   # if not already active
     python scripts/export_cv_pdf.py
 
-This prints "wrote <path>/assets/cv.pdf" on success. It also creates
+This prints "wrote <path>/assets/pdfs/cv.pdf" on success. It also creates
 rendercv_build/ as scratch space (the reshaped YAML rendercv actually
 consumes, plus its own output files) — this is gitignored, safe to
 delete, and gets overwritten on every run.
@@ -53,7 +53,7 @@ import yaml
 REPO_ROOT = Path(__file__).resolve().parent.parent
 CV_YAML = REPO_ROOT / "_data" / "cv.yml"
 BUILD_DIR = REPO_ROOT / "rendercv_build"
-OUTPUT_PDF = REPO_ROOT / "assets" / "cv.pdf"
+OUTPUT_PDF = REPO_ROOT / "assets" / "pdfs" / "cv.pdf"
 
 MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
@@ -391,7 +391,7 @@ def main():
        it — this is a real subprocess call, not a Python library call,
        because rendercv is used exactly as anyone would from a
        terminal.
-    4. Copy the PDF rendercv produced into assets/cv.pdf, which is what
+    4. Copy the PDF rendercv produced into assets/pdfs/cv.pdf, which is what
        cv.md's "Download PDF" button links to."""
     if shutil.which("rendercv") is None:
         sys.exit("rendercv not found on PATH. Install with: pip install -r scripts/requirements.txt")
