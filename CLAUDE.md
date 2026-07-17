@@ -325,6 +325,15 @@ Built, committed, step by step (see git log for the full sequence):
   shared code — there's no mechanism for the Jekyll site and the Python
   export script to share logic, so the same date-formatting rule is
   deliberately duplicated in both places.
+- Contact page (`contact.md`, at `/contact/`, linked in the nav as the
+  last item): plain HTML content (matching `teaching.md`'s
+  `<h1>`/`<h2>` style rather than Markdown `#`/`##`, since that's the
+  more common pattern across the site's pages) with three sections —
+  Email (a `mailto:` link, display text obfuscated as "pnunez [at]
+  ntu.edu.tw" to deter scrapers), Address, and Office — hardcoded
+  directly in the page rather than sourced from `_data/cv.yml`, since
+  none of this (a physical mailing address, an office room number)
+  belongs in a rendered CV.
 
 No known gaps remain open. (A previous revision of this file described
 published papers losing their arXiv link in the PDF as a gap to fix —
