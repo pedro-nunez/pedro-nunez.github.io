@@ -94,7 +94,29 @@ Built, committed, step by step (see git log for the full sequence):
 - Home/About page (`index.md`) with bio, photo, research interests, and
   the email link right under the name (same obfuscated-display style
   as the Contact page: `pnunez [at] ntu.edu.tw`, hardcoded rather than
-  read from `_data/cv.yml`, matching how Contact does it too).
+  read from `_data/cv.yml`, matching how Contact does it too). The bio
+  prose links Jungkai Alfred Chen and Stefan Kebekus to their
+  homepages directly (plain HTML `<a>`, since this text is hardcoded
+  here, not sourced from `cv.yml`).
+- **Linking specific people's names mentioned in `_data/cv.yml`'s free
+  text** (advisors, hosts, co-organizers, PIs — as opposed to
+  publication co-authors or `writings.yml` organizers, which already
+  have their own structured `{name, url}` fields): done via Liquid's
+  `replace` filter directly in `cv.md`'s template
+  (`{{ item.summary | replace: "Name", '<a href="...">Name</a>' }}`),
+  never by editing the `cv.yml` string itself. The same `summary`
+  fields feed `scripts/export_cv_pdf.py`, which has no equivalent
+  replace step, so the PDF always shows these names as plain text —
+  matching Pedro's preference (confirmed twice: co-author links, then
+  these) that people-links belong on the website only, never the PDF.
+  A `replace` is a no-op when its target string isn't present, so it's
+  safe to chain onto every relevant section's summary output rather
+  than conditioning on which specific entry contains the name. Currently
+  linked this way: Jungkai Alfred Chen and Stefan Kebekus (Work
+  Experience, Research Projects, Education), Meng Chen (Academic
+  Visits), Flora Poon and Hsueh-Yung Lin (Other Academic Activities).
+  Explicitly left unlinked at Pedro's request: Yujiro Kawamata and
+  Keiji Oguiso (NCTS minicourse lecturers, in Conferences Attended).
 - Research/Publications page (`research.md`) reading from
   `_data/cv.yml` (`site.data.cv.sections.publications`); a compact
   Papers list also on Home. Its "PhD, master's and bachelor's theses"

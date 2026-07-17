@@ -8,9 +8,11 @@ layout: default
 
 <a href="mailto:pnunez@ntu.edu.tw">pnunez [at] ntu.edu.tw</a>
 
-I am a postdoc working in algebraic geometry in the group of Jungkai
-Alfred Chen at National Taiwan University. Before that, I was a PhD
-student of Stefan Kebekus at the University of Freiburg.
+I am a postdoc working in algebraic geometry in the group of
+<a href="https://www.math.ntu.edu.tw/~jkchen/">Jungkai Alfred Chen</a>
+at National Taiwan University. Before that, I was a PhD student of
+<a href="https://cplx.vm.uni-freiburg.de/">Stefan Kebekus</a> at the
+University of Freiburg.
 
 My research interests are birational geometry and derived categories
 of algebraic varieties.
