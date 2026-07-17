@@ -6,10 +6,6 @@ permalink: /miscellanea/
 
 # Miscellanea
 
-## Lean
-
-- [Lean Algebra Exercises](https://github.com/pedro-nunez/lean-algebra-2021)
-
 ## Workflow
 
 - [LaTeX templates](https://github.com/pedro-nunez/latex-templates)

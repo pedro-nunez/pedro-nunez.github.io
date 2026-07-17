@@ -281,12 +281,14 @@ Built, committed, step by step (see git log for the full sequence):
   Freiburg, Bonn, LMU Munich, UCM), not just the city center; other
   trip locations still use approximate coordinates.
 - Miscellanea page (`miscellanea.md`, at `/miscellanea/`, linked in the
-  nav): three plain Markdown-list sections, in order — "Lean" (the Lean
-  Algebra Exercises repo, also linked from `cv.yml`'s
-  `teaching_materials`), "Workflow" (the LaTeX templates repo), and
-  "Links" (external profile links: MathSciNet, ORCID, Mathematics
-  Genealogy Project, GitHub). LaTeX templates used to live under Links
-  too, before Lean/Workflow were split out.
+  nav): two plain Markdown-list sections, in order — "Workflow" (the
+  LaTeX templates repo) and "Links" (external profile links:
+  MathSciNet, ORCID, Mathematics Genealogy Project, GitHub). LaTeX
+  templates used to live under Links before Workflow was split out. A
+  "Lean" section briefly existed too (for the Lean Algebra Exercises
+  repo) but was removed as redundant with `cv.yml`'s
+  `teaching_materials`, which already lists it (shown on the Teaching
+  and CV pages).
   The home page's "CV (coming soon)" placeholder link was removed now
   that the CV page exists and is in the nav.
 - "Algebraic Geometry in Madrid" events page
