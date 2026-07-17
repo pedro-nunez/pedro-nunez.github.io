@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Other writings
+title: Other Writings
 permalink: /writings/
 ---
 
-<h1>Other writings</h1>
+<h1>Other Writings</h1>
 
 <h2>Scripts for seminar talks</h2>
 
