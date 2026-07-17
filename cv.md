@@ -6,7 +6,7 @@ permalink: /cv/
 
 <h1>Curriculum Vitae</h1>
 
-<p><a href="{{ '/assets/cv.pdf' | relative_url }}">Download as PDF</a></p>
+<p><a href="{{ '/assets/cv.pdf' | relative_url }}" class="button">PDF version</a></p>
 
 <h2>Work Experience</h2>
 
