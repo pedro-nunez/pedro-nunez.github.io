@@ -4,7 +4,7 @@ seminar_scripts:
     topic: "differential Galois theory"
     organizer:
       name: "Annette Huber-Klavitter"
-      url: "https://home.mathematik.uni-freiburg.de/arithgeom/huber.html"
+      url: "https://home.mathematik.uni-freiburg.de/arithgeom/index.html"
     institution: "the University of Freiburg"
     term: "SS 22"
 
@@ -31,7 +31,7 @@ seminar_scripts:
     topic: "Heisenberg algebras and Hilbert schemes of points on surfaces"
     organizer:
       name: "Mara Ungureanu"
-      url: "https://home.mathematik.uni-freiburg.de/mathphys/mitarbeiter/ungureanu/index.html"
+      url: "https://sites.google.com/view/mara-ungureanu/"
     institution: "the University of Freiburg"
     term: "SS 21"
 
@@ -67,7 +67,7 @@ seminar_scripts:
     topic: "characteristic classes of topological vector bundles"
     organizer:
       name: "Fabian Hebestreit"
-      url: "https://www.math.uni-bonn.de/people/fhebestr"
+      url: "https://www.math.uni-bielefeld.de/~hebestreit/"
     institution: "the University of Bonn"
     term: "WS 18/19"
 
