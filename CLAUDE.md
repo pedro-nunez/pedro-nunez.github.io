@@ -153,9 +153,15 @@ Built, committed, step by step (see git log for the full sequence):
   `ExperienceEntry` field names (`institution`/`degree`/`area`,
   `company`/`position`, `location`, `start_date`/`end_date`);
   `sections.publications` uses `PublicationEntry` (`title`, `authors`
-  as a flat list of name strings — co-author links the site used to
-  show were dropped, since rendercv's `authors` doesn't support them;
-  `journal`, `doi`, `date`); `sections.languages` uses `OneLineEntry`
+  as a list of `{name, url}` objects rather than rendercv's own flat
+  list-of-strings shape — `url` is optional and lets the website link
+  each co-author to their homepage (`_includes/author-list.html`);
+  rendercv's own `authors` field doesn't support per-author links, so
+  `scripts/export_cv_pdf.py` reduces each entry to just its `name` for
+  the PDF, which was in fact the reason this was flattened to plain
+  strings in an earlier revision of `cv.yml`, before Pedro asked for
+  the links back on the website specifically; `journal`, `doi`,
+  `date`); `sections.languages` uses `OneLineEntry`
   (`label`/`details`); every other section (`talks`, `activities`,
   `academic_visits`, `teaching_courses`, `teaching_materials`,
   `teaching_experience`, `service`, `funding`, `projects`, `extra`)

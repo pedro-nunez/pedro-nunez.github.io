@@ -214,10 +214,13 @@ def build_publications(data):
         # No journal means still unpublished; label it explicitly rather
         # than leaving the "JOURNAL (URL)" line blank before the link.
         e.setdefault("journal", "Preprint")
-        # Italicize the CV owner's own name in the byline (rendercv's
-        # convention for emphasizing an author, e.g. "*H. Tom*" in its
-        # docs) so it stands out among any co-authors.
-        e["authors"] = [f"*{a}*" if a == data["name"] else a for a in e["authors"]]
+        # cv.yml's authors are {name, url} objects (the website links
+        # co-authors to their homepages), but rendercv's authors field
+        # doesn't support per-author links — reduce to plain names for
+        # the PDF, italicizing the CV owner's own name in the byline
+        # (rendercv's convention for emphasizing an author, e.g.
+        # "*H. Tom*" in its docs) so it stands out among any co-authors.
+        e["authors"] = [f"*{a['name']}*" if a["name"] == data["name"] else a["name"] for a in e["authors"]]
         result.append(e)
     return result
 

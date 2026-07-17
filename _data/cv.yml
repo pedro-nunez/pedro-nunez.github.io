@@ -117,29 +117,34 @@ sections:
         - "Research focused on birational geometry and derived categories of coherent sheaves."
         - "Participated in and organized various seminars and reading groups."
 
-  # rendercv PublicationEntry: title and authors are required (authors is
-  # a flat list of name strings — rendercv doesn't support per-author
-  # links, so the URLs the site used to show for co-authors are dropped
-  # for the PDF). authors is the full published byline, in the actual
-  # published order (including "Pedro Núñez" himself — math papers are
-  # often alphabetical by surname, so his position varies per paper and
-  # can't be assumed). The website excludes his own name when rendering
-  # "with X and Y" (see _includes/author-list.html); the PDF export
-  # italicizes it among any co-authors. journal and doi are omitted for
-  # entries still under submission. arxiv is a non-standard extra field,
-  # used by the site's own templates. Newest first.
+  # rendercv PublicationEntry: title and authors are required. authors is
+  # a list of {name, url} objects — url is optional (Pedro's own entries
+  # never need one, since the website excludes his name and the PDF
+  # italicizes it instead) — rather than rendercv's own flat
+  # list-of-strings shape, since the website links co-authors to their
+  # homepages (_includes/author-list.html) but rendercv's authors field
+  # doesn't support per-author links; scripts/export_cv_pdf.py strips
+  # url and keeps just the plain name for the PDF. authors is the full
+  # published byline, in the actual published order (including "Pedro
+  # Núñez" himself — math papers are often alphabetical by surname, so
+  # his position varies per paper and can't be assumed). journal and doi
+  # are omitted for entries still under submission. arxiv is a
+  # non-standard extra field, used by the site's own templates. Newest
+  # first.
   publications:
     - title: "Extension of adapted differentials on klt orbifolds"
       authors:
-        - "Pedro Núñez"
+        - name: "Pedro Núñez"
       date: 2024
       arxiv: "2411.17268"
 
     - title: "The Albanese morphism for hyperelliptic varieties"
       authors:
-        - "Pieter Belmans"
-        - "Andreas Demleitner"
-        - "Pedro Núñez"
+        - name: "Pieter Belmans"
+          url: "https://pbelmans.ncag.info"
+        - name: "Andreas Demleitner"
+          url: "https://home.mathematik.uni-freiburg.de/demleitner/"
+        - name: "Pedro Núñez"
       journal: "Indagationes Mathematicae"
       date: 2025
       doi: "10.1016/j.indag.2025.10.004"
@@ -147,7 +152,7 @@ sections:
 
     - title: "Adapted differentials as a qfh-sheaf"
       authors:
-        - "Pedro Núñez"
+        - name: "Pedro Núñez"
       journal: "Mathematische Zeitschrift 304, 68"
       date: 2023
       doi: "10.1007/s00209-023-03330-6"
@@ -155,7 +160,7 @@ sections:
 
     - title: "A note on semiorthogonal decompositions for Fano fibrations"
       authors:
-        - "Pedro Núñez"
+        - name: "Pedro Núñez"
       journal: "Geometriae Dedicata 216, 20"
       date: 2022
       doi: "10.1007/s10711-022-00680-z"

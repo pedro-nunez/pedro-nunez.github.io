@@ -19,7 +19,7 @@ of algebraic varieties.
 
 <ul class="papers-list">
 {% for pub in site.data.cv.sections.publications %}
-  {% assign coauthors = pub.authors | where_exp: "a", "a != site.data.cv.name" %}
+  {% assign coauthors = pub.authors | where_exp: "a", "a.name != site.data.cv.name" %}
   <li>
     <a href="{% if pub.doi %}https://doi.org/{{ pub.doi }}{% else %}https://arxiv.org/abs/{{ pub.arxiv }}{% endif %}" class="paper-title">{{ pub.title }}</a>{% if coauthors.size > 0 %} (with {% include author-list.html authors=coauthors %}){% endif %},<br>{% if pub.journal %}in {{ pub.journal }} ({{ pub.date }}){% else %}available on arXiv ({{ pub.date }}) and submitted for publication{% endif %}.
   </li>

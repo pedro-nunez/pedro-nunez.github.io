@@ -22,7 +22,7 @@ of algebraic varieties. More specifically:</p>
 {% for pub in site.data.cv.sections.publications %}
   <li>
     <i>{{ pub.title }}</i>.
-    {% assign coauthors = pub.authors | where_exp: "a", "a != site.data.cv.name" %}
+    {% assign coauthors = pub.authors | where_exp: "a", "a.name != site.data.cv.name" %}
     {% if coauthors.size > 0 %}
     <br>with {% include author-list.html authors=coauthors %}.
     {% endif %}
