@@ -331,8 +331,7 @@ Built, committed, step by step (see git log for the full sequence):
   Freiburg, Bonn, LMU Munich, UCM), not just the city center; other
   trip locations still use approximate coordinates. An attribution
   note (crediting Julia Schneider for the idea and Claude for helping
-  implement it) appears twice on the page, once right below the map
-  and once right below the legend.
+  implement it) appears once, right below the legend.
 - Miscellanea page (`miscellanea.md`, at `/miscellanea/`, linked in the
   nav): two plain Markdown-list sections, in order — "Workflow" (the
   LaTeX templates repo) and "Links" (external profile links:

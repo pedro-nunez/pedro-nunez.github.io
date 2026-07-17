@@ -9,8 +9,6 @@ extra_head: leaflet
 
 <div id="map"></div>
 
-<p>Thanks to <a href="https://juliaschneider.pages.math.cnrs.fr/home/index.html">Julia Schneider</a> for giving me this idea, and thanks to <a href="https://claude.ai">Claude</a> for helping me implement it.</p>
-
 <ul id="map-legend">
   <li><span class="dot" style="background:#2ca02c"></span> Current affiliation</li>
   <li><span class="dot" style="background:#d62728"></span> Past affiliation</li>
