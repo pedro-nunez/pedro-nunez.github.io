@@ -91,7 +91,10 @@ Built, committed, step by step (see git log for the full sequence):
 
 - Minimal Jekyll scaffold, default layout, header/nav include, basic CSS
   (default theme disabled).
-- Home/About page (`index.md`) with bio, photo, research interests.
+- Home/About page (`index.md`) with bio, photo, research interests, and
+  the email link right under the name (same obfuscated-display style
+  as the Contact page: `pnunez [at] ntu.edu.tw`, hardcoded rather than
+  read from `_data/cv.yml`, matching how Contact does it too).
 - Research/Publications page (`research.md`) reading from
   `_data/cv.yml` (`site.data.cv.sections.publications`); a compact
   Papers list also on Home.

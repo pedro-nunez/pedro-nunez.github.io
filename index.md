@@ -6,6 +6,8 @@ layout: default
 
 # Pedro Núñez
 
+<a href="mailto:pnunez@ntu.edu.tw">pnunez [at] ntu.edu.tw</a>
+
 I am a postdoc working in algebraic geometry in the group of Jungkai
 Alfred Chen at National Taiwan University. Before that, I was a PhD
 student of Stefan Kebekus at the University of Freiburg.
