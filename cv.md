@@ -177,7 +177,7 @@ permalink: /cv/
 <h2>Additional Formation</h2>
 
 <ul>
-{% for item in site.data.miscellanea %}
+{% for item in site.data['additional-formation'] %}
   <li>
     {% if item.url %}<a href="{{ item.url }}">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %} ({{ item.type }}), {{ item.city }}
     ({% include date-range.html start=item.start end=item.end precision=item.precision %}).
