@@ -1,0 +1,10 @@
+# Algebraic geometry events in Madrid, for the "Algebraic Geometry in
+# Madrid" page. status is "future" or "past"; url is optional (omit if
+# the event has no homepage).
+
+- title: "Geometry conference in honour of Nigel Hitchin for his 80th birthday"
+  institution: "Instituto de Ciencias Matemáticas (ICMAT)"
+  start: 2026-09-21
+  end: 2026-09-25
+  status: future
+  url: "https://www.icmat.es/RT/2026/HNLTT/hitchin80.php"

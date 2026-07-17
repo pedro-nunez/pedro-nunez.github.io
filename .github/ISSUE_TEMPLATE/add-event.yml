@@ -1,0 +1,47 @@
+name: Add event
+description: Suggest an algebraic geometry event in Madrid for the website.
+title: "Add event: "
+labels: ["add-event"]
+body:
+  - type: input
+    id: title
+    attributes:
+      label: Event title
+      placeholder: "Geometry conference in honour of Nigel Hitchin for his 80th birthday"
+    validations:
+      required: true
+
+  - type: input
+    id: institution
+    attributes:
+      label: Organizing institution
+      placeholder: "Instituto de Ciencias Matemáticas (ICMAT)"
+    validations:
+      required: true
+
+  - type: input
+    id: start-date
+    attributes:
+      label: Start date
+      description: Format YYYY-MM-DD.
+      placeholder: "2026-09-21"
+    validations:
+      required: true
+
+  - type: input
+    id: end-date
+    attributes:
+      label: End date
+      description: Format YYYY-MM-DD. Leave blank if it's a single-day event.
+      placeholder: "2026-09-25"
+    validations:
+      required: false
+
+  - type: input
+    id: url
+    attributes:
+      label: Event homepage
+      description: Leave blank if the event has no dedicated webpage.
+      placeholder: "https://www.icmat.es/..."
+    validations:
+      required: false
