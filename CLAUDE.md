@@ -200,11 +200,15 @@ Built, committed, step by step (see git log for the full sequence):
   rather than `ensure_period()`, since AUTHORS is computed by rendercv
   itself, not available as a plain string beforehand; verified
   separately that rendercv still drops "(URL)." cleanly when there's
-  no doi/url), maps `arxiv` → rendercv's `url` field for publications that
-  don't have a `doi` (a `doi` and `url` can't both show under
-  rendercv's default template — an unpublished preprint's arXiv link
-  survives, a published paper's doesn't; deferred, needs a custom
-  Typst template to fix), formats `dates: [...]` into the "22, 27, 29
+  no doi/url), maps `arxiv` → rendercv's `url` field only for
+  publications that don't have a `doi` — a `doi` and `url` can't both
+  show under rendercv's default template, but that's fine here since
+  it's the intended behavior, not a limitation to work around: a
+  published paper's entry deliberately shows just the journal and DOI,
+  with the arXiv link reserved for still-unpublished preprints (Pedro
+  confirmed this on 2026-07-17 after trying the alternative — showing
+  both a DOI and an arXiv link on published entries — and preferring
+  what was already there), formats `dates: [...]` into the "22, 27, 29
   Apr 2026" style for minicourses with non-contiguous meeting days,
   sets a custom `design.templates.normal_entry.main_column`
   (`**NAME**\nSUMMARY\nHIGHLIGHTS\nURL`) so that `NormalEntry`-based
@@ -294,12 +298,11 @@ Built, committed, step by step (see git log for the full sequence):
   PR) and Pedro adds them to the data file by hand — kept deliberately
   simple, with fully automated issue-to-PR as a possible future step.
 
-Remaining known gap: rendercv's default `PublicationEntry` template
-can't show both a DOI and a separate arXiv link, so published papers
-(which have a DOI) lose their arXiv link in the PDF — noted above under
-`scripts/export_cv_pdf.py`; fixing it needs a custom Typst template,
-deferred as cosmetic work. All local commits have been pushed to
-`origin/master`.
+No known gaps remain open. (A previous revision of this file described
+published papers losing their arXiv link in the PDF as a gap to fix —
+see the `scripts/export_cv_pdf.py` bullet above: that's actually the
+intended behavior, confirmed with Pedro, not a limitation.) All local
+commits have been pushed to `origin/master`.
 
 To resume this work in a new session, just say "continue where we left
 off" — this section has the full context.
