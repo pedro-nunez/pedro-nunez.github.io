@@ -801,7 +801,7 @@ sections:
       end_date: 2021-10-30
       status: past
       online: true
-      url: "https://www.mfo.de/document/2143b/Poster-2043b.pdf"
+      url: "https://www.mfo.de/www/activity/2143b"
 
     - name: "K-theory, algebraic cycles and motivic homotopy theory"
       type: workshop
@@ -823,7 +823,7 @@ sections:
       start_date: 2019-09-09
       end_date: 2019-09-13
       status: past
-      url: "https://cplx.vm.uni-freiburg.de/omin/"
+      url: "https://www.math.ens.psl.eu/~odegaay/Freiburg.pdf"
 
     - name: "Moduli and Stability conditions Summer School"
       type: summer-school
