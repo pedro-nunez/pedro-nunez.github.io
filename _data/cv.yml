@@ -756,7 +756,7 @@ sections:
       start_date: 2022-07-14
       end_date: 2022-07-15
       status: past
-      url: "https://www.gk1821.uni-freiburg.de/GK%20Colloquium"
+      url: "https://freidok.uni-freiburg.de/proj/8331"
 
     - name: "Birational Geometry conference"
       type: conference
