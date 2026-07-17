@@ -160,7 +160,7 @@ permalink: /cv/
 <ul>
 {% for item in site.data.cv.sections.activities %}
   <li>
-    {% if item.url %}<a href="{{ item.url }}">{{ item.name }}</a>{% else %}{{ item.name }}{% endif %} ({{ item.type }}){% if item.institution %}, {{ item.institution }}{% endif %}, {{ item.display_location | default: item.location }}
+    {% if item.url %}<a href="{{ item.url }}">{{ item.name }}</a>{% else %}{{ item.name }}{% endif %}{% if item.institution %}, {{ item.institution }}{% endif %}, {{ item.display_location | default: item.location }}
     ({% include date-range.html start=item.start_date end=item.end_date %}{% if item.online %}, online{% endif %}).
     {% if item.summary %}{{ item.summary }}.{% endif %}
   </li>
@@ -172,7 +172,7 @@ permalink: /cv/
 <ul>
 {% for item in site.data.cv.sections.extra %}
   <li>
-    {% if item.url %}<a href="{{ item.url }}">{{ item.name }}</a>{% else %}{{ item.name }}{% endif %} ({{ item.type }}), {{ item.location }}
+    {% if item.url %}<a href="{{ item.url }}">{{ item.name }}</a>{% else %}{{ item.name }}{% endif %}, {{ item.location }}
     ({% include date-range.html start=item.start_date end=item.end_date precision=item.precision %}).
     {{ item.summary }}
   </li>
