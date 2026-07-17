@@ -43,8 +43,9 @@ permalink: /cv/
 {% for pub in site.data.cv.sections.publications %}
   <li>
     <i>{{ pub.title }}</i>.
-    {% if pub.authors.size > 0 %}
-    <br>with {% include author-list.html authors=pub.authors %}.
+    {% assign coauthors = pub.authors | where_exp: "a", "a != site.data.cv.name" %}
+    {% if coauthors.size > 0 %}
+    <br>with {% include author-list.html authors=coauthors %}.
     {% endif %}
     {% if pub.journal %}
     <br>{{ pub.journal }} ({{ pub.date }}).
@@ -121,14 +122,12 @@ permalink: /cv/
 <h2>Academic Visits</h2>
 
 <ul>
-{% for item in site.data.cv.sections.activities %}
-  {% if item.type == "visit" %}
+{% for item in site.data.cv.sections.academic_visits %}
   <li>
     {{ item.name }}{% if item.institution %}, {{ item.institution }}{% endif %}, {{ item.location }}
     ({% include date-range.html start=item.start_date end=item.end_date %}).
     {% if item.summary %}{{ item.summary }}.{% endif %}
   </li>
-  {% endif %}
 {% endfor %}
 </ul>
 
@@ -160,13 +159,11 @@ permalink: /cv/
 
 <ul>
 {% for item in site.data.cv.sections.activities %}
-  {% if item.type != "visit" %}
   <li>
-    {% if item.url %}<a href="{{ item.url }}">{{ item.name }}</a>{% else %}{{ item.name }}{% endif %} ({{ item.type }}){% if item.institution %}, {{ item.institution }}{% endif %}, {{ item.location }}
+    {% if item.url %}<a href="{{ item.url }}">{{ item.name }}</a>{% else %}{{ item.name }}{% endif %} ({{ item.type }}){% if item.institution %}, {{ item.institution }}{% endif %}, {{ item.display_location | default: item.location }}
     ({% include date-range.html start=item.start_date end=item.end_date %}{% if item.online %}, online{% endif %}).
     {% if item.summary %}{{ item.summary }}.{% endif %}
   </li>
-  {% endif %}
 {% endfor %}
 </ul>
 

@@ -22,8 +22,9 @@ of algebraic varieties. More specifically:</p>
 {% for pub in site.data.cv.sections.publications %}
   <li>
     <i>{{ pub.title }}</i>.
-    {% if pub.authors.size > 0 %}
-    <br>with {% include author-list.html authors=pub.authors %}.
+    {% assign coauthors = pub.authors | where_exp: "a", "a != site.data.cv.name" %}
+    {% if coauthors.size > 0 %}
+    <br>with {% include author-list.html authors=coauthors %}.
     {% endif %}
     {% if pub.journal %}
     <br>{{ pub.journal }} ({{ pub.date }}).

@@ -22,7 +22,9 @@ extra_head: leaflet
   var education = {{ site.data.cv.sections.education | jsonify }};
   var experience = {{ site.data.cv.sections.experience | jsonify }};
   var talks = {{ site.data.cv.sections.talks | jsonify }};
-  var activities = {{ site.data.cv.sections.activities | jsonify }};
+  var activities = {{ site.data.cv.sections.activities | jsonify }}.concat(
+    {{ site.data.cv.sections.academic_visits | jsonify }}
+  );
 
   // Colors per category, also used in the legend above.
   var colors = {
@@ -157,7 +159,7 @@ extra_head: leaflet
     points.push({
       lat: a.lat,
       lon: a.lon,
-      city: a.location,
+      city: a.display_location || a.location,
       title: a.name,
       url: a.url || null,
       date: formatRange(a.start_date, a.end_date, a.precision),
