@@ -238,6 +238,23 @@ Built, committed, step by step (see git log for the full sequence):
   in the `cv.yml` text (`*Course Name*`) rather than in the script,
   since it's part of the actual sentence content, not a presentational
   transform.
+- **`README.md`** (previously just a title) and `scripts/export_cv_pdf.py`'s
+  module docstring were both written up as standalone, human-facing
+  guides — the goal being that the PDF export pipeline is usable and
+  understandable without needing this CLAUDE.md file or an AI
+  assistant's help. README.md covers previewing the Jekyll site
+  (`bundle install && bundle exec jekyll serve`) and regenerating
+  `assets/cv.pdf` (venv setup, then re-running the script whenever
+  `_data/cv.yml` changes); every command in it was actually run from a
+  clean state to confirm it works verbatim, not just described. The
+  script's docstring gained a WHAT THIS DOES / SETUP / USAGE / WHY
+  EACH TRANSFORM EXISTS structure, and previously-undocumented pieces
+  (`main()`, `SECTION_BUILDERS`, `build_rendercv_document()`) got
+  docstrings/comments explaining the pipeline and how to extend it
+  (e.g. adding a new PDF section). `_data/cv.yml`'s header comment
+  gained an explicit "run `python scripts/export_cv_pdf.py` after
+  editing this file" instruction, since it previously only described
+  the file's shape, not what to do after changing it.
 - Travel map (`travel-map.md`): interactive Leaflet map with one pin
   per unique location, built from `_data/cv.yml`'s `education`,
   `experience`, `talks`, and `activities` sections (grouped by lat/lon;

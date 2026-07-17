@@ -1,2 +1,5 @@
+# Dependencies for scripts/export_cv_pdf.py (the PDF CV export — see
+# that file's module docstring for setup/usage). Not needed for the
+# Jekyll site itself.
 pyyaml>=6.0
 rendercv[full]>=2.8

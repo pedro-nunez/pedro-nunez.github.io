@@ -1,17 +1,45 @@
 #!/usr/bin/env python3
-"""Export _data/cv.yml to assets/cv.pdf via rendercv.
+"""Export _data/cv.yml to assets/cv.pdf via rendercv (https://rendercv.com).
 
-_data/cv.yml is written primarily for the Jekyll site (see CLAUDE.md), so
-this script does the presentation work needed to turn it into the printed
-CV: picking which sections appear, in what order, under what heading, and
-a few section-specific reshapes (e.g. merging service + visit entries into
-one "Other Academic Activities" section) so the result matches the layout
-of the old hand-written LaTeX resume.
+WHAT THIS DOES
+_data/cv.yml is written primarily for the Jekyll site (see CLAUDE.md): its
+shape follows rendercv's own YAML schema, but it also carries site-only
+fields (lat/lon for the travel map, precision flags, etc.) that rendercv
+doesn't understand. This script reads that file, reshapes it into
+something rendercv can render as a PDF — picking which sections appear,
+in what order, under what heading, and a few section-specific tweaks
+(e.g. merging service + visit entries into one "Other Academic
+Activities" section, adding punctuation the website adds via its own
+Liquid templates) — so the result matches the layout of the CV Pedro
+used before this site existed. rendercv itself then turns that reshaped
+YAML into a PDF via Typst (a typesetting system rendercv depends on and
+installs automatically — no separate system package required).
 
-Requires: pip install -r scripts/requirements.txt
-          (a virtualenv is recommended: python -m venv .venv && source
-          .venv/bin/activate before installing)
-Usage:    python scripts/export_cv_pdf.py
+This script is NOT part of the Jekyll build (`bundle exec jekyll serve`
+never runs it) and there's no CI hook calling it either. Whenever
+_data/cv.yml changes in a way that should show up in the PDF, re-run
+this script by hand and commit the resulting assets/cv.pdf alongside
+the data change.
+
+SETUP (one-time, needs Python 3; tested on 3.12)
+    python3 -m venv .venv
+    source .venv/bin/activate
+    pip install -r scripts/requirements.txt
+
+USAGE (every time _data/cv.yml changes)
+    source .venv/bin/activate   # if not already active
+    python scripts/export_cv_pdf.py
+
+This prints "wrote <path>/assets/cv.pdf" on success. It also creates
+rendercv_build/ as scratch space (the reshaped YAML rendercv actually
+consumes, plus its own output files) — this is gitignored, safe to
+delete, and gets overwritten on every run.
+
+WHY EACH TRANSFORM EXISTS
+Every non-obvious choice below (section order, punctuation, date
+formatting, custom rendercv design templates, ...) is explained inline
+where it happens, and also summarized in CLAUDE.md under
+"scripts/export_cv_pdf.py" for a narrative, all-in-one-place version.
 """
 
 import datetime
@@ -282,6 +310,13 @@ def build_additional_formation(data):
     return [apply_precise_dates(e) for e in data["sections"]["extra"]]
 
 
+# (PDF heading, function that builds that section's entries from cv.yml)
+# pairs, in the exact order they appear on the PDF. To add a new PDF
+# section: write a build_* function above returning a list of entries,
+# then add a ("Heading Text", that_function) pair here wherever you want
+# it to appear — the heading string becomes a literal Typst heading (see
+# build_rendercv_document below), so capitalization/punctuation here is
+# exactly what prints.
 SECTION_BUILDERS = [
     ("Work Experience", build_work_experience),
     ("Participation in Research Projects", build_research_projects),
@@ -300,6 +335,12 @@ SECTION_BUILDERS = [
 
 
 def build_rendercv_document(data):
+    """Assemble the full document rendercv will render: cv.yml's
+    top-level contact fields passed straight through, every
+    SECTION_BUILDERS entry run and safety-cleaned of the non-string
+    extras that crash rendercv (clean_extra_fields), plus a "design"
+    block overriding a few of rendercv's own default templates (see
+    the comments below each override for why)."""
     sections = {title: clean_extra_fields(builder(data)) for title, builder in SECTION_BUILDERS}
     return {
         "cv": {
@@ -340,6 +381,18 @@ def build_rendercv_document(data):
 
 
 def main():
+    """The actual pipeline, in four steps:
+    1. Load _data/cv.yml as-is (the file Jekyll also reads).
+    2. Reshape it into rendercv's expected document shape
+       (build_rendercv_document, which delegates to one build_*
+       function per PDF section — see SECTION_BUILDERS above).
+    3. Write that reshaped document to rendercv_build/cv.yaml (scratch
+       space, gitignored) and shell out to the `rendercv` CLI to render
+       it — this is a real subprocess call, not a Python library call,
+       because rendercv is used exactly as anyone would from a
+       terminal.
+    4. Copy the PDF rendercv produced into assets/cv.pdf, which is what
+       cv.md's "Download PDF" button links to."""
     if shutil.which("rendercv") is None:
         sys.exit("rendercv not found on PATH. Install with: pip install -r scripts/requirements.txt")
 
