@@ -580,7 +580,7 @@ sections:
       status: past
       url: "https://2025tms.tms.org.tw/"
 
-    - name: "Intro. to Nevanlinna Theory, Hyperbolicity and Arithmetic Dynamics"
+    - name: "Introduction to Nevanlinna Theory, Hyperbolicity and Arithmetic Dynamics"
       type: workshop
       institution: "Academia Sinica"
       location: "Taipei, Taiwan"
@@ -679,7 +679,7 @@ sections:
       start_date: 2024-01-22
       end_date: 2024-01-23
       status: past
-      url: "https://2024tms-en.tms.org.tw/"
+      url: "https://2024tms.tms.org.tw/"
 
     - name: "NCTS-Kyoto Mathematics Symposium"
       type: seminar
