@@ -13,8 +13,6 @@ student of Stefan Kebekus at the University of Freiburg.
 My research interests are birational geometry and derived categories
 of algebraic varieties.
 
-[CV (coming soon)](#)
-
 ## Papers
 
 <ul class="papers-list">
