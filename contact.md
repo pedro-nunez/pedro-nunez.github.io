@@ -15,9 +15,9 @@ permalink: /contact/
 National Taiwan University<br>
 Department of Mathematics<br>
 No. 1, Sec. 4, Roosevelt Rd.,<br>
-Taipei 10617, Taiwan
+Taipei 10617, Taiwan.
 
 <h2>Office</h2>
 
 Astronomy-Mathematics Building,<br>
-Room 547
+Room 547.
