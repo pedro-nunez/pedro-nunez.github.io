@@ -97,14 +97,31 @@ Built, committed, step by step (see git log for the full sequence):
   read from `_data/cv.yml`, matching how Contact does it too).
 - Research/Publications page (`research.md`) reading from
   `_data/cv.yml` (`site.data.cv.sections.publications`); a compact
-  Papers list also on Home.
+  Papers list also on Home. Its "PhD, master's and bachelor's theses"
+  section is hardcoded HTML (not data-driven, unlike the rest of the
+  page) with each thesis title now linking its PDF under
+  `assets/pdfs/`.
 - Teaching page (`teaching.md`) reading from `_data/cv.yml`
   (`site.data.cv.sections.teaching_courses` for previous teaching and
   `.teaching_materials` for e.g. the Lean Algebra Exercises) —
-  mirroring the multi-list pattern still used in `writings.yml`.
+  mirroring the multi-list pattern still used in `writings.yml`. Its
+  "teaching statement" link (previously a "coming soon" placeholder)
+  now points at `assets/pdfs/teaching-statement.pdf`.
 - Other writings page (`writings.md`) reading from `_data/writings.yml`
   (not CV content, so it stayed out of the `cv.yml` consolidation
-  below).
+  below). Each `seminar_scripts`/`other_notes` entry has a `url`
+  linking its own PDF under `assets/pdfs/`; the one `other_notes`
+  entry ("Enumerative Geometry") additionally has `programme_url` for
+  a second, separate PDF (the seminar's programme) — the only entry
+  with two documents, so this got its own field rather than a general
+  "list of PDFs per entry" mechanism nothing else currently needs.
+- **`assets/pdfs/`**: holds every PDF except `assets/cv.pdf` itself
+  (theses, seminar scripts/notes, the teaching statement) — a
+  subdirectory alongside the pre-existing `assets/css/`/`assets/images/`
+  convention. `cv.pdf` stays directly under `assets/` since
+  `scripts/export_cv_pdf.py`'s `OUTPUT_PDF` constant already hardcoded
+  that exact path before this convention existed, and moving it would
+  be a gratuitous unrelated change.
 - CV page (`cv.md`, at `/cv/`, linked in the nav): renders the full CV
   — work experience, research projects, publications, teaching,
   education, languages, invited/contributed talks, academic visits,

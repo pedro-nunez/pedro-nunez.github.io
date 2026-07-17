@@ -22,4 +22,4 @@ permalink: /teaching/
 {% endfor %}
 </ul>
 
-<p>Here is my <a href="#" title="My teaching statement">teaching statement</a> (coming soon).</p>
+<p>Here is my <a href="{{ '/assets/pdfs/teaching-statement.pdf' | relative_url }}" title="My teaching statement">teaching statement</a>.</p>

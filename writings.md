@@ -10,7 +10,7 @@ permalink: /writings/
 
 <ul>
 {% for item in site.data.writings.seminar_scripts %}
-  <li><i>{{ item.title }}</i>, script for a seminar on {{ item.topic }} organized by {% if item.organizer.url %}<a href="{{ item.organizer.url }}">{{ item.organizer.name }}</a>{% else %}{{ item.organizer.name }}{% endif %} at {{ item.institution }} ({{ item.term }}).</li>
+  <li><i>{% if item.url %}<a href="{{ item.url | relative_url }}">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</i>, script for a seminar on {{ item.topic }} organized by {% if item.organizer.url %}<a href="{{ item.organizer.url }}">{{ item.organizer.name }}</a>{% else %}{{ item.organizer.name }}{% endif %} at {{ item.institution }} ({{ item.term }}).</li>
 {% endfor %}
 </ul>
 
@@ -18,6 +18,6 @@ permalink: /writings/
 
 <ul>
 {% for item in site.data.writings.other_notes %}
-  <li><i>{{ item.title }}</i>, notes for a seminar that I organized at {{ item.institution }} ({{ item.term }}).</li>
+  <li><i>{% if item.url %}<a href="{{ item.url | relative_url }}">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</i>, notes for a seminar that I organized at {{ item.institution }} ({{ item.term }}){% if item.programme_url %}, <a href="{{ item.programme_url | relative_url }}">programme</a>{% endif %}.</li>
 {% endfor %}
 </ul>

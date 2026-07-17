@@ -1,5 +1,6 @@
 seminar_scripts:
   - title: "Differential Galois correspondence"
+    url: "/assets/pdfs/differential-galois-correspondence.pdf"
     topic: "differential Galois theory"
     organizer:
       name: "Annette Huber-Klavitter"
@@ -8,6 +9,7 @@ seminar_scripts:
     term: "SS 22"
 
   - title: "Sites and Topologies"
+    url: "/assets/pdfs/sites-and-topologies.pdf"
     topic: "Topos Theory and Logic"
     organizer:
       name: "Luca Terenzi"
@@ -16,6 +18,7 @@ seminar_scripts:
     term: "WS 21/22"
 
   - title: "Thom Isomorphism theorem"
+    url: "/assets/pdfs/thom-isomorphism.pdf"
     topic: "K-theory"
     organizer:
       name: "Luca Terenzi"
@@ -24,6 +27,7 @@ seminar_scripts:
     term: "SS 21"
 
   - title: "Hilbert Schemes of points on surfaces"
+    url: "/assets/pdfs/hilbert-schemes-of-points-on-surfaces.pdf"
     topic: "Heisenberg algebras and Hilbert schemes of points on surfaces"
     organizer:
       name: "Mara Ungureanu"
@@ -32,6 +36,7 @@ seminar_scripts:
     term: "SS 21"
 
   - title: "Zariski Cancellation"
+    url: "/assets/pdfs/zariski-cancellation.pdf"
     topic: "insightful examples"
     organizer:
       name: "Oliver Braunling"
@@ -40,6 +45,7 @@ seminar_scripts:
     term: "WS 20/21"
 
   - title: "Hitchin–Kobayashi correspondence"
+    url: "/assets/pdfs/higgs-bundles.pdf"
     topic: "Higgs bundles"
     organizer:
       name: "Andriy Haydys"
@@ -48,6 +54,7 @@ seminar_scripts:
     term: "SS 20"
 
   - title: "Condensed Abelian Groups"
+    url: "/assets/pdfs/condensed-abelian-groups.pdf"
     topic: "condensed mathematics"
     organizer:
       name: "Johan Commelin"
@@ -56,6 +63,7 @@ seminar_scripts:
     term: "WS 19/20"
 
   - title: "Projective bundle formula"
+    url: "/assets/pdfs/projective-bundle-formula.pdf"
     topic: "characteristic classes of topological vector bundles"
     organizer:
       name: "Fabian Hebestreit"
@@ -64,6 +72,7 @@ seminar_scripts:
     term: "WS 18/19"
 
   - title: "Riemann–Roch theorem for surfaces"
+    url: "/assets/pdfs/riemann-roch-surfaces.pdf"
     topic: "the classification of algebraic surfaces"
     organizer:
       name: "Luca Tasin"
@@ -73,5 +82,7 @@ seminar_scripts:
 
 other_notes:
   - title: "Enumerative Geometry"
+    url: "/assets/pdfs/enumerative-geometry.pdf"
+    programme_url: "/assets/pdfs/enumerative-geometry-programme.pdf"
     institution: "the University of Freiburg"
     term: "WS 20/21"
