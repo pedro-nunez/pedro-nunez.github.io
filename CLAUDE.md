@@ -290,13 +290,34 @@ Built, committed, step by step (see git log for the full sequence):
   workshops, and seminars in Madrid, grouped into Upcoming/Past sections,
   backed by `_data/madrid-events.yml` (fields: `title`, `institution`,
   `start`/`end`, `status: future|past`, optional `url`), reusing
-  `date-range.html`. Notes on the page clarify the list isn't guaranteed
-  complete and that "algebraic geometry" is understood broadly. An "Add
-  event" button (styled via a new `.button` CSS class) links to a GitHub
-  issue form (`.github/ISSUE_TEMPLATE/add-event.yml`) so others can
-  submit events; submissions land as a plain issue (not an automated
-  PR) and Pedro adds them to the data file by hand — kept deliberately
-  simple, with fully automated issue-to-PR as a possible future step.
+  `date-range.html`. Each entry reads "Date range: Title (linked, if
+  `url` is set), at Institution." (the date range leads, unparenthesized
+  — a deliberate departure from `cv.md`'s "Title, Institution
+  (date range)." style used everywhere else on the site). Notes on the
+  page invite visitors to suggest unlisted events via the "Add event"
+  button (styled via a new `.button` CSS class, linking to a GitHub
+  issue form, `.github/ISSUE_TEMPLATE/add-event.yml`) or by emailing
+  Pedro directly (a `mailto:` link built from `site.data.cv.email`, the
+  same top-level field the PDF export uses — not otherwise shown
+  anywhere else on the website); submissions land as a plain issue (not
+  an automated PR) and Pedro adds them to the data file by hand — kept
+  deliberately simple, with fully automated issue-to-PR as a possible
+  future step. Its date ranges use `date-range.html`'s new `smart`
+  parameter (see below) to collapse repeated months/years, e.g.
+  "21 – 25 Sep 2026", "29 Jun – 3 Jul 2026".
+- **`_includes/date-range.html`** gained an optional `smart` parameter,
+  off by default (so existing call sites — `cv.md`, `travel-map.md` —
+  keep showing full dates on both ends of a range, unchanged) and
+  currently opted into only by `algebraic-geometry-in-madrid.md`. When
+  on, it collapses a repeated month/year rather than stating it on both
+  ends — "1 - 31 Jul 2015", "20 Jul - 9 Aug 2014", "Jan - Jun 2013"
+  with `precision: month` — falling back to two full dates when start
+  and end are in different years. This mirrors
+  `scripts/export_cv_pdf.py`'s `format_date_range()` for the PDF, but
+  is a separate, independent implementation in Liquid rather than
+  shared code — there's no mechanism for the Jekyll site and the Python
+  export script to share logic, so the same date-formatting rule is
+  deliberately duplicated in both places.
 
 No known gaps remain open. (A previous revision of this file described
 published papers losing their arXiv link in the PDF as a gap to fix —

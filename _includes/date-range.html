@@ -4,6 +4,14 @@ Formats a start/end date pair for display. Parameters:
   end       - optional; omitted or blank means "ongoing" (prints "Present")
   precision - optional; "month" hides the day (e.g. "Sep 2023" instead of
               "1 Sep 2023"), used for entries where only month/year is known
+  smart     - optional; when true, collapses a repeated month/year rather
+              than stating it on both ends, e.g. "1 - 31 Jul 2015",
+              "20 Jul - 9 Aug 2014", or "Jan - Jun 2013" with
+              precision=month (mirrors scripts/export_cv_pdf.py's
+              format_date_range). Falls back to two full dates when start
+              and end are in different years. Off by default so existing
+              call sites (cv.md, travel-map.md) keep their current,
+              always-full-on-both-ends look unless they opt in.
 {%- endcomment -%}
 {%- if include.precision == "month" -%}
   {%- assign fmt = "%b %Y" -%}
@@ -14,6 +22,28 @@ Formats a start/end date pair for display. Parameters:
 {{ include.start | date: fmt }} &ndash; Present
 {%- elsif include.start == include.end -%}
 {{ include.start | date: fmt }}
+{%- elsif include.smart -%}
+  {%- assign start_year = include.start | date: "%Y" -%}
+  {%- assign end_year = include.end | date: "%Y" -%}
+  {%- if start_year != end_year -%}
+{{ include.start | date: fmt }} &ndash; {{ include.end | date: fmt }}
+  {%- else -%}
+    {%- assign start_month = include.start | date: "%m" -%}
+    {%- assign end_month = include.end | date: "%m" -%}
+    {%- if start_month == end_month -%}
+      {%- if include.precision == "month" -%}
+{{ include.end | date: fmt }}
+      {%- else -%}
+{{ include.start | date: "%-d" }} &ndash; {{ include.end | date: fmt }}
+      {%- endif -%}
+    {%- else -%}
+      {%- if include.precision == "month" -%}
+{{ include.start | date: "%b" }} &ndash; {{ include.end | date: fmt }}
+      {%- else -%}
+{{ include.start | date: "%-d %b" }} &ndash; {{ include.end | date: fmt }}
+      {%- endif -%}
+    {%- endif -%}
+  {%- endif -%}
 {%- else -%}
 {{ include.start | date: fmt }} &ndash; {{ include.end | date: fmt }}
 {%- endif -%}
