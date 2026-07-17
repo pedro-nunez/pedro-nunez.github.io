@@ -11,6 +11,7 @@ seminar_scripts:
     topic: "Topos Theory and Logic"
     organizer:
       name: "Luca Terenzi"
+      url: "https://sites.google.com/view/luca-terenzi/home"
     institution: "the University of Freiburg"
     term: "WS 21/22"
 
@@ -18,6 +19,7 @@ seminar_scripts:
     topic: "K-theory"
     organizer:
       name: "Luca Terenzi"
+      url: "https://sites.google.com/view/luca-terenzi/home"
     institution: "the University of Freiburg"
     term: "SS 21"
 
