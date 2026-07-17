@@ -72,10 +72,12 @@ be responsive and readable on mobile. Language: English.
   conferences (current/previous affiliations, past/future events, with a
   legend), like the old site had. Locations should live in a data file
   (e.g. `_data/locations.yml`), not inside the JavaScript.
-- **Blog**: announcements of algebraic geometry events in Madrid, using
-  Jekyll posts.
+- **Blog**: superseded by the "Algebraic Geometry in Madrid" events page
+  (see Progress below) — a data-driven list rather than Jekyll posts,
+  since the actual need was a curated events list, not individual
+  articles.
 - External profile links: MathSciNet, ORCID, Mathematics Genealogy
-  Project, GitHub, LaTeX templates repository.
+  Project, GitHub, LaTeX templates repository. (Done — see Progress.)
 
 ## Conventions
 
@@ -133,11 +135,32 @@ Built, committed, step by step (see git log for the full sequence):
   `_data/positions.yml` point at the precise department building (NTU,
   Freiburg, Bonn, LMU Munich, UCM), not just the city center; other
   trip locations still use approximate coordinates.
+- Miscellanea page (`miscellanea.md`, at `/miscellanea/`, linked in the
+  nav): a "Links" subsection with external profile links (MathSciNet,
+  ORCID, Mathematics Genealogy Project, GitHub, LaTeX templates repo).
+  The CV's non-academic "Additional Formation" data file was renamed
+  from `_data/miscellanea.yml` to `_data/additional-formation.yml` to
+  free up the "miscellanea" name for this page (referenced in `cv.md`
+  via bracket notation, `site.data['additional-formation']`, since
+  Liquid dot-notation can't parse a hyphenated key). The home page's
+  "CV (coming soon)" placeholder link was removed now that the CV page
+  exists and is in the nav.
+- "Algebraic Geometry in Madrid" events page
+  (`algebraic-geometry-in-madrid.md`, at `/algebraic-geometry-in-madrid/`,
+  linked in the nav as "AG in Madrid"): a curated list of AG conferences,
+  workshops, and seminars in Madrid, grouped into Upcoming/Past sections,
+  backed by `_data/madrid-events.yml` (fields: `title`, `institution`,
+  `start`/`end`, `status: future|past`, optional `url`), reusing
+  `date-range.html`. Notes on the page clarify the list isn't guaranteed
+  complete and that "algebraic geometry" is understood broadly. An "Add
+  event" button (styled via a new `.button` CSS class) links to a GitHub
+  issue form (`.github/ISSUE_TEMPLATE/add-event.yml`) so others can
+  submit events; submissions land as a plain issue (not an automated
+  PR) and Pedro adds them to the data file by hand — kept deliberately
+  simple, with fully automated issue-to-PR as a possible future step.
 
-Not yet started: Blog (Jekyll posts), external profile links
-(MathSciNet, ORCID, Math Genealogy, GitHub, LaTeX templates repo), and
-`assets/cv.pdf` itself. All local commits have been pushed to
-`origin/master`.
+Not yet started: `assets/cv.pdf` itself. All local commits have been
+pushed to `origin/master`.
 
 To resume this work in a new session, just say "continue where we left
 off" — this section has the full context.
