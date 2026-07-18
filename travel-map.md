@@ -182,7 +182,15 @@ extra_head: leaflet
     groups[key].items.push(pt);
   });
 
-  var map = L.map('map');
+  // fitBounds (below) needs to zoom out far to fit the wide longitude
+  // spread (Mexico to Taiwan) into a narrow mobile width, and at zoom 0
+  // or 1 the world map's rendered height can end up shorter than #map's
+  // fixed height, exposing gray above/below (Mercator doesn't wrap
+  // vertically). Floor the zoom on narrow screens so that can't happen;
+  // left unset on wider screens, where fitBounds already picks a zoom
+  // high enough on its own and this would just needlessly crop pins.
+  var mapOptions = window.innerWidth <= 768 ? { minZoom: 2 } : {};
+  var map = L.map('map', mapOptions);
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
