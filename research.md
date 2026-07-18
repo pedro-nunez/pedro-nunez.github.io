@@ -12,8 +12,8 @@ permalink: /research/
 of algebraic varieties. More specifically:</p>
 
 <ul>
-  <li>Campana's birational classification program and differential forms therein.</li>
   <li>Semiorthogonal decompositions and their relation to the minimal model program.</li>
+  <li>Campana's birational classification program and differential forms therein.</li>
 </ul>
 
 <h2>Publications and preprints</h2>
