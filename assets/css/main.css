@@ -108,6 +108,25 @@ h2 {
   text-decoration: none;
 }
 
+/* Desktop-only: a persistent, non-clickable header atop the sidebar,
+   above the nav links (Home included below it), so the name stays
+   visible while browsing any page. Hidden on mobile, where .topbar
+   already shows the name (see the @media block below). */
+.sidebar-name {
+  display: block;
+  font-size: 1.15rem;
+  text-align: center;
+}
+
+/* A standalone divider between the name and the nav links below it,
+   rather than living on the name's own border/padding -- so the line
+   sits between the two, not as part of either one's clickable box. */
+.sidebar-divider {
+  border: none;
+  border-top: 1px solid var(--nav-hover-bg);
+  margin: 0;
+}
+
 .profile-photo {
   display: block;
   width: 10rem;
@@ -312,6 +331,12 @@ h2 {
   .theme-toggle {
     top: 1.5rem;
     transform: translateY(-50%);
+  }
+
+  /* .topbar already shows the name on mobile. */
+  .sidebar-name,
+  .sidebar-divider {
+    display: none;
   }
 
   /* Off-screen drawer instead of a persistent sidebar. */

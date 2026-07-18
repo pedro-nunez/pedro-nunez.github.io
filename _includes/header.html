@@ -11,6 +11,8 @@
 </header>
 
 <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+  <div class="site-name sidebar-name">{{ site.title }}</div>
+  <hr class="sidebar-divider">
   <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} class="active"{% endif %}>Home</a>
   <a href="{{ '/cv/' | relative_url }}"{% if page.url == '/cv/' %} class="active"{% endif %}>CV</a>
   <a href="{{ '/research/' | relative_url }}"{% if page.url == '/research/' %} class="active"{% endif %}>Research</a>
