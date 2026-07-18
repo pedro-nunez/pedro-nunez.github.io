@@ -221,23 +221,30 @@ h2 {
   border: none;
 }
 
+/* Outline style: transparent background, accent-colored border and
+   text (same color as the site's other links) -- fills solid only on
+   hover, so it reads as a button without being a heavy solid block. */
 .button {
   display: block;
   width: fit-content;
   margin: 0 auto;
-  padding: 0.4rem 0.9rem;
-  border-radius: 0.3rem;
-  background: var(--accent-color);
-  color: var(--button-text-color);
+  padding: 0.2rem 0.5rem;
+  border: 1px solid var(--accent-color);
+  border-radius: 0.25rem;
+  font-size: 0.9em;
+  background: none;
+  color: var(--accent-color);
   text-decoration: none;
 }
 
 .button:visited {
-  color: var(--button-text-color);
+  color: var(--accent-color);
 }
 
 .button:hover {
   background: var(--accent-color-hover);
+  border-color: var(--accent-color-hover);
+  color: var(--button-text-color);
 }
 
 .theme-toggle {
