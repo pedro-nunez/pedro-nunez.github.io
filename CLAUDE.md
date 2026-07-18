@@ -14,8 +14,9 @@ provide as each section is built.
 - **Jekyll**, deployed on **GitHub Pages** (let GitHub build the site;
   keep the setup compatible with GitHub Pages' build environment).
 - Content in **Markdown**, templates in **Liquid**, styling in plain
-  **CSS/SCSS**. Keep JavaScript to a minimum — the only planned JS
-  feature is the Leaflet travel map.
+  **CSS/SCSS**. Keep JavaScript to a minimum — besides the Leaflet
+  travel map, the only other JS is the small light/dark theme toggle
+  and (planned) the mobile nav hamburger menu (see Progress below).
 - Keep dependencies minimal. Prefer a small amount of custom code over
   pulling in plugins or frameworks, unless a plugin is clearly the
   standard solution and is supported by GitHub Pages.
@@ -478,6 +479,35 @@ Built, committed, step by step (see git log for the full sequence):
   programme.", with "programme" linked as `pdf-link`) follows. Entries
   without a `programme_url` are unaffected (still just the one
   sentence).
+- **Light/dark theme system** (first step of the "general aesthetic
+  pass" idea below — nav layout is the second step, in progress):
+  every color in `main.css` is now a CSS custom property on `:root`
+  (`--bg-color`, `--text-color`, `--accent-color`,
+  `--accent-color-hover`, `--button-text-color`), so light vs. dark is
+  just two blocks overriding those variables rather than two copies of
+  every rule. Light (the default, unchanged from before): white
+  background, black text, the same maroon accent as always. Dark (new):
+  `#1a1a1a` background, off-white `#e8e8e8` text, and goldenrod
+  `#daa520` replacing maroon as the accent everywhere it was used
+  (link classes, `.button`), with `.button`'s text switching to dark
+  (`#1a1a1a`) instead of white to keep it readable against the lighter
+  goldenrod background; `cv-page-link`/`person-link` need no dark-mode
+  change since they already use `color: inherit`. Which theme applies,
+  in priority order: a manual choice stored in `localStorage` (via
+  a `data-theme="light"`/`"dark"` attribute Pedro's browser sets on
+  `<html>`) beats the OS/browser's `prefers-color-scheme`, which beats
+  the light defaults if neither of the above says otherwise. A tiny
+  inline script in `_layouts/default.html`'s `<head>` (must stay
+  inline, not moved to a file, so it runs before first paint) applies
+  any stored choice immediately, preventing a flash of the wrong theme
+  on repeat visits; `assets/js/theme-toggle.js` (new — first
+  hand-written JS on the site besides the travel map) handles clicking
+  the toggle button and keeps its icon (🌙 in light mode, ☀️ in dark —
+  always showing the theme a click would switch *to*) in sync. The
+  toggle button itself (`#theme-toggle` in `header.html`) is a
+  placeholder in its current spot for now; the nav-layout step below
+  will move it to its real position (top-right on desktop, top bar on
+  mobile).
 
 No known gaps remain open. (A previous revision of this file described
 published papers losing their arXiv link in the PDF as a gap to fix —
@@ -493,12 +523,16 @@ time, recorded here so they aren't lost between sessions:
 - **Maybe move "Algebraic Geometry in Madrid" to its own GitHub
   repository**, linked from the homepage instead of living in this
   repo. Not decided, just worth keeping in mind as an option.
-- **General aesthetic pass**: a light background color, nav/tab
-  buttons, text font/size/alignment, etc. Possibly two themes (light
-  and dark), each with its own background and button/link colors. This
-  is also where the nav bar (`header.html`) will get its own link
-  styling/classification, deliberately deferred out of the link-CSS-
-  classes work above.
+- **General aesthetic pass, in progress.** The light/dark theme system
+  itself is done (see Progress above). Still to do, confirmed with
+  Pedro: a responsive nav layout — desktop keeps a persistent **left
+  sidebar** (nav links only, no name/photo) instead of today's
+  horizontal top bar, with the theme toggle at the page's top-right;
+  mobile instead gets a **top header bar** with a hamburger (☰) on the
+  left that opens the same nav links as a left-side drawer, Pedro's
+  name centered in that bar, and the theme toggle on the bar's right.
+  Beyond the nav restructuring: text font/size/alignment and other
+  aesthetic details are still open.
 
 To resume this work in a new session, just say "continue where we left
 off" — this section has the full context.

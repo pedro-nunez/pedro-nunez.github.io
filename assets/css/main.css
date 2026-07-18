@@ -2,12 +2,45 @@
   box-sizing: border-box;
 }
 
+:root {
+  --bg-color: #fff;
+  --text-color: #000;
+  --accent-color: #7b1e3a;
+  --accent-color-hover: #5e1729;
+  --button-text-color: #fff;
+}
+
+/* Falls back to the system's light/dark preference when no manual
+   choice has been stored yet (see assets/js/theme-toggle.js). */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg-color: #1a1a1a;
+    --text-color: #e8e8e8;
+    --accent-color: #daa520;
+    --accent-color-hover: #b8860b;
+    --button-text-color: #1a1a1a;
+  }
+}
+
+/* Manual override, set as a data-theme attribute on <html> once the
+   visitor has clicked the toggle button; wins over the system
+   preference above regardless of which way it goes. */
+:root[data-theme="dark"] {
+  --bg-color: #1a1a1a;
+  --text-color: #e8e8e8;
+  --accent-color: #daa520;
+  --accent-color-hover: #b8860b;
+  --button-text-color: #1a1a1a;
+}
+
 body {
   margin: 0;
   padding: 1rem;
   max-width: 80rem;
   font-family: sans-serif;
   line-height: 1.5;
+  background: var(--bg-color);
+  color: var(--text-color);
 }
 
 .profile-photo {
@@ -24,7 +57,7 @@ body {
 .event-link,
 .teaching-course-link,
 .external-link {
-  color: #7b1e3a;
+  color: var(--accent-color);
   text-decoration: none;
 }
 
@@ -35,7 +68,7 @@ body {
 .event-link:visited,
 .teaching-course-link:visited,
 .external-link:visited {
-  color: #7b1e3a;
+  color: var(--accent-color);
 }
 
 .mailto-link:hover,
@@ -99,15 +132,26 @@ body {
   display: inline-block;
   padding: 0.4rem 0.9rem;
   border-radius: 0.3rem;
-  background: #7b1e3a;
-  color: #fff;
+  background: var(--accent-color);
+  color: var(--button-text-color);
   text-decoration: none;
 }
 
 .button:visited {
-  color: #fff;
+  color: var(--button-text-color);
 }
 
 .button:hover {
-  background: #5e1729;
+  background: var(--accent-color-hover);
+}
+
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--text-color);
+  border-radius: 0.3rem;
+  color: var(--text-color);
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 0.3rem 0.5rem;
 }
