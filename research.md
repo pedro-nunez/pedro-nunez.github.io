@@ -28,12 +28,12 @@ of algebraic varieties. More specifically:</p>
     {% endif %}
     {% if pub.journal %}
     <br>{{ pub.journal }} ({{ pub.date }}).
-    {% if pub.doi %} <a href="https://doi.org/{{ pub.doi }}">DOI:{{ pub.doi }}</a>.{% endif %}
+    {% if pub.doi %} <a href="https://doi.org/{{ pub.doi }}" class="paper-link">DOI:{{ pub.doi }}</a>.{% endif %}
     {% else %}
     <br>(Submitted.)
     {% endif %}
     {% if pub.arxiv %}
-    <br>Preprint: <a href="https://arxiv.org/abs/{{ pub.arxiv }}">arXiv:{{ pub.arxiv }}</a>.
+    <br>Preprint: <a href="https://arxiv.org/abs/{{ pub.arxiv }}" class="paper-link">arXiv:{{ pub.arxiv }}</a>.
     {% endif %}
   </li>
 {% endfor %}
@@ -42,7 +42,7 @@ of algebraic varieties. More specifically:</p>
 <h2>PhD, master's and bachelor's theses</h2>
 
 <ul>
-  <li><i><a href="{{ '/assets/pdfs/phd-thesis.pdf' | relative_url }}">Categorical aspects of Campana orbifolds</a></i>, PhD thesis written under the supervision of <a href="https://cplx.vm.uni-freiburg.de" class="person-link">Stefan Kebekus</a> at the University of Freiburg (2023).</li>
-  <li><i><a href="{{ '/assets/pdfs/master-thesis.pdf' | relative_url }}">Derived categories of Fano fibrations</a></i>, master's thesis written under the supervision of <a href="https://sites.google.com/site/lucatasin" class="person-link">Luca Tasin</a> and <a href="https://pbelmans.ncag.info" class="person-link">Pieter Belmans</a> at the University of Bonn (2019).</li>
-  <li><i><a href="{{ '/assets/pdfs/bachelor-thesis.pdf' | relative_url }}">Blow-ups in algebraic geometry</a></i>, bachelor's thesis written under the supervision of <a href="https://www.math.lmu.de/~geldhauser/" class="person-link">Nikita Geldhauser</a> at the Ludwig-Maximilians-University of Munich (2017).</li>
+  <li><i><a href="{{ '/assets/pdfs/phd-thesis.pdf' | relative_url }}" class="pdf-link">Categorical aspects of Campana orbifolds</a></i>, PhD thesis written under the supervision of <a href="https://cplx.vm.uni-freiburg.de" class="person-link">Stefan Kebekus</a> at the University of Freiburg (2023).</li>
+  <li><i><a href="{{ '/assets/pdfs/master-thesis.pdf' | relative_url }}" class="pdf-link">Derived categories of Fano fibrations</a></i>, master's thesis written under the supervision of <a href="https://sites.google.com/site/lucatasin" class="person-link">Luca Tasin</a> and <a href="https://pbelmans.ncag.info" class="person-link">Pieter Belmans</a> at the University of Bonn (2019).</li>
+  <li><i><a href="{{ '/assets/pdfs/bachelor-thesis.pdf' | relative_url }}" class="pdf-link">Blow-ups in algebraic geometry</a></i>, bachelor's thesis written under the supervision of <a href="https://www.math.lmu.de/~geldhauser/" class="person-link">Nikita Geldhauser</a> at the Ludwig-Maximilians-University of Munich (2017).</li>
 </ul>

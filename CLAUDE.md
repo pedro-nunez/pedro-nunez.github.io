@@ -411,10 +411,43 @@ Built, committed, step by step (see git log for the full sequence):
   class (`cv-page-link` on `cv.md`, `person-link` on the other two).
   This also let `main.css`'s old `.papers-list a:not(.paper-title)`
   rule (index.md's co-author links specifically) be folded into the
-  new shared `person-link` rule instead of duplicating it. The
-  remaining candidate types (mailto-link, paper-link, activity-link,
-  event-link, teaching-course-link, pdf-link, external-link...) are
-  still unclassed — open for a future step.
+  new shared `person-link` rule instead of duplicating it.
+- **Rest of the link-CSS-classes idea's class-adding phase**: six more
+  classes added across the site, HTML/Liquid only and deliberately with
+  no CSS yet — Pedro is writing the actual per-class styles himself.
+  `mailto-link`: `index.md`, `contact.md`, and the "email" link on
+  `algebraic-geometry-in-madrid.md` (the latter via kramdown's
+  `{: .mailto-link }` inline attribute list syntax, the same mechanism
+  already used for `{: .profile-photo }` on index.md's photo, since
+  that link is written as Markdown, not raw HTML). `paper-link`: a
+  new class, deliberately kept separate from the pre-existing
+  `paper-title` (which stays exactly as it was — still only
+  `index.md`'s italicized paper-title links, still styled the same
+  way); `paper-link` instead tags the plain "DOI:.../arXiv:..." text
+  links on `research.md` — same underlying purpose (a link to one of
+  Pedro's own papers) but a visually different pattern, so two classes
+  rather than one. `pdf-link`: links to Pedro's own PDFs under
+  `assets/pdfs/` outside `cv.md` — the thesis titles on `research.md`,
+  the teaching statement on `teaching.md`, and every
+  `writings.yml` entry's `url`/`programme_url` on `writings.md`.
+  `event-link`: links to a conference/workshop/seminar's own external
+  homepage outside `cv.md` — `algebraic-geometry-in-madrid.md`'s
+  `event.url` entries, and the activity `url` built into
+  `travel-map.md`'s JS-generated popups (the "activity-link" vs.
+  "event-link" naming question from the candidate list was resolved
+  by merging into just `event-link`, since no second distinct kind of
+  link was actually found in the code). `teaching-course-link`:
+  `teaching.md`'s `course.url` and `teaching_materials` `url` (course/
+  material homepage links; `cv.md`'s own version of these is already
+  `cv-page-link`). `external-link`: catch-all for the rest —
+  `miscellanea.md`'s four profile/workflow links (via kramdown IAL)
+  and the Claude credit on `travel-map.md` (the neighboring Julia
+  Schneider link on the same line stays `person-link`; Claude isn't a
+  person). Deliberately left out of this pass: the nav bar
+  (`header.html`), since Pedro wants to handle it as part of the
+  future "general aesthetic pass" rather than this content-link
+  classification, and Leaflet's OpenStreetMap attribution link on
+  `travel-map.md`, left unstyled as third-party boilerplate.
 
 No known gaps remain open. (A previous revision of this file described
 published papers losing their arXiv link in the PDF as a gap to fix —
@@ -430,17 +463,20 @@ time, recorded here so they aren't lost between sessions:
 - **Maybe move "Algebraic Geometry in Madrid" to its own GitHub
   repository**, linked from the homepage instead of living in this
   repo. Not decided, just worth keeping in mind as an option.
-- **Continue the "distinguish link types with CSS classes" idea**:
-  `cv-page-link` and `person-link` are done (see Progress above); the
-  remaining candidate types (mailto-link, paper-link, activity-link,
-  event-link, teaching-course-link, pdf-link, external-link...) still
-  need their own classes and, eventually, their own distinct styling
-  (right now nothing but `cv-page-link`/`person-link` has any class-based
-  styling at all). Links inside the PDF CV are out of scope for all of
-  this; they stay exactly as they are.
+- **Write the actual per-class link styling**: every planned link
+  class now exists in the templates (`cv-page-link`, `person-link`,
+  `paper-title`, `paper-link`, `mailto-link`, `pdf-link`, `event-link`,
+  `teaching-course-link`, `external-link` — see Progress above), but
+  only `cv-page-link`/`person-link`/`paper-title` have any CSS behind
+  them so far. Pedro plans to write the remaining styles himself.
+  Links inside the PDF CV are out of scope for all of this; they stay
+  exactly as they are.
 - **General aesthetic pass**: a light background color, nav/tab
   buttons, text font/size/alignment, etc. Possibly two themes (light
-  and dark), each with its own background and button/link colors.
+  and dark), each with its own background and button/link colors. This
+  is also where the nav bar (`header.html`) will get its own link
+  styling/classification, deliberately deferred out of the link-CSS-
+  classes work above.
 
 To resume this work in a new session, just say "continue where we left
 off" — this section has the full context.

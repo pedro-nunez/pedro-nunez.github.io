@@ -11,7 +11,7 @@ place in Madrid.
 
 The list may be incomplete. If you know of any unlisted events, you can
 suggest them through the button below or by sending me an
-[email](mailto:{{ site.data.cv.email }}). Thanks!
+[email](mailto:{{ site.data.cv.email }}){: .mailto-link }. Thanks!
 
 [Add event](https://github.com/pedro-nunez/pedro-nunez.github.io/issues/new?template=add-event.yml){: .button }
 
@@ -24,7 +24,7 @@ suggest them through the button below or by sending me an
 {% for event in upcoming %}
   <li>
     {% include date-range.html start=event.start end=event.end precision=event.precision smart=true %}:
-    {% if event.url %}<a href="{{ event.url }}">{{ event.title }}</a>{% else %}{{ event.title }}{% endif %},
+    {% if event.url %}<a href="{{ event.url }}" class="event-link">{{ event.title }}</a>{% else %}{{ event.title }}{% endif %},
     at {{ event.institution }}.
   </li>
 {% endfor %}
@@ -36,7 +36,7 @@ suggest them through the button below or by sending me an
 {% for event in past %}
   <li>
     {% include date-range.html start=event.start end=event.end precision=event.precision smart=true %}:
-    {% if event.url %}<a href="{{ event.url }}">{{ event.title }}</a>{% else %}{{ event.title }}{% endif %},
+    {% if event.url %}<a href="{{ event.url }}" class="event-link">{{ event.title }}</a>{% else %}{{ event.title }}{% endif %},
     at {{ event.institution }}.
   </li>
 {% endfor %}

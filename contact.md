@@ -8,7 +8,7 @@ permalink: /contact/
 
 <h2>Email</h2>
 
-<a href="mailto:pnunez@ntu.edu.tw">pnunez [at] ntu.edu.tw</a>
+<a href="mailto:pnunez@ntu.edu.tw" class="mailto-link">pnunez [at] ntu.edu.tw</a>
 
 <h2>Address</h2>
 

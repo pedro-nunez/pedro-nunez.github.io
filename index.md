@@ -6,7 +6,7 @@ layout: default
 
 # Pedro Núñez
 
-<a href="mailto:pnunez@ntu.edu.tw">pnunez [at] ntu.edu.tw</a>
+<a href="mailto:pnunez@ntu.edu.tw" class="mailto-link">pnunez [at] ntu.edu.tw</a>
 
 I am a postdoc working in algebraic geometry in the group of
 <a href="https://www.math.ntu.edu.tw/~jkchen/" class="person-link">Jungkai Alfred Chen</a>

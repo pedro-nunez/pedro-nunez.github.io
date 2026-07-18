@@ -16,7 +16,7 @@ extra_head: leaflet
   <li><span class="dot" style="background:#f1c40f"></span> Upcoming trip</li>
 </ul>
 
-<p>Thanks to <a href="https://juliaschneider.pages.math.cnrs.fr/home/index.html" class="person-link">Julia Schneider</a> for giving me this idea, and thanks to <a href="https://claude.ai">Claude</a> for helping me implement it.</p>
+<p>Thanks to <a href="https://juliaschneider.pages.math.cnrs.fr/home/index.html" class="person-link">Julia Schneider</a> for giving me this idea, and thanks to <a href="https://claude.ai" class="external-link">Claude</a> for helping me implement it.</p>
 
 <script>
   // The data below carries lat/lon for every entry that should appear on
@@ -200,7 +200,7 @@ extra_head: leaflet
 
     var popupHtml = "<strong>" + group.city + "</strong><ul>";
     group.items.forEach(function (it) {
-      var label = it.url ? '<a href="' + it.url + '">' + it.title + "</a>" : it.title;
+      var label = it.url ? '<a href="' + it.url + '" class="event-link">' + it.title + "</a>" : it.title;
       popupHtml += "<li>" + label + " (" + it.date + ")</li>";
     });
     popupHtml += "</ul>";
