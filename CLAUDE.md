@@ -823,14 +823,23 @@ see the `scripts/export_cv_pdf.py` bullet above: that's actually the
 intended behavior, confirmed with Pedro, not a limitation.) All local
 commits have been pushed to `origin/master`.
 
+## To do
+
+Confirmed as actual tasks (not just musings) — Pedro considers the
+homepage itself finished otherwise:
+
+- **Move "Algebraic Geometry in Madrid" to its own GitHub repository**,
+  linked from the homepage instead of living in this repo.
+- **Reformat the CV page** to be more tabular-style/readable — currently
+  a sequence of prose-like entries per section (see the CV page bullet
+  in Progress above); Pedro wants it more scannable, roughly table-like,
+  though the exact layout isn't decided yet.
+
 ## Ideas for the future
 
-Not started yet — things Pedro has mentioned wanting to explore next
-time, recorded here so they aren't lost between sessions:
+Not started, not confirmed as to-dos either — background context so
+it isn't lost between sessions:
 
-- **Maybe move "Algebraic Geometry in Madrid" to its own GitHub
-  repository**, linked from the homepage instead of living in this
-  repo. Not decided, just worth keeping in mind as an option.
 - **Aesthetic polish is ongoing, not a one-time pass.** The original
   three-step "general aesthetic pass" (theme system, responsive nav
   layout, font/size/alignment — see Progress above) turned out not to
@@ -838,9 +847,9 @@ time, recorded here so they aren't lost between sessions:
   requests since (sidebar/page background contrast, theme-toggle icon
   redesign, section spacing, nav hover/active shading, text column
   width — also in Progress above), each its own one-off rather than a
-  planned batch. Treat this as open-ended; nothing specific is queued
-  right now, but expect more small requests like these to keep
-  coming.
+  planned batch. Treat this as open-ended; nothing else specific is
+  queued right now beyond the To do items above, but expect more small
+  requests like these to keep coming.
 
 To resume this work in a new session, just say "continue where we left
 off" — this section has the full context.
