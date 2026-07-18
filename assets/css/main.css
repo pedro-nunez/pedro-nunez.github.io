@@ -278,8 +278,12 @@ h1 {
     transform: translateY(-50%);
   }
 
+  /* Centered the same way as .nav-toggle: top is the topbar's own
+     vertical midpoint (half its 3rem height), then translateY(-50%)
+     centers the button itself on that point. */
   .theme-toggle {
-    top: 0.55rem;
+    top: 1.5rem;
+    transform: translateY(-50%);
   }
 
   /* Off-screen drawer instead of a persistent sidebar. */
