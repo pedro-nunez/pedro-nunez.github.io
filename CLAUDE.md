@@ -681,6 +681,142 @@ Built, committed, step by step (see git log for the full sequence):
   `index.md`'s separate, general "birational geometry and derived
   categories" prose sentence.
 
+- **`_config.yml` now excludes `CLAUDE.md` from the Jekyll build.**
+  GitHub Pages' `jekyll-optional-front-matter` plugin runs *every*
+  Markdown file through Liquid regardless of whether it has front
+  matter, so the previous CLAUDE.md update — which documented a
+  Liquid snippet from `header.html` in plain prose
+  (`` `{% if page.url == '/' %}` ``) — broke the live build: the
+  snippet isn't real template code and isn't balanced/closed, and
+  Jekyll's Liquid parser doesn't know that. GitHub Pages kept serving
+  the last successful deploy, so nothing was actually down, but no
+  further pushes would have deployed until this was fixed. Setting
+  `exclude` in `_config.yml` *replaces* Jekyll's own default exclude
+  list rather than merging with it — confirmed locally that omitting
+  the defaults makes Jekyll try to read the Ruby gems under
+  `vendor/bundle/` as site content — so the usual defaults (`Gemfile`,
+  `vendor/bundle/`, etc.) are listed alongside `CLAUDE.md` explicitly.
+  Caught by actually building locally (`bundle exec jekyll build`)
+  after the CLAUDE.md edit, then confirmed against the real failure
+  via `gh run list`/`gh run view --log-failed` — worth doing both
+  after any CLAUDE.md edit that quotes Liquid syntax, and worth
+  checking `gh run list` after any push in general, since GitHub Pages
+  silently keeps serving the last good build on failure rather than
+  erroring visibly anywhere else.
+- **Travel map**: `#map-legend` gained `justify-content: center` (it
+  was already a flex row, just left-aligned), and its font-size was
+  set explicitly — tried `12px` first, too small per Pedro, settled on
+  `14px` — with the legend dots switched from `rem` to `em` units so
+  they keep scaling proportionally with whatever the legend's own
+  font-size ends up being, rather than staying a fixed absolute size
+  next to shrinking text.
+- **Fixed the travel map showing gray bands above/below on mobile**:
+  `fitBounds` has to zoom out far to fit the wide Mexico-to-Taiwan
+  longitude spread into a narrow mobile width, and at zoom 0 or 1 the
+  world map's rendered height (256/512px) can end up shorter than
+  `#map`'s fixed 400px height — Mercator doesn't wrap vertically, so
+  that shows as gray. Worse than the total-height math alone suggests,
+  because the marker cluster's latitude centroid sits off-center (all
+  points are north of the equator), so even zoom 1 could still clip
+  the top specifically. Fixed by flooring the zoom at 2
+  (`L.map('map', { minZoom: 2 })`) on screens `<=768px` (mirroring the
+  breakpoint the nav already uses) — left alone on wider screens,
+  where `fitBounds` already picks a high enough zoom on its own and
+  flooring it there would just needlessly crop pins (confirmed via
+  `map.getBoundsZoom()`: natural zoom is already 1 at a 600–700px
+  desktop-ish width, 2 at 800px+). Verified by forcing the map's
+  container width down via JS (`document.getElementById('map').style
+  .width = ...` + `map.invalidateSize()`) and reading
+  `map.getZoom()`/`map.getSize()` directly, since real narrow-viewport
+  browser testing isn't reliably available in this environment (see
+  below).
+- **Mobile top spacing above page titles**, tightened in two passes.
+  First: `h1`'s own default browser `margin-top` (~24px, from its
+  ~36px font-size) was redundant on top of `.page-content`'s own
+  top padding, so zeroed it out on mobile specifically — cut the
+  topbar-to-title gap from 64px to 40px. Second pass, after Pedro
+  asked for still more: `.page-wrap`'s extra clearance above the
+  topbar (`padding-top: 4rem`, vs the topbar's own `3rem`) trimmed to
+  `3.5rem`, and `.page-content`'s top/bottom padding from `1.5rem` to
+  `1rem` — down to 24px. Both passes measured the same way: since real
+  narrow-viewport reloads aren't reliably available in this
+  environment (`resize_window` doesn't reliably narrow the tab's
+  actual rendered viewport here — `window.innerWidth` stays at the
+  desktop value even after a resize call reports success), the mobile
+  `@media (max-width: 768px)` rules were injected unconditionally via
+  a temporary `<style>` tag (copied verbatim from `main.css`, not
+  hand-picked properties — an early attempt that cherry-picked just
+  `.topbar`'s `display` missed its `height`/`position` and gave a
+  bogus measurement), then `getBoundingClientRect()` read directly on
+  `.topbar` and `h1` to compute the real pixel gap.
+- **Mobile body font-size** dropped from 18px (the size chosen for
+  desktop) back to 16px, scoped inside the same mobile media query —
+  reads better at typical phone viewing distance/density than the
+  size chosen for desktop.
+- **Persistent name header atop the desktop sidebar**, added after
+  Pedro asked for *some* way to keep his name visible on wide screens
+  while browsing any page, not just Home (the sidebar was nav-links
+  only, no name/photo, per his own earlier call — see the responsive
+  nav layout bullet above). Astrofy's own sidebar was checked directly
+  for inspiration (`SideBar.astro`): it has a circular profile photo
+  linking home above its nav menu, but no name text. Landed on a
+  text-only header after Pedro picked it over a photo+name variant or
+  a full-width top bar, from three options offered. Went through two
+  more rounds of revision from there, both from direct visual
+  feedback rather than getting it right the first time:
+  1. First cut: the name was a clickable link (reusing `.site-name`),
+     right-aligned by default, with the divider below it living on
+     the link's own `border-bottom` + `padding-bottom`. Pedro found
+     the divider "too obvious/disruptive" (it read as part of the
+     button's own box) and asked for centering.
+  2. Second cut: centered the text (`text-align: center`), and pulled
+     the divider out into its own standalone `<hr class="sidebar-
+     divider">` between the name and the nav links, so the line sits
+     between two elements rather than inside either one's clickable
+     box/hover-highlight — this also meant the name's own `.site-nav
+     a` padding/border-radius overrides no longer needed the extra
+     `.site-nav` prefix for specificity (nothing left to out-specify).
+     Pedro then asked to go further: make the name link *replace* the
+     "Home" nav entry entirely, since both went to the same place.
+     Implemented via a `{% if page.url == '/' %}` active class
+     directly on the name link, `<hr>` hidden on mobile at matching
+     specificity (`.sidebar-name`/`.sidebar-divider { display: none }`
+     — the *first* mobile-hide attempt used `.site-nav .sidebar-name`
+     to out-specify the old always-linked desktop rule, but once the
+     desktop rule stopped needing that extra specificity, the mobile
+     rule had to drop it too or it would win by specificity regardless
+     of source order and the hide would silently never apply).
+  3. Third cut, after Pedro reconsidered: not convinced by a clickable
+     name replacing Home after all. Reverted to a plain, non-clickable
+     `<div>` (not an `<a>`) for the name, and restored "Home" as its
+     own regular nav link below the divider. Landed here: `.sidebar-
+     name` is inert text, centered, `.sidebar-divider` a subtle
+     standalone rule (`border-top: 1px solid var(--nav-hover-bg)`,
+     reusing the nav-shading overlay variable rather than a solid
+     `var(--text-color)` line, which read as too heavy), Home restored
+     as a normal link. Both hidden on mobile, where `.topbar` already
+     shows the name.
+- **Home page**: dropped the email `mailto:` link entirely (Contact
+  page still has its own, unaffected — this was scoped to Home only).
+  AG in Madrid page: dropped its own `mailto:` link too, but restored
+  "or by sending me an email" immediately after as Pedro asked for the
+  phrase back with "email" left as plain, unlinked text — a content
+  preference, not an oversight to fix.
+- **`.button` (the "PDF version"/"Add event" buttons)**: centered
+  first (`display: block; width: fit-content; margin: 0 auto` on the
+  class itself, rather than adding a wrapper class to both
+  `cv.md`/`algebraic-geometry-in-madrid.md`, since `.button` is only
+  ever the sole content of its own paragraph in both places), then
+  redesigned from solid-fill to outline style after Pedro found the
+  solid block "too intrusive": transparent background, accent-colored
+  border and text (matching the site's other links) instead of a
+  solid `--accent-color` fill with `--button-text-color` text, filling
+  solid only on hover (reusing `--accent-color-hover` for the hover
+  fill, so that variable stayed in use rather than going orphaned).
+  Also shrunk twice at Pedro's request — padding, border-radius, and
+  font-size (`0.9em`) all reduced — after a first smaller pass still
+  read as too large.
+
 No known gaps remain open. (A previous revision of this file described
 published papers losing their arXiv link in the PDF as a gap to fix —
 see the `scripts/export_cv_pdf.py` bullet above: that's actually the
