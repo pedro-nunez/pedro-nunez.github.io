@@ -403,8 +403,11 @@ Built, committed, step by step (see git log for the full sequence):
   everywhere *other* than `cv.md`: the bio prose on `index.md`
   (Jungkai Alfred Chen, Stefan Kebekus), the thesis supervisors on
   `research.md`, the seminar organizer on `writings.md`, and the
-  Julia Schneider credit on `travel-map.md` (the neighboring Claude
-  link there stays unclassed — it isn't a person's homepage).
+  Julia Schneider *and* Claude credits on `travel-map.md` (Claude
+  started out classed as `external-link` when this class was first
+  introduced, on the reasoning that it isn't a person's homepage, but
+  Pedro later asked for it to be `person-link` too, alongside Julia
+  Schneider).
   `_includes/author-list.html` (paper co-author links, shared by
   `cv.md`, `research.md`, and `index.md`) gained an optional
   `link_class` include parameter so each call site can pass the right
@@ -440,10 +443,8 @@ Built, committed, step by step (see git log for the full sequence):
   `teaching.md`'s `course.url` and `teaching_materials` `url` (course/
   material homepage links; `cv.md`'s own version of these is already
   `cv-page-link`). `external-link`: catch-all for the rest —
-  `miscellanea.md`'s four profile/workflow links (via kramdown IAL)
-  and the Claude credit on `travel-map.md` (the neighboring Julia
-  Schneider link on the same line stays `person-link`; Claude isn't a
-  person). Deliberately left out of this pass: the nav bar
+  `miscellanea.md`'s four profile/workflow links. Deliberately left
+  out of this pass: the nav bar
   (`header.html`), since Pedro wants to handle it as part of the
   future "general aesthetic pass" rather than this content-link
   classification, and Leaflet's OpenStreetMap attribution link on
@@ -453,12 +454,30 @@ Built, committed, step by step (see git log for the full sequence):
   rule in `main.css` gives `mailto-link`, `paper-title`, `paper-link`,
   `pdf-link`, `event-link`, `teaching-course-link`, and `external-link`
   the same maroon (`#7b1e3a`, the color already used for `paper-title`
-  and `.button`) with no underline, even on hover; `paper-title` keeps
-  its own separate italic rule on top, since that's specific to it, not
-  shared by the other six. `cv-page-link`/`person-link` keep their
+  and `.button`), underlined only on hover; `paper-title` keeps its own
+  separate italic rule on top, since that's specific to it, not shared
+  by the other six. `cv-page-link`/`person-link` keep their
   pre-existing inherited-color, underline-only-on-hover rule, unchanged.
   So exactly two visual treatments cover every classified link on the
-  site right now, one per class group.
+  site right now, one per class group. Every one of these classes (plus
+  `.button`) also gained an explicit `:visited` rule repeating the same
+  color, so a link's look never changes just because it's been clicked
+  — relying on the ordinary cascade (an author stylesheet already beats
+  the browser's default blue/purple `:link`/`:visited` colors) would
+  have worked too, but Pedro asked for this to be explicit in the CSS
+  rather than implicit.
+- **Claude credit on `travel-map.md` reclassified from `external-link`
+  to `person-link`** (see the `person-link` bullet above) — a small
+  correction after seeing it rendered.
+- **`writings.md`'s "Enumerative Geometry" entry** (the one
+  `other_notes` entry with a `programme_url`) now reads as two
+  sentences instead of one: "*Enumerative Geometry*, notes for a
+  seminar that I organized at the University of Freiburg (WS 20/21).
+  See programme." — the main sentence always ends with its own period
+  now, and, only when `programme_url` is set, a second sentence ("See
+  programme.", with "programme" linked as `pdf-link`) follows. Entries
+  without a `programme_url` are unaffected (still just the one
+  sentence).
 
 No known gaps remain open. (A previous revision of this file described
 published papers losing their arXiv link in the PDF as a gap to fix —

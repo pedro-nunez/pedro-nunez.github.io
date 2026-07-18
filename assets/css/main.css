@@ -28,6 +28,26 @@ body {
   text-decoration: none;
 }
 
+.mailto-link:visited,
+.paper-title:visited,
+.paper-link:visited,
+.pdf-link:visited,
+.event-link:visited,
+.teaching-course-link:visited,
+.external-link:visited {
+  color: #7b1e3a;
+}
+
+.mailto-link:hover,
+.paper-title:hover,
+.paper-link:hover,
+.pdf-link:hover,
+.event-link:hover,
+.teaching-course-link:hover,
+.external-link:hover {
+  text-decoration: underline;
+}
+
 .paper-title {
   font-style: italic;
 }
@@ -36,6 +56,11 @@ body {
 .person-link {
   color: inherit;
   text-decoration: none;
+}
+
+.cv-page-link:visited,
+.person-link:visited {
+  color: inherit;
 }
 
 .cv-page-link:hover,
@@ -77,6 +102,10 @@ body {
   background: #7b1e3a;
   color: #fff;
   text-decoration: none;
+}
+
+.button:visited {
+  color: #fff;
 }
 
 .button:hover {

@@ -18,6 +18,6 @@ permalink: /writings/
 
 <ul>
 {% for item in site.data.writings.other_notes %}
-  <li><i>{% if item.url %}<a href="{{ item.url | relative_url }}" class="pdf-link">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</i>, notes for a seminar that I organized at {{ item.institution }} ({{ item.term }}){% if item.programme_url %}, <a href="{{ item.programme_url | relative_url }}" class="pdf-link">programme</a>{% endif %}.</li>
+  <li><i>{% if item.url %}<a href="{{ item.url | relative_url }}" class="pdf-link">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</i>, notes for a seminar that I organized at {{ item.institution }} ({{ item.term }}).{% if item.programme_url %} See <a href="{{ item.programme_url | relative_url }}" class="pdf-link">programme</a>.{% endif %}</li>
 {% endfor %}
 </ul>

@@ -16,7 +16,7 @@ extra_head: leaflet
   <li><span class="dot" style="background:#f1c40f"></span> Upcoming trip</li>
 </ul>
 
-<p>Thanks to <a href="https://juliaschneider.pages.math.cnrs.fr/home/index.html" class="person-link">Julia Schneider</a> for giving me this idea, and thanks to <a href="https://claude.ai" class="external-link">Claude</a> for helping me implement it.</p>
+<p>Thanks to <a href="https://juliaschneider.pages.math.cnrs.fr/home/index.html" class="person-link">Julia Schneider</a> for giving me this idea, and thanks to <a href="https://claude.ai" class="person-link">Claude</a> for helping me implement it.</p>
 
 <script>
   // The data below carries lat/lon for every entry that should appear on
