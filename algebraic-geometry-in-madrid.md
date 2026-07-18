@@ -10,8 +10,7 @@ A list of algebraic geometry conferences, workshops, and seminars taking
 place in Madrid.
 
 The list may be incomplete. If you know of any unlisted events, you can
-suggest them through the button below or by sending me an
-[email](mailto:{{ site.data.cv.email }}){: .mailto-link }. Thanks!
+suggest them through the button below or by sending me an email. Thanks!
 
 [Add event](https://github.com/pedro-nunez/pedro-nunez.github.io/issues/new?template=add-event.yml){: .button }
 

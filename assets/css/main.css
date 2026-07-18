@@ -222,7 +222,9 @@ h2 {
 }
 
 .button {
-  display: inline-block;
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
   padding: 0.4rem 0.9rem;
   border-radius: 0.3rem;
   background: var(--accent-color);
