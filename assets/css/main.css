@@ -49,6 +49,10 @@ h1 {
   text-align: center;
 }
 
+h2 {
+  margin-top: 2.5rem;
+}
+
 /* Desktop: the nav is a persistent left sidebar, so page content is
    shifted right to clear it, then centered (via the flex row below)
    within whatever width remains to the right of the sidebar — not
