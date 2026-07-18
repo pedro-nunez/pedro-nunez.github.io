@@ -17,10 +17,19 @@ body {
   border-radius: 50%;
 }
 
-.paper-title {
+.mailto-link,
+.paper-title,
+.paper-link,
+.pdf-link,
+.event-link,
+.teaching-course-link,
+.external-link {
   color: #7b1e3a;
-  font-style: italic;
   text-decoration: none;
+}
+
+.paper-title {
+  font-style: italic;
 }
 
 .cv-page-link,

@@ -448,6 +448,17 @@ Built, committed, step by step (see git log for the full sequence):
   future "general aesthetic pass" rather than this content-link
   classification, and Leaflet's OpenStreetMap attribution link on
   `travel-map.md`, left unstyled as third-party boilerplate.
+- **Actual styling for all the link classes above**, a homogeneous
+  two-color scheme Pedro specified directly (not delegated): a shared
+  rule in `main.css` gives `mailto-link`, `paper-title`, `paper-link`,
+  `pdf-link`, `event-link`, `teaching-course-link`, and `external-link`
+  the same maroon (`#7b1e3a`, the color already used for `paper-title`
+  and `.button`) with no underline, even on hover; `paper-title` keeps
+  its own separate italic rule on top, since that's specific to it, not
+  shared by the other six. `cv-page-link`/`person-link` keep their
+  pre-existing inherited-color, underline-only-on-hover rule, unchanged.
+  So exactly two visual treatments cover every classified link on the
+  site right now, one per class group.
 
 No known gaps remain open. (A previous revision of this file described
 published papers losing their arXiv link in the PDF as a gap to fix —
@@ -463,14 +474,6 @@ time, recorded here so they aren't lost between sessions:
 - **Maybe move "Algebraic Geometry in Madrid" to its own GitHub
   repository**, linked from the homepage instead of living in this
   repo. Not decided, just worth keeping in mind as an option.
-- **Write the actual per-class link styling**: every planned link
-  class now exists in the templates (`cv-page-link`, `person-link`,
-  `paper-title`, `paper-link`, `mailto-link`, `pdf-link`, `event-link`,
-  `teaching-course-link`, `external-link` — see Progress above), but
-  only `cv-page-link`/`person-link`/`paper-title` have any CSS behind
-  them so far. Pedro plans to write the remaining styles himself.
-  Links inside the PDF CV are out of scope for all of this; they stay
-  exactly as they are.
 - **General aesthetic pass**: a light background color, nav/tab
   buttons, text font/size/alignment, etc. Possibly two themes (light
   and dark), each with its own background and button/link colors. This
