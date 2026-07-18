@@ -204,14 +204,14 @@ h1 {
 }
 
 .theme-toggle {
+  align-items: center;
   background: none;
-  border: 1px solid var(--text-color);
-  border-radius: 0.3rem;
-  color: var(--text-color);
+  border: none;
+  color: #888;
   cursor: pointer;
-  font-size: 1.1rem;
-  line-height: 1;
-  padding: 0.3rem 0.5rem;
+  display: flex;
+  justify-content: center;
+  padding: 0.4rem;
   position: fixed;
   top: 0.75rem;
   right: 0.75rem;
