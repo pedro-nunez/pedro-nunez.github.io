@@ -39,6 +39,7 @@
 body {
   margin: 0;
   font-family: "Source Sans 3", sans-serif;
+  font-size: 1.125rem;
   line-height: 1.5;
   background: var(--bg-color);
   color: var(--text-color);
