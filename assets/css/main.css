@@ -204,14 +204,15 @@ h2 {
   gap: 1rem;
   padding: 0;
   margin: 0.75rem 0 0;
+  font-size: 14px;
 }
 
 #map-legend .dot {
   display: inline-block;
-  width: 0.9rem;
-  height: 0.9rem;
+  width: 0.9em;
+  height: 0.9em;
   border-radius: 50%;
-  margin-right: 0.35rem;
+  margin-right: 0.35em;
   vertical-align: middle;
 }
 
