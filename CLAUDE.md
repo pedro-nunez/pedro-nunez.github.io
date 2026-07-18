@@ -573,6 +573,114 @@ Built, committed, step by step (see git log for the full sequence):
   browser window (which would look off-center relative to the
   sidebar) — exactly what Pedro asked for.
 
+- **Sidebar/page background contrast**: introduced a new
+  `--sidebar-bg-color` CSS variable, distinct from `--bg-color`, so
+  `.site-nav` and the mobile `.topbar` can differ from the page
+  background instead of matching it exactly (previously both used
+  `--bg-color`). Light theme: page `#f0f0f1` (a light gray, replacing
+  the original plain white), sidebar/topbar `#e4e4e6` (a shade darker)
+  — matching a reference screenshot Pedro provided. Dark theme:
+  sidebar/topbar `#262626`, a shade *lighter* than the page's
+  `#1a1a1a` — the opposite direction from light mode, since a sidebar
+  needs to visually separate itself by going darker on a light page
+  but lighter on a dark one.
+- **Fixed the travel map covering the mobile nav drawer**: Leaflet's
+  own internal panes and controls use `z-index` values up to 1000, far
+  above the mobile drawer's `z-index: 25`, and `#map` had no stacking
+  context of its own, so those Leaflet elements could escape above the
+  open drawer instead of sitting behind it. Fixed by giving `#map`
+  `position: relative; z-index: 0`, which contains all of Leaflet's
+  internal z-indices regardless of what the library uses internally.
+  Verified by reproducing the bug (injecting a test element at the
+  drawer's own z-index and confirming the map covered it) before the
+  fix and confirming the reverse after — real mobile-viewport testing
+  wasn't available in this session (see below), so this was the
+  substitute verification method.
+- **Base font size**: `body` had no `font-size` of its own, so text
+  rendered at the browser default (16px). Bumped to `1.125rem` (18px),
+  matching Astrofy's own body-copy size (its `text-lg` utility class)
+  — confirmed by reading Astrofy's own source
+  (`src/pages/index.astro`, `src/components/SideBarMenu.astro`) rather
+  than guessing. `.site-nav` has no `font-size` rule of its own
+  either, so nav links already inherited this new size too; kept
+  deliberately equal to the body text rather than mirroring Astrofy's
+  own choice of a slightly smaller nav (`text-base`, 16px) — Pedro
+  considered the gap and preferred equal sizing.
+- **Text column width**: `.page-content`'s `max-width` (introduced in
+  the font/size/alignment pass above at `60rem`) was reduced to
+  `45rem` (720px) — it read too wide on a full-size desktop window;
+  the new value was chosen to be close to how the column already
+  looked on a half-screen-sized window.
+- **Theme toggle redesign**: replaced the 🌙/☀️ emoji (fixed-color,
+  always a yellow sun regardless of theme) with inline SVG icons — a
+  solid circle-with-rays sun and a solid crescent moon, both drawn
+  with `fill="currentColor"` so they pick up the button's own color
+  instead of emoji's built-in one. Button color is an explicit muted
+  gray (`#888`, same in both themes, not tied to `--text-color` or
+  `--accent-color`), and the button's `border` was dropped for a
+  plainer look. Icon size went through one iteration: `18px` read too
+  small, settled on `24px`. Also added a hover tooltip: `title` (and
+  `aria-label`, previously a static, mismatched "Toggle dark mode")
+  now reads "Switch to light theme"/"Switch to dark theme" depending
+  on which way a click would go, mirroring the icon's own logic — the
+  native browser tooltip positions itself near the cursor
+  automatically, the same mechanism Chrome's own UI tooltips use, so
+  no custom positioning code was needed.
+- **Mobile theme-toggle alignment fix**: it used a hardcoded
+  `top: 0.55rem` guess instead of true vertical centering, so it sat
+  slightly off from `.nav-toggle` (the hamburger), which centers
+  itself properly via `top: 50%` + `transform: translateY(-50%)`
+  against the `.topbar`'s `3rem` height. Applied the same technique —
+  since `.theme-toggle` is a *sibling* of `.topbar`, not a child, and
+  is itself `position: fixed` (so a plain `top: 50%` would resolve
+  against the full viewport, not the topbar), the fix instead
+  hardcodes `top: 1.5rem` (half of the topbar's own `3rem` height)
+  plus `transform: translateY(-50%)`. Horizontal spacing needed no
+  change — both buttons already sit `0.75rem` from their respective
+  screen edge. This fix lives inside the existing
+  `@media (max-width: 768px)` block, so — like the rest of the mobile
+  layout — it's scoped to viewport width, not to actual phone
+  hardware; shrinking a desktop browser window below `768px` hits the
+  identical rule, which is how it was actually tested in this session:
+  real mobile-viewport screenshots aren't available in this
+  environment (window-resize calls don't reliably affect the
+  screenshot tool's capture viewport), so a narrowed dev-server browser
+  window stood in, later confirmed for real by Pedro on his phone.
+- **Section title spacing**: added `h2 { margin-top: 2.5rem; }` for
+  clearer visual separation between a page's sections. This followed a
+  design discussion where Pedro asked about also centering `<h2>`s (to
+  match the already-centered `<h1>`); the recommendation was to keep
+  section titles left-aligned (matching the left-aligned body
+  text/lists under them, and preserving the `<h1>` as each page's one
+  deliberate focal point) and reach for spacing instead — Pedro
+  agreed.
+- **Nav link hover/active shading**: `.site-nav` links now get a
+  background shade on hover, and a subtler one permanently on
+  whichever link matches the current page — mirroring Astrofy's own
+  sidebar menu behavior (which uses DaisyUI's `bg-base-300`-style
+  active class, applied by matching an element ID in a small
+  client-side script). Implemented instead as two new CSS variables,
+  `--nav-active-bg`/`--nav-hover-bg`, layered on top of
+  `--sidebar-bg-color`: a black overlay in light mode
+  (`rgba(0,0,0,...)`, darkens) and a white one in dark mode
+  (`rgba(255,255,255,...)`, lightens), since a light sidebar needs to
+  shade darker but an already-dark one needs to shade lighter.
+  Active-page detection itself was done directly in `header.html` via
+  Liquid (`{% if page.url == '...' %}` per nav link) rather than
+  Astrofy's client-side script, since Jekyll already knows the current
+  page at build time — keeping with the project's "minimal JS"
+  preference. This replaced the previous underline-on-hover behavior
+  specifically for `.site-nav a` (every other link-kind class
+  elsewhere on the site is untouched). `.site-nav a` also gained
+  `padding: 0.4rem 0.6rem` and `border-radius: 0.3rem` so the shaded
+  rectangle reads as an intentional pill/bar rather than hugging the
+  link text tightly.
+- **Research page**: swapped the order of the two research-interest
+  bullets (semiorthogonal decompositions now listed first, then
+  Campana's program) — content-only change, doesn't touch
+  `index.md`'s separate, general "birational geometry and derived
+  categories" prose sentence.
+
 No known gaps remain open. (A previous revision of this file described
 published papers losing their arXiv link in the PDF as a gap to fix —
 see the `scripts/export_cv_pdf.py` bullet above: that's actually the
@@ -587,10 +695,16 @@ time, recorded here so they aren't lost between sessions:
 - **Maybe move "Algebraic Geometry in Madrid" to its own GitHub
   repository**, linked from the homepage instead of living in this
   repo. Not decided, just worth keeping in mind as an option.
-- **General aesthetic pass: done.** Theme system, responsive nav
-  layout, and the font/size/alignment pass are all complete (see
-  Progress above). Nothing currently queued here — new aesthetic ideas
-  would need to come from Pedro.
+- **Aesthetic polish is ongoing, not a one-time pass.** The original
+  three-step "general aesthetic pass" (theme system, responsive nav
+  layout, font/size/alignment — see Progress above) turned out not to
+  be the end of it: Pedro has kept sending small, ad hoc polish
+  requests since (sidebar/page background contrast, theme-toggle icon
+  redesign, section spacing, nav hover/active shading, text column
+  width — also in Progress above), each its own one-off rather than a
+  planned batch. Treat this as open-ended; nothing specific is queued
+  right now, but expect more small requests like these to keep
+  coming.
 
 To resume this work in a new session, just say "continue where we left
 off" — this section has the full context.
