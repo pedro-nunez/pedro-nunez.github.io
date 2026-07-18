@@ -35,18 +35,30 @@
 
 body {
   margin: 0;
-  padding: 1rem;
-  max-width: 80rem;
-  font-family: sans-serif;
+  font-family: "Source Sans 3", sans-serif;
   line-height: 1.5;
   background: var(--bg-color);
   color: var(--text-color);
 }
 
-/* Desktop: the nav is a persistent left sidebar, so the rest of the
-   page content is shifted right to make room for it. */
-body {
+h1 {
+  text-align: center;
+}
+
+/* Desktop: the nav is a persistent left sidebar, so page content is
+   shifted right to clear it, then centered (via the flex row below)
+   within whatever width remains to the right of the sidebar — not
+   within the full browser window. */
+.page-wrap {
+  display: flex;
+  justify-content: center;
   margin-left: 12rem;
+}
+
+.page-content {
+  width: 100%;
+  max-width: 60rem;
+  padding: 2rem 3rem;
 }
 
 /* Hidden on desktop; only the mobile media query below shows it. */
@@ -79,10 +91,12 @@ body {
 }
 
 .profile-photo {
+  display: block;
   width: 10rem;
   height: 10rem;
   object-fit: cover;
   border-radius: 50%;
+  margin: 0 auto;
 }
 
 .mailto-link,
@@ -225,9 +239,13 @@ body {
 }
 
 @media (max-width: 768px) {
-  body {
+  .page-wrap {
     margin-left: 0;
     padding-top: 4rem;
+  }
+
+  .page-content {
+    padding: 1.5rem 1.25rem;
   }
 
   .topbar {

@@ -539,7 +539,39 @@ Built, committed, step by step (see git log for the full sequence):
   (window-resize automation wasn't available in that session), not by
   an actual narrow-viewport resize, so Pedro should still give the real
   breakpoint a look on an actual phone or by resizing a desktop browser
-  window.
+  window. Confirmed working on Pedro's own phone afterward.
+- **Font/size/alignment pass** (third and, per Pedro, final step of the
+  "general aesthetic pass" — sizes themselves needed no changes).
+  Typeface: **Source Sans 3**, matching `scripts/export_cv_pdf.py`'s
+  PDF export, which already uses it as rendercv's default body font
+  without overriding it — so the website and the PDF CV now share a
+  typeface without either file referencing the other. Loaded via a
+  Google Fonts `<link>` in `_layouts/default.html`'s `<head>`
+  (preconnect hints + the stylesheet link), applied as
+  `"Source Sans 3", sans-serif` on `body` in `main.css` (the
+  `sans-serif` fallback covers the rare case the Google Fonts request
+  fails). Alignment: a new global `h1 { text-align: center; }` rule
+  centers every page's title (all pages use exactly one `<h1>` for
+  this, so one rule covers the whole site); `.profile-photo` gained
+  `display: block; margin: 0 auto;` to center the home page's photo
+  the same way its `<h1>` name is now centered. Everything else
+  (body text, `<h2>`s, lists) stays left-aligned, per Pedro's
+  instruction that "the rest of the text can remain how it is now."
+  Margins/centering: introduced a `.page-wrap`/`.page-content` wrapper
+  around `{{ content }}` in `default.html` (previously these box-model
+  concerns — padding, `max-width`, the sidebar-clearing margin — all
+  lived directly on `body`, which also carries the background/text
+  color/font and can't simultaneously be centered *within* the space
+  right of the fixed sidebar using plain margins). `.page-wrap` clears
+  the sidebar (`margin-left: 12rem` on desktop, `0` + `padding-top` for
+  the fixed topbar on mobile, mirroring the breakpoint logic `body`
+  used to carry) and is a flex row with `justify-content: center`;
+  `.page-content` is the actual `max-width: 60rem` box with more
+  generous padding (`2rem 3rem` desktop, `1.5rem 1.25rem` mobile) than
+  the old flat `1rem`. The net effect: on desktop the textbox is
+  centered in the space to the *right* of the sidebar, not in the full
+  browser window (which would look off-center relative to the
+  sidebar) — exactly what Pedro asked for.
 
 No known gaps remain open. (A previous revision of this file described
 published papers losing their arXiv link in the PDF as a gap to fix —
@@ -555,9 +587,10 @@ time, recorded here so they aren't lost between sessions:
 - **Maybe move "Algebraic Geometry in Madrid" to its own GitHub
   repository**, linked from the homepage instead of living in this
   repo. Not decided, just worth keeping in mind as an option.
-- **General aesthetic pass, in progress.** The light/dark theme system
-  and the responsive nav layout are both done (see Progress above).
-  Still open: text font/size/alignment and other aesthetic details.
+- **General aesthetic pass: done.** Theme system, responsive nav
+  layout, and the font/size/alignment pass are all complete (see
+  Progress above). Nothing currently queued here — new aesthetic ideas
+  would need to come from Pedro.
 
 To resume this work in a new session, just say "continue where we left
 off" — this section has the full context.
