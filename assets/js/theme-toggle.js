@@ -33,9 +33,14 @@
     '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>' +
     "</svg>";
 
-  // Shows the theme a click would switch TO, not the current one.
+  // Shows the theme a click would switch TO, not the current one, both
+  // as the icon and as the hover tooltip (title also drives aria-label,
+  // so screen readers announce the same "switch to" phrasing).
   function updateIcon(button, theme) {
     button.innerHTML = theme === "dark" ? sunIcon : moonIcon;
+    var label = theme === "dark" ? "Switch to light theme" : "Switch to dark theme";
+    button.title = label;
+    button.setAttribute("aria-label", label);
   }
 
   document.addEventListener("DOMContentLoaded", function () {
