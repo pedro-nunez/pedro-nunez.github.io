@@ -6,3 +6,24 @@ url: "https://pedro-nunez.github.io"
 # Explicitly disable the github-pages gem's default theme
 # (jekyll-theme-primer) since we're hand-writing our own layout.
 theme: null
+
+# CLAUDE.md has no front matter, but GitHub Pages' jekyll-optional-front-matter
+# plugin still runs every Markdown file through Liquid regardless. CLAUDE.md
+# documents Liquid snippets from the site's own templates in plain prose (e.g.
+# "{% if page.url == ... %}"), which isn't real template code and often isn't
+# balanced, so Jekyll's Liquid parser can choke on it (this broke the live
+# build once already). It was never meant to be a site page, so exclude it.
+#
+# Setting `exclude` replaces Jekyll's own default list rather than adding to
+# it, so the usual defaults (Gemfile, vendor/, etc.) are repeated here too --
+# otherwise Jekyll would try to read the Ruby gems under vendor/bundle/ as
+# site content.
+exclude:
+  - CLAUDE.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
