@@ -9,6 +9,12 @@
   --accent-color: #7b1e3a;
   --accent-color-hover: #5e1729;
   --button-text-color: #fff;
+  /* Shading for nav links, layered on top of --sidebar-bg-color: a dark
+     overlay in light mode, a light one in dark mode (see the two dark
+     blocks below), since "shading" darkens on a light background but
+     needs to lighten on an already-dark one. */
+  --nav-active-bg: rgba(0, 0, 0, 0.06);
+  --nav-hover-bg: rgba(0, 0, 0, 0.12);
 }
 
 /* Falls back to the system's light/dark preference when no manual
@@ -21,6 +27,8 @@
     --accent-color: #daa520;
     --accent-color-hover: #b8860b;
     --button-text-color: #1a1a1a;
+    --nav-active-bg: rgba(255, 255, 255, 0.08);
+    --nav-hover-bg: rgba(255, 255, 255, 0.16);
   }
 }
 
@@ -34,6 +42,8 @@
   --accent-color: #daa520;
   --accent-color-hover: #b8860b;
   --button-text-color: #1a1a1a;
+  --nav-active-bg: rgba(255, 255, 255, 0.08);
+  --nav-hover-bg: rgba(255, 255, 255, 0.16);
 }
 
 body {
@@ -238,12 +248,18 @@ h2 {
 }
 
 .site-nav a {
+  border-radius: 0.3rem;
   color: inherit;
+  padding: 0.4rem 0.6rem;
   text-decoration: none;
 }
 
+.site-nav a.active {
+  background: var(--nav-active-bg);
+}
+
 .site-nav a:hover {
-  text-decoration: underline;
+  background: var(--nav-hover-bg);
 }
 
 /* Hidden on desktop; only used to close the mobile drawer. */

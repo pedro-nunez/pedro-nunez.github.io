@@ -11,15 +11,15 @@
 </header>
 
 <nav id="site-nav" class="site-nav" aria-label="Main navigation">
-  <a href="{{ '/' | relative_url }}">Home</a>
-  <a href="{{ '/cv/' | relative_url }}">CV</a>
-  <a href="{{ '/research/' | relative_url }}">Research</a>
-  <a href="{{ '/teaching/' | relative_url }}">Teaching</a>
-  <a href="{{ '/writings/' | relative_url }}">Writings</a>
-  <a href="{{ '/travel-map/' | relative_url }}">Travel</a>
-  <a href="{{ '/algebraic-geometry-in-madrid/' | relative_url }}">AG in Madrid</a>
-  <a href="{{ '/miscellanea/' | relative_url }}">Miscellanea</a>
-  <a href="{{ '/contact/' | relative_url }}">Contact</a>
+  <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} class="active"{% endif %}>Home</a>
+  <a href="{{ '/cv/' | relative_url }}"{% if page.url == '/cv/' %} class="active"{% endif %}>CV</a>
+  <a href="{{ '/research/' | relative_url }}"{% if page.url == '/research/' %} class="active"{% endif %}>Research</a>
+  <a href="{{ '/teaching/' | relative_url }}"{% if page.url == '/teaching/' %} class="active"{% endif %}>Teaching</a>
+  <a href="{{ '/writings/' | relative_url }}"{% if page.url == '/writings/' %} class="active"{% endif %}>Writings</a>
+  <a href="{{ '/travel-map/' | relative_url }}"{% if page.url == '/travel-map/' %} class="active"{% endif %}>Travel</a>
+  <a href="{{ '/algebraic-geometry-in-madrid/' | relative_url }}"{% if page.url == '/algebraic-geometry-in-madrid/' %} class="active"{% endif %}>AG in Madrid</a>
+  <a href="{{ '/miscellanea/' | relative_url }}"{% if page.url == '/miscellanea/' %} class="active"{% endif %}>Miscellanea</a>
+  <a href="{{ '/contact/' | relative_url }}"{% if page.url == '/contact/' %} class="active"{% endif %}>Contact</a>
 </nav>
 
 <div id="nav-backdrop" class="nav-backdrop" hidden></div>
