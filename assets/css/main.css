@@ -288,13 +288,19 @@ h2 {
 }
 
 @media (max-width: 768px) {
+  /* Smaller than desktop's 18px -- reads better at typical phone
+     viewing distance/density than the size chosen for desktop. */
+  body {
+    font-size: 1rem;
+  }
+
   .page-wrap {
     margin-left: 0;
-    padding-top: 4rem;
+    padding-top: 3.5rem;
   }
 
   .page-content {
-    padding: 1.5rem 1.25rem;
+    padding: 1rem 1.25rem;
   }
 
   /* h1's own default browser margin-top is redundant on top of
