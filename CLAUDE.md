@@ -386,12 +386,61 @@ Built, committed, step by step (see git log for the full sequence):
   directly in the page rather than sourced from `_data/cv.yml`, since
   none of this (a physical mailing address, an office room number)
   belongs in a rendered CV.
+- **First step of the "distinguish link types with CSS classes" idea**
+  (see below): two classes so far, `cv-page-link` and `person-link`,
+  both currently styled identically (plain text, underline only on
+  hover — the shared `.cv-page-link, .person-link` rule in
+  `assets/css/main.css`). `cv-page-link` is page-scoped, not
+  link-kind-scoped: it goes on *every* in-text link on `cv.md`
+  (person names via the `replace` filter, institution/talk/funding/
+  activity URLs, DOI/arXiv links, the teaching course link), except
+  the "PDF version" button, which keeps only its existing `.button`
+  class (a UI action, not a content link) — confirmed with Pedro, who
+  also confirmed the nav bar's `/cv/` entry in `header.html` stays
+  unclassed, since `cv-page-link` is about links living in the CV
+  page's content, not links pointing at it. `person-link` is the
+  complementary link-kind class for links to a person's homepage
+  everywhere *other* than `cv.md`: the bio prose on `index.md`
+  (Jungkai Alfred Chen, Stefan Kebekus), the thesis supervisors on
+  `research.md`, the seminar organizer on `writings.md`, and the
+  Julia Schneider credit on `travel-map.md` (the neighboring Claude
+  link there stays unclassed — it isn't a person's homepage).
+  `_includes/author-list.html` (paper co-author links, shared by
+  `cv.md`, `research.md`, and `index.md`) gained an optional
+  `link_class` include parameter so each call site can pass the right
+  class (`cv-page-link` on `cv.md`, `person-link` on the other two).
+  This also let `main.css`'s old `.papers-list a:not(.paper-title)`
+  rule (index.md's co-author links specifically) be folded into the
+  new shared `person-link` rule instead of duplicating it. The
+  remaining candidate types (mailto-link, paper-link, activity-link,
+  event-link, teaching-course-link, pdf-link, external-link...) are
+  still unclassed — open for a future step.
 
 No known gaps remain open. (A previous revision of this file described
 published papers losing their arXiv link in the PDF as a gap to fix —
 see the `scripts/export_cv_pdf.py` bullet above: that's actually the
 intended behavior, confirmed with Pedro, not a limitation.) All local
 commits have been pushed to `origin/master`.
+
+## Ideas for the future
+
+Not started yet — things Pedro has mentioned wanting to explore next
+time, recorded here so they aren't lost between sessions:
+
+- **Maybe move "Algebraic Geometry in Madrid" to its own GitHub
+  repository**, linked from the homepage instead of living in this
+  repo. Not decided, just worth keeping in mind as an option.
+- **Continue the "distinguish link types with CSS classes" idea**:
+  `cv-page-link` and `person-link` are done (see Progress above); the
+  remaining candidate types (mailto-link, paper-link, activity-link,
+  event-link, teaching-course-link, pdf-link, external-link...) still
+  need their own classes and, eventually, their own distinct styling
+  (right now nothing but `cv-page-link`/`person-link` has any class-based
+  styling at all). Links inside the PDF CV are out of scope for all of
+  this; they stay exactly as they are.
+- **General aesthetic pass**: a light background color, nav/tab
+  buttons, text font/size/alignment, etc. Possibly two themes (light
+  and dark), each with its own background and button/link colors.
 
 To resume this work in a new session, just say "continue where we left
 off" — this section has the full context.

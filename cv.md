@@ -15,7 +15,7 @@ permalink: /cv/
   <li>
     <strong>{{ pos.position }}</strong>, {{ pos.company }} ({{ pos.location }})<br>
     {% include date-range.html start=pos.start_date end=pos.end_date precision="month" %}
-    {% if pos.summary %}<br>{{ pos.summary | replace: "Jungkai Alfred Chen", '<a href="https://www.math.ntu.edu.tw/~jkchen/">Jungkai Alfred Chen</a>' | replace: "Stefan Kebekus", '<a href="https://cplx.vm.uni-freiburg.de/">Stefan Kebekus</a>' }}.{% endif %}
+    {% if pos.summary %}<br>{{ pos.summary | replace: "Jungkai Alfred Chen", '<a href="https://www.math.ntu.edu.tw/~jkchen/" class="cv-page-link">Jungkai Alfred Chen</a>' | replace: "Stefan Kebekus", '<a href="https://cplx.vm.uni-freiburg.de/" class="cv-page-link">Stefan Kebekus</a>' }}.{% endif %}
     {% if pos.highlights %}
     <ul>
       {% for h in pos.highlights %}<li>{{ h }}</li>{% endfor %}
@@ -32,7 +32,7 @@ permalink: /cv/
   <li>
     <strong>{{ proj.name }}</strong>, {{ proj.institution }} ({{ proj.location }})<br>
     {% include date-range.html start=proj.start_date end=proj.end_date precision="month" %}
-    {% if proj.summary %}<br>{{ proj.summary | replace: "Jungkai Alfred Chen", '<a href="https://www.math.ntu.edu.tw/~jkchen/">Jungkai Alfred Chen</a>' | replace: "Stefan Kebekus", '<a href="https://cplx.vm.uni-freiburg.de/">Stefan Kebekus</a>' }}{% endif %}
+    {% if proj.summary %}<br>{{ proj.summary | replace: "Jungkai Alfred Chen", '<a href="https://www.math.ntu.edu.tw/~jkchen/" class="cv-page-link">Jungkai Alfred Chen</a>' | replace: "Stefan Kebekus", '<a href="https://cplx.vm.uni-freiburg.de/" class="cv-page-link">Stefan Kebekus</a>' }}{% endif %}
   </li>
 {% endfor %}
 </ul>
@@ -45,16 +45,16 @@ permalink: /cv/
     <i>{{ pub.title }}</i>.
     {% assign coauthors = pub.authors | where_exp: "a", "a.name != site.data.cv.name" %}
     {% if coauthors.size > 0 %}
-    <br>with {% include author-list.html authors=coauthors %}.
+    <br>with {% include author-list.html authors=coauthors link_class="cv-page-link" %}.
     {% endif %}
     {% if pub.journal %}
     <br>{{ pub.journal }} ({{ pub.date }}).
-    {% if pub.doi %} <a href="https://doi.org/{{ pub.doi }}">DOI:{{ pub.doi }}</a>.{% endif %}
+    {% if pub.doi %} <a href="https://doi.org/{{ pub.doi }}" class="cv-page-link">DOI:{{ pub.doi }}</a>.{% endif %}
     {% else %}
     <br>(Submitted.)
     {% endif %}
     {% if pub.arxiv %}
-    <br>Preprint: <a href="https://arxiv.org/abs/{{ pub.arxiv }}">arXiv:{{ pub.arxiv }}</a>.
+    <br>Preprint: <a href="https://arxiv.org/abs/{{ pub.arxiv }}" class="cv-page-link">arXiv:{{ pub.arxiv }}</a>.
     {% endif %}
   </li>
 {% endfor %}
@@ -64,7 +64,7 @@ permalink: /cv/
 
 <ul>
 {% for course in site.data.cv.sections.teaching_courses %}
-  <li>{{ course.position }} for <i>{% if course.url %}<a href="{{ course.url }}">{{ course.summary }}</a>{% else %}{{ course.summary }}{% endif %}</i>{% if course.note %} {{ course.note }}{% endif %} during the {{ course.date }} at {{ course.company }}.</li>
+  <li>{{ course.position }} for <i>{% if course.url %}<a href="{{ course.url }}" class="cv-page-link">{{ course.summary }}</a>{% else %}{{ course.summary }}{% endif %}</i>{% if course.note %} {{ course.note }}{% endif %} during the {{ course.date }} at {{ course.company }}.</li>
 {% endfor %}
 </ul>
 
@@ -75,7 +75,7 @@ permalink: /cv/
   <li>
     <strong>{{ pos.degree }} in {{ pos.area }}</strong>, {{ pos.institution }} ({{ pos.location }})<br>
     {% include date-range.html start=pos.start_date end=pos.end_date precision="month" %}
-    {% if pos.summary %}<br>{{ pos.summary | replace: "Jungkai Alfred Chen", '<a href="https://www.math.ntu.edu.tw/~jkchen/">Jungkai Alfred Chen</a>' | replace: "Stefan Kebekus", '<a href="https://cplx.vm.uni-freiburg.de/">Stefan Kebekus</a>' }}.{% endif %}
+    {% if pos.summary %}<br>{{ pos.summary | replace: "Jungkai Alfred Chen", '<a href="https://www.math.ntu.edu.tw/~jkchen/" class="cv-page-link">Jungkai Alfred Chen</a>' | replace: "Stefan Kebekus", '<a href="https://cplx.vm.uni-freiburg.de/" class="cv-page-link">Stefan Kebekus</a>' }}.{% endif %}
     {% if pos.highlights %}
     <ul>
       {% for h in pos.highlights %}<li>{{ h }}</li>{% endfor %}
@@ -126,7 +126,7 @@ permalink: /cv/
   <li>
     {{ item.name }}{% if item.institution %}, {{ item.institution }}{% endif %}, {{ item.location }}
     ({% include date-range.html start=item.start_date end=item.end_date %}).
-    {% if item.summary %}{{ item.summary | replace: "Meng Chen", '<a href="https://faculty.fudan.edu.cn/chenmeng/zh_CN/index/107651/list/index.htm">Meng Chen</a>' }}.{% endif %}
+    {% if item.summary %}{{ item.summary | replace: "Meng Chen", '<a href="https://faculty.fudan.edu.cn/chenmeng/zh_CN/index/107651/list/index.htm" class="cv-page-link">Meng Chen</a>' }}.{% endif %}
   </li>
 {% endfor %}
 </ul>
@@ -138,7 +138,7 @@ permalink: /cv/
   <li>
     {{ item.name }}{% if item.role %} ({{ item.role }}){% endif %}{% if item.institution %}, {{ item.institution }}{% endif %}, {{ item.location }}
     ({% if item.date %}{{ item.date }}{% else %}{% include date-range.html start=item.start_date end=item.end_date %}{% endif %}).
-    {% if item.summary %}{{ item.summary | replace: "Flora Poon", '<a href="https://sites.google.com/view/florapoon">Flora Poon</a>' | replace: "Hsueh-Yung Lin", '<a href="https://homepage.ntu.edu.tw/~hsuehyunglin">Hsueh-Yung Lin</a>' }}.{% endif %}
+    {% if item.summary %}{{ item.summary | replace: "Flora Poon", '<a href="https://sites.google.com/view/florapoon" class="cv-page-link">Flora Poon</a>' | replace: "Hsueh-Yung Lin", '<a href="https://homepage.ntu.edu.tw/~hsuehyunglin" class="cv-page-link">Hsueh-Yung Lin</a>' }}.{% endif %}
   </li>
 {% endfor %}
 </ul>
@@ -160,7 +160,7 @@ permalink: /cv/
 <ul>
 {% for item in site.data.cv.sections.activities %}
   <li>
-    {% if item.url %}<a href="{{ item.url }}">{{ item.name }}</a>{% else %}{{ item.name }}{% endif %}{% if item.institution %}, {{ item.institution }}{% endif %}, {{ item.display_location | default: item.location }}
+    {% if item.url %}<a href="{{ item.url }}" class="cv-page-link">{{ item.name }}</a>{% else %}{{ item.name }}{% endif %}{% if item.institution %}, {{ item.institution }}{% endif %}, {{ item.display_location | default: item.location }}
     ({% include date-range.html start=item.start_date end=item.end_date %}{% if item.online %}, online{% endif %}).
     {% if item.summary %}{{ item.summary }}.{% endif %}
   </li>
@@ -172,7 +172,7 @@ permalink: /cv/
 <ul>
 {% for item in site.data.cv.sections.extra %}
   <li>
-    {% if item.url %}<a href="{{ item.url }}">{{ item.name }}</a>{% else %}{{ item.name }}{% endif %}, {{ item.location }}
+    {% if item.url %}<a href="{{ item.url }}" class="cv-page-link">{{ item.name }}</a>{% else %}{{ item.name }}{% endif %}, {{ item.location }}
     ({% include date-range.html start=item.start_date end=item.end_date precision=item.precision %}).
     {{ item.summary }}
   </li>
