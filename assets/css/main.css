@@ -3,7 +3,8 @@
 }
 
 :root {
-  --bg-color: #fff;
+  --bg-color: #f0f0f1;
+  --sidebar-bg-color: #e4e4e6;
   --text-color: #000;
   --accent-color: #7b1e3a;
   --accent-color-hover: #5e1729;
@@ -15,6 +16,7 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg-color: #1a1a1a;
+    --sidebar-bg-color: #1a1a1a;
     --text-color: #e8e8e8;
     --accent-color: #daa520;
     --accent-color-hover: #b8860b;
@@ -27,6 +29,7 @@
    preference above regardless of which way it goes. */
 :root[data-theme="dark"] {
   --bg-color: #1a1a1a;
+  --sidebar-bg-color: #1a1a1a;
   --text-color: #e8e8e8;
   --accent-color: #daa520;
   --accent-color-hover: #b8860b;
@@ -211,7 +214,7 @@ h1 {
 
 /* Desktop: persistent left sidebar with just the nav links. */
 .site-nav {
-  background: var(--bg-color);
+  background: var(--sidebar-bg-color);
   bottom: 0;
   display: flex;
   flex-direction: column;
@@ -250,7 +253,7 @@ h1 {
 
   .topbar {
     align-items: center;
-    background: var(--bg-color);
+    background: var(--sidebar-bg-color);
     border-bottom: 1px solid var(--text-color);
     display: flex;
     height: 3rem;
