@@ -508,6 +508,38 @@ Built, committed, step by step (see git log for the full sequence):
   placeholder in its current spot for now; the nav-layout step below
   will move it to its real position (top-right on desktop, top bar on
   mobile).
+- **Responsive nav layout** (second step of the "general aesthetic
+  pass," and the toggle button's permanent home): `header.html` now
+  has three pieces — a `.topbar` div (hamburger button + site name,
+  mobile-only), the always-visible `#theme-toggle` button (now
+  `position: fixed; top; right`, so it stays in the same page corner
+  whether or not `.topbar` is shown), and, as a sibling outside
+  `<header>`, `#site-nav` (the actual link list) plus `#nav-backdrop`
+  (an overlay, only relevant on mobile). Desktop (the default; no
+  media query needed): `#site-nav` is a persistent `position: fixed`
+  left sidebar (nav links only, per Pedro's call earlier — no name or
+  photo), and `body` gets `margin-left: 12rem` to make room for it;
+  `.topbar` stays `display: none`, so no hamburger or centered name
+  appear. Below the `768px` breakpoint (`@media (max-width: 768px)`,
+  chosen as an ordinary phone/small-tablet cutoff, easy to adjust):
+  `.topbar` becomes a `position: fixed` full-width bar at the very top
+  (hamburger absolutely-positioned at its left so it doesn't disturb
+  the centering, site name centered via the topbar's own
+  `justify-content: center` since the hamburger is out of flow);
+  `#site-nav` becomes an off-canvas drawer (`transform: translateX(-100%)`
+  by default, slid in via a `.open` class) instead of a persistent
+  sidebar, and `body` swaps back to `margin-left: 0` with extra
+  `padding-top` to clear the fixed topbar. `assets/js/nav-toggle.js`
+  (new) wires the hamburger click to add/remove `.open` on `#site-nav`
+  and show/hide `#nav-backdrop`; clicking the backdrop or pressing
+  Escape also closes the drawer. Verified in a real browser: desktop
+  sidebar, light/dark toggle in both layouts, and the mobile topbar +
+  drawer open/close/backdrop-close mechanics — the last of these
+  was checked by temporarily forcing the mobile CSS rules on
+  (window-resize automation wasn't available in that session), not by
+  an actual narrow-viewport resize, so Pedro should still give the real
+  breakpoint a look on an actual phone or by resizing a desktop browser
+  window.
 
 No known gaps remain open. (A previous revision of this file described
 published papers losing their arXiv link in the PDF as a gap to fix —
@@ -524,15 +556,8 @@ time, recorded here so they aren't lost between sessions:
   repository**, linked from the homepage instead of living in this
   repo. Not decided, just worth keeping in mind as an option.
 - **General aesthetic pass, in progress.** The light/dark theme system
-  itself is done (see Progress above). Still to do, confirmed with
-  Pedro: a responsive nav layout — desktop keeps a persistent **left
-  sidebar** (nav links only, no name/photo) instead of today's
-  horizontal top bar, with the theme toggle at the page's top-right;
-  mobile instead gets a **top header bar** with a hamburger (☰) on the
-  left that opens the same nav links as a left-side drawer, Pedro's
-  name centered in that bar, and the theme toggle on the bar's right.
-  Beyond the nav restructuring: text font/size/alignment and other
-  aesthetic details are still open.
+  and the responsive nav layout are both done (see Progress above).
+  Still open: text font/size/alignment and other aesthetic details.
 
 To resume this work in a new session, just say "continue where we left
 off" — this section has the full context.

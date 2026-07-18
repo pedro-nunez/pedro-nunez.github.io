@@ -1,15 +1,25 @@
 <header>
-  <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
-  <nav>
-    <a href="{{ '/' | relative_url }}">Home</a>
-    <a href="{{ '/cv/' | relative_url }}">CV</a>
-    <a href="{{ '/research/' | relative_url }}">Research</a>
-    <a href="{{ '/teaching/' | relative_url }}">Teaching</a>
-    <a href="{{ '/writings/' | relative_url }}">Writings</a>
-    <a href="{{ '/travel-map/' | relative_url }}">Travel</a>
-    <a href="{{ '/algebraic-geometry-in-madrid/' | relative_url }}">AG in Madrid</a>
-    <a href="{{ '/miscellanea/' | relative_url }}">Miscellanea</a>
-    <a href="{{ '/contact/' | relative_url }}">Contact</a>
-  </nav>
+  <div class="topbar">
+    <button id="nav-toggle" class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+    <a href="{{ '/' | relative_url }}" class="site-name">{{ site.title }}</a>
+  </div>
   <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark mode"></button>
 </header>
+
+<nav id="site-nav" class="site-nav" aria-label="Main navigation">
+  <a href="{{ '/' | relative_url }}">Home</a>
+  <a href="{{ '/cv/' | relative_url }}">CV</a>
+  <a href="{{ '/research/' | relative_url }}">Research</a>
+  <a href="{{ '/teaching/' | relative_url }}">Teaching</a>
+  <a href="{{ '/writings/' | relative_url }}">Writings</a>
+  <a href="{{ '/travel-map/' | relative_url }}">Travel</a>
+  <a href="{{ '/algebraic-geometry-in-madrid/' | relative_url }}">AG in Madrid</a>
+  <a href="{{ '/miscellanea/' | relative_url }}">Miscellanea</a>
+  <a href="{{ '/contact/' | relative_url }}">Contact</a>
+</nav>
+
+<div id="nav-backdrop" class="nav-backdrop" hidden></div>
