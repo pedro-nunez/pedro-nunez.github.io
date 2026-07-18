@@ -16,7 +16,7 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg-color: #1a1a1a;
-    --sidebar-bg-color: #1a1a1a;
+    --sidebar-bg-color: #262626;
     --text-color: #e8e8e8;
     --accent-color: #daa520;
     --accent-color-hover: #b8860b;
@@ -29,7 +29,7 @@
    preference above regardless of which way it goes. */
 :root[data-theme="dark"] {
   --bg-color: #1a1a1a;
-  --sidebar-bg-color: #1a1a1a;
+  --sidebar-bg-color: #262626;
   --text-color: #e8e8e8;
   --accent-color: #daa520;
   --accent-color-hover: #b8860b;
