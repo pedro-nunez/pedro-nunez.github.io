@@ -98,7 +98,40 @@ h2 {
 .page-content {
   width: 100%;
   max-width: 45rem;
-  padding: 2rem 3rem;
+  /* Bottom padding clears .last-updated-bar's height, so real content
+     never sits directly behind the label -- only the fade behind it. */
+  padding: 2rem 3rem 4rem;
+}
+
+/* Fixed label with a gradient fade behind it rather than a solid
+   background, so it reads as floating over the page rather than a
+   hard bar. Non-interactive (pointer-events: none) and low z-index,
+   since the bar has no interactive content of its own; without it,
+   the bar would block clicks on real content underneath, since it
+   visually overlaps the very bottom of the page. Left clears the
+   desktop sidebar (matching .page-wrap's own margin-left); the mobile
+   media query below resets it to 0, where there's no sidebar. */
+.last-updated-bar {
+  position: fixed;
+  bottom: 0;
+  left: 12rem;
+  right: 0;
+  height: 3rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 0 0.75rem 0.75rem;
+  background: linear-gradient(to bottom, transparent, var(--bg-color) 65%);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.last-updated {
+  margin: 0;
+  color: #888;
+  font-size: 0.8em;
+  line-height: 1;
+  opacity: 0.7;
 }
 
 /* Hidden on desktop; only the mobile media query below shows it. */
@@ -334,7 +367,11 @@ h2 {
   }
 
   .page-content {
-    padding: 1rem 1.25rem;
+    padding: 1rem 1.25rem 3.5rem;
+  }
+
+  .last-updated-bar {
+    left: 0;
   }
 
   /* h1's own default browser margin-top is redundant on top of
