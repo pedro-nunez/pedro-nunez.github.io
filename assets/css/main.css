@@ -184,7 +184,7 @@ h2 {
 
 .cv-page-link:hover,
 .person-link:hover {
-  text-decoration: underline;
+  color: var(--accent-color);
 }
 
 /* position + z-index gives the map its own stacking context, so
