@@ -353,6 +353,12 @@ h2 {
   background: var(--nav-hover-bg);
 }
 
+.external-link-icon {
+  vertical-align: -1px;
+  margin-left: 0.15rem;
+  opacity: 0.6;
+}
+
 /* Hidden on desktop; only used to close the mobile drawer. */
 .nav-backdrop {
   display: none;
