@@ -880,6 +880,15 @@ homepage itself finished otherwise:
   a sequence of prose-like entries per section (see the CV page bullet
   in Progress above); Pedro wants it more scannable, roughly table-like,
   though the exact layout isn't decided yet.
+- **Show a "Last modified [month]" message somewhere on the page** —
+  tentatively at the bottom of the sidebar, though placement isn't
+  final. Needs a source for the date (e.g. the file's own git history,
+  or `site.time`/build time) still to be decided.
+- **Add a Claude Code mascot icon somewhere** (tentatively also at the
+  bottom of the sidebar) that, when clicked, shows a message along the
+  lines of "Website developed from scratch with Claude Code's
+  assistance." Exact placement, icon asset, and click-interaction style
+  (popup vs. tooltip vs. something else) not decided yet.
 
 ## Ideas for the future
 
