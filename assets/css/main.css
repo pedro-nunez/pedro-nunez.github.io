@@ -247,54 +247,6 @@ h2 {
   color: var(--button-text-color);
 }
 
-/* Info icon next to a page title (currently just the Algebraic Geometry
-   in Madrid page) that reveals a short explanatory popup on click. */
-.info-toggle-wrap {
-  display: inline-block;
-  position: relative;
-}
-
-.info-toggle {
-  background: none;
-  border: none;
-  color: #888;
-  cursor: pointer;
-  font-size: 0.7em;
-  line-height: 1;
-  padding: 0;
-  vertical-align: middle;
-}
-
-.info-toggle:hover {
-  color: var(--accent-color);
-}
-
-.info-popup {
-  background: var(--sidebar-bg-color);
-  border: 1px solid var(--nav-hover-bg);
-  border-radius: 0.4rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  font-size: 1rem;
-  font-weight: normal;
-  left: 50%;
-  margin-top: 0.5rem;
-  padding: 1rem 1.25rem;
-  position: absolute;
-  text-align: left;
-  top: 100%;
-  transform: translateX(-50%);
-  width: min(22rem, 85vw);
-  z-index: 10;
-}
-
-.info-popup p {
-  margin: 0 0 0.75rem;
-}
-
-.info-popup p:last-child {
-  margin-bottom: 0;
-}
-
 .theme-toggle {
   align-items: center;
   background: none;

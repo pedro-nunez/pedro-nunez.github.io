@@ -17,6 +17,13 @@ bundle exec jekyll serve
 Then open <http://127.0.0.1:4000>. The site rebuilds automatically as
 you edit files.
 
+## The "AG in Madrid" nav link
+
+The nav's "AG in Madrid" entry is a plain external link, not a page in
+this repo — that content now lives in its own repository,
+[`pedro-nunez/ag-in-madrid`](https://github.com/pedro-nunez/ag-in-madrid),
+deployed separately at <https://pedro-nunez.github.io/ag-in-madrid/>.
+
 ## Regenerating the CV PDF
 
 The "PDF version" button on `/cv/` links to `assets/pdfs/cv.pdf`, which

@@ -76,7 +76,9 @@ be responsive and readable on mobile. Language: English.
 - **Blog**: superseded by the "Algebraic Geometry in Madrid" events page
   (see Progress below) — a data-driven list rather than Jekyll posts,
   since the actual need was a curated events list, not individual
-  articles.
+  articles. That page has since moved out to its own repository
+  (`pedro-nunez/ag-in-madrid`, see Progress), so this site's own nav
+  just links to it externally now.
 - External profile links: MathSciNet, ORCID, Mathematics Genealogy
   Project, GitHub, LaTeX templates repository. (Done — see Progress.)
 
@@ -817,6 +819,52 @@ Built, committed, step by step (see git log for the full sequence):
   font-size (`0.9em`) all reduced — after a first smaller pass still
   read as too large.
 
+- **Info popup on the AG in Madrid page's title**: a small circled-i
+  (`&#9432;`) button next to the `<h1>`, styled like the info icons
+  Google Sites shows, revealing the page's explanatory text (previously
+  always-visible prose above the "Add event" button) in a click-to-open
+  popup instead — kept the title area more compact while "Add event"
+  stays visible underneath. `.info-toggle-wrap`/`.info-toggle`/
+  `.info-popup` in `main.css` (theme-aware, matching the site's existing
+  light/dark variables) plus a new `assets/js/info-toggle.js` (toggles
+  the popup, closes on outside click or Escape — same pattern as
+  `nav-toggle.js`). Short-lived in this repo: superseded almost
+  immediately by the full page migration below, which took this feature
+  with it.
+- **"Algebraic Geometry in Madrid" moved to its own repository**,
+  `pedro-nunez/ag-in-madrid` (completing the "To do" item that used to
+  be listed here), deployed as its own GitHub Pages *project* site at
+  `pedro-nunez.github.io/ag-in-madrid/` (`baseurl: "/ag-in-madrid"` in
+  its own `_config.yml`, unlike this repo's user site with an empty
+  `baseurl`). The new repo is a standalone Jekyll site with no shared
+  build step with this one, so everything it needs was copied rather
+  than referenced: `_data/madrid-events.yml`, `_includes/date-range.html`,
+  the `.github/ISSUE_TEMPLATE/add-event.yml` issue form (now pointing
+  "Add event" at `pedro-nunez/ag-in-madrid`'s own issue tracker instead
+  of this repo's), and a *trimmed* copy of `main.css` (and
+  `theme-toggle.js`/`info-toggle.js` verbatim) — same color
+  variables/light-dark logic, fonts, and sizes, but only the rules that
+  single page actually uses, since it has no sidebar/nav of its own.
+  Its `_layouts/default.html` replaces this site's nav entirely with two
+  fixed corner elements: a "Pedro Núñez" link (top-left, plain text
+  styled like `.site-name`, linking back to
+  `https://pedro-nunez.github.io/`) and the same theme-toggle button
+  (top-right) — no hamburger/drawer needed since there's no nav menu to
+  toggle, so none of this site's responsive nav-layout CSS/JS had to be
+  ported over. Both sites share an origin, so a theme choice made on
+  either one carries over to the other via `localStorage` automatically,
+  with no extra code. Back in this repo: the internal page
+  (`algebraic-geometry-in-madrid.md`), its data file, its issue
+  template, `assets/js/info-toggle.js`, and the `.info-toggle`/
+  `.info-popup` CSS rules were all deleted (the page's content and that
+  feature only exist in the new repo now); `header.html`'s "AG in
+  Madrid" nav link now points straight at
+  `https://pedro-nunez.github.io/ag-in-madrid/` instead of an internal
+  permalink, dropping the now-meaningless "active page" check along with
+  it (an external link can't match `page.url`). `.event-link` stayed in
+  this repo's `main.css`, unlike the other AG-in-Madrid-specific
+  classes, since the travel map's JS-generated popups also use it.
+
 No known gaps remain open. (A previous revision of this file described
 published papers losing their arXiv link in the PDF as a gap to fix —
 see the `scripts/export_cv_pdf.py` bullet above: that's actually the
@@ -828,8 +876,6 @@ commits have been pushed to `origin/master`.
 Confirmed as actual tasks (not just musings) — Pedro considers the
 homepage itself finished otherwise:
 
-- **Move "Algebraic Geometry in Madrid" to its own GitHub repository**,
-  linked from the homepage instead of living in this repo.
 - **Reformat the CV page** to be more tabular-style/readable — currently
   a sequence of prose-like entries per section (see the CV page bullet
   in Progress above); Pedro wants it more scannable, roughly table-like,
