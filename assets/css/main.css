@@ -319,6 +319,10 @@ h2 {
   z-index: 30;
 }
 
+.theme-toggle:hover {
+  color: var(--accent-color);
+}
+
 /* Desktop: persistent left sidebar with just the nav links. */
 .site-nav {
   background: var(--sidebar-bg-color);
