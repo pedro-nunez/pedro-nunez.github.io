@@ -865,6 +865,34 @@ Built, committed, step by step (see git log for the full sequence):
   this repo's `main.css`, unlike the other AG-in-Madrid-specific
   classes, since the travel map's JS-generated popups also use it.
 
+- **`cv-page-link`/`person-link` hover behavior changed**: from
+  underline-only-on-hover (see the "Actual styling for all the link
+  classes above" bullet earlier) to switching color into the current
+  theme's `--accent-color` (maroon/goldenrod) instead, matching the
+  hover treatment of every other link class on the site.
+- **Thin, low-contrast scrollbar**, ported verbatim from the
+  `ag-in-madrid` repo's `main.css`: `scrollbar-width`/`scrollbar-color`
+  for Firefox, plus the `::-webkit-scrollbar-*` pseudo-elements for
+  WebKit/Blink browsers, both using the same fixed gray
+  (`rgba(136, 136, 136, ...)`, not theme-dependent) so it looks
+  identical in light/dark mode.
+- **"PDF version" button restyled** to match `ag-in-madrid`'s "Add
+  event" button: muted (`--text-color` border/text at `opacity: 0.55`)
+  by default, brightening to full-opacity `--accent-color` border/text
+  on hover, no solid fill — replacing the old always-accent-colored
+  outline that filled solid on hover. `.button` is now the only
+  consumer of this style in this repo (the "Add event" button itself
+  lives in `ag-in-madrid` now, see above), so the old
+  `--accent-color-hover`/`--button-text-color` variables (only ever
+  used for that solid-fill hover) were removed as dead code. Pedro
+  separately asked that comments not name the other repo explicitly
+  (to keep the two repos' code decoupled in spirit, not just in build
+  process); this button's own comment was rewritten to describe the
+  visual style itself rather than crediting `ag-in-madrid` by name —
+  the only place in this repo's code comments (as opposed to
+  `README.md`/`header.html`, which reference `ag-in-madrid` out of
+  genuine necessity: an actual URL and its documentation) that had
+  named it.
 - **"Last updated" bar**, resolving the corresponding To-do item below:
   a fixed, non-interactive label pinned to the bottom of every page,
   reading "Last updated in {month} {year}" from `site.time` (build
@@ -881,6 +909,29 @@ Built, committed, step by step (see git log for the full sequence):
   12rem` clears the fixed sidebar (matching `.page-wrap`'s own
   `margin-left`); the mobile media query resets it to `left: 0`, where
   there's no sidebar to clear.
+- **Browser tab titles now lead with "Pedro Núñez"**: `default.html`'s
+  `<title>` was `{{ page.title | default: site.title }}` (just the page
+  title, e.g. "CV", with the site title as a fallback only for pages
+  without one, i.e. Home); changed to always show `{{ site.title }}`
+  first, followed by `— {{ page.title }}` only when the page has one —
+  so Home's tab still reads just "Pedro Núñez" (no page title to
+  append) while every other page reads "Pedro Núñez — CV", "Pedro
+  Núñez — Research", etc.
+- **Theme-toggle button now switches to `--accent-color` on hover**,
+  matching the same hover behavior already used on `ag-in-madrid`'s own
+  copy of the button and ported here directly (`.theme-toggle:hover`
+  was previously undefined, so hovering did nothing visually).
+- **"AG in Madrid" nav link now opens in a new, focused tab** with
+  `target="_blank" rel="noopener noreferrer"` (the `rel` is standard
+  practice alongside `target="_blank"`, preventing the new tab from
+  getting a handle back to this page via `window.opener`), plus a
+  small inline external-link SVG icon after the label (14px, muted via
+  `opacity: 0.6` under the new `.external-link-icon` rule, inheriting
+  the nav's own text color via `stroke="currentColor"`) marking it
+  visually as leaving the site. Pedro considered spelling the label
+  out in full ("Algebraic Geometry in Madrid") first, tried it, and
+  asked to revert to the shorter "AG in Madrid" — the new-tab/icon
+  behavior was kept from that same round of changes.
 
 No known gaps remain open. (A previous revision of this file described
 published papers losing their arXiv link in the PDF as a gap to fix —
