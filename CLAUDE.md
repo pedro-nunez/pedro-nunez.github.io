@@ -865,6 +865,23 @@ Built, committed, step by step (see git log for the full sequence):
   this repo's `main.css`, unlike the other AG-in-Madrid-specific
   classes, since the travel map's JS-generated popups also use it.
 
+- **"Last updated" bar**, resolving the corresponding To-do item below:
+  a fixed, non-interactive label pinned to the bottom of every page,
+  reading "Last updated in {month} {year}" from `site.time` (build
+  time, not the file's own git history — the simpler of the two
+  options the To-do item had left open). Sits behind a gradient fade
+  (`linear-gradient(to bottom, transparent, var(--bg-color) 65%)`)
+  rather than a solid bar, so it reads as floating over the page
+  rather than a hard-edged strip; `pointer-events: none` and a low
+  `z-index: 5` keep it from blocking clicks on real content, since it
+  visually overlaps the very bottom of the page. Lives once in
+  `_layouts/default.html` (not per-page), so it applies to every page
+  automatically. `.page-content` gained extra bottom padding so real
+  content never sits directly behind the label. On desktop `left:
+  12rem` clears the fixed sidebar (matching `.page-wrap`'s own
+  `margin-left`); the mobile media query resets it to `left: 0`, where
+  there's no sidebar to clear.
+
 No known gaps remain open. (A previous revision of this file described
 published papers losing their arXiv link in the PDF as a gap to fix —
 see the `scripts/export_cv_pdf.py` bullet above: that's actually the
@@ -880,10 +897,6 @@ homepage itself finished otherwise:
   a sequence of prose-like entries per section (see the CV page bullet
   in Progress above); Pedro wants it more scannable, roughly table-like,
   though the exact layout isn't decided yet.
-- **Show a "Last modified [month]" message somewhere on the page** —
-  tentatively at the bottom of the sidebar, though placement isn't
-  final. Needs a source for the date (e.g. the file's own git history,
-  or `site.time`/build time) still to be decided.
 - **Add a Claude Code mascot icon somewhere** (tentatively also at the
   bottom of the sidebar) that, when clicked, shows a message along the
   lines of "Website developed from scratch with Claude Code's
