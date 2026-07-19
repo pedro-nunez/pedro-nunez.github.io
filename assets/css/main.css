@@ -35,8 +35,6 @@ html {
   --sidebar-bg-color: #e5e5e6;
   --text-color: #000;
   --accent-color: #7b1e3a;
-  --accent-color-hover: #5e1729;
-  --button-text-color: #fff;
   /* Shading for nav links, layered on top of --sidebar-bg-color: a dark
      overlay in light mode, a light one in dark mode (see the two dark
      blocks below), since "shading" darkens on a light background but
@@ -53,8 +51,6 @@ html {
     --sidebar-bg-color: #262626;
     --text-color: #e8e8e8;
     --accent-color: #daa520;
-    --accent-color-hover: #b8860b;
-    --button-text-color: #1a1a1a;
     --nav-active-bg: rgba(255, 255, 255, 0.08);
     --nav-hover-bg: rgba(255, 255, 255, 0.16);
   }
@@ -68,8 +64,6 @@ html {
   --sidebar-bg-color: #262626;
   --text-color: #e8e8e8;
   --accent-color: #daa520;
-  --accent-color-hover: #b8860b;
-  --button-text-color: #1a1a1a;
   --nav-active-bg: rgba(255, 255, 255, 0.08);
   --nav-hover-bg: rgba(255, 255, 255, 0.16);
 }
@@ -249,30 +243,32 @@ h2 {
   border: none;
 }
 
-/* Outline style: transparent background, accent-colored border and
-   text (same color as the site's other links) -- fills solid only on
-   hover, so it reads as a button without being a heavy solid block. */
+/* Outline style: muted (text-color border/text at reduced opacity) by
+   default, brightening to full-opacity accent-color border/text on
+   hover -- no solid fill, so it reads as understated rather than a
+   heavy call-to-action. */
 .button {
   display: block;
   width: fit-content;
   margin: 0 auto;
   padding: 0.2rem 0.5rem;
-  border: 1px solid var(--accent-color);
+  border: 1px solid var(--text-color);
   border-radius: 0.25rem;
   font-size: 0.9em;
   background: none;
-  color: var(--accent-color);
+  color: var(--text-color);
   text-decoration: none;
+  opacity: 0.55;
 }
 
 .button:visited {
-  color: var(--accent-color);
+  color: var(--text-color);
 }
 
 .button:hover {
-  background: var(--accent-color-hover);
-  border-color: var(--accent-color-hover);
-  color: var(--button-text-color);
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  opacity: 1;
 }
 
 .theme-toggle {
