@@ -6,14 +6,13 @@ layout: default
 
 # Pedro Núñez
 
-I am a postdoc working in algebraic geometry in the group of
+I am a *Profesor Ayudante Doctor* at the Polytechnic University of Madrid, School of Computer Systems Engineering. I work on algebraic geometry, mostly on birational geometry and derived categories.
+
+Previously, I was a postdoc in the group of
 <a href="https://www.math.ntu.edu.tw/~jkchen/" class="person-link">Jungkai Alfred Chen</a>
 at National Taiwan University. Before that, I was a PhD student of
 <a href="https://cplx.vm.uni-freiburg.de/" class="person-link">Stefan Kebekus</a> at the
 University of Freiburg.
-
-My research interests are birational geometry and derived categories
-of algebraic varieties.
 
 ## Papers
 

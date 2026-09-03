@@ -19,9 +19,9 @@
 # entries use rendercv's own recognized network names (e.g. "GitHub") —
 # see https://docs.rendercv.com/user_guide/yaml_input_structure/cv/.
 name: "Pedro Núñez"
-location: "Taipei, Taiwan"
-email: "pnunez@ntu.edu.tw"
-website: "https://homepage.ntu.edu.tw/~pnunez"
+location: "Madrid, Spain"
+email: "pedro.nunez@upm.es"
+website: "https://pedro-nunez.github.io"
 social_networks:
   - network: "GitHub"
     username: "pedro-nunez"
@@ -104,14 +104,22 @@ sections:
   # rendercv ExperienceEntry: company and position are required; location,
   # start_date/end_date, summary, highlights are optional. Newest first.
   experience:
+    - company: "Polytechnic University of Madrid"
+      position: "Profesor Ayudante Doctor"
+      location: "Madrid, Spain"
+      lat: 40.389952768993865
+      lon: -3.6280015439611724
+      start_date: 2026-09-01
+      end_date:
+      status: current
     - company: "National Taiwan University"
       position: "Postdoctoral Researcher"
       location: "Taipei, Taiwan"
       lat: 25.0213395
       lon: 121.5380920
       start_date: 2023-09-01
-      end_date:
-      status: current
+      end_date: 2026-07-31
+      status: past
       summary: "In the group of Jungkai Alfred Chen"
       highlights:
         - "Research focused on birational geometry and derived categories of coherent sheaves."
@@ -394,7 +402,7 @@ sections:
       lon: 120.7972
       start_date: 2026-07-19
       end_date: 2026-07-21
-      status: future
+      status: past
       url: "https://sites.google.com/view/mini-workshopalgebraicgeometry/%E9%A6%96%E9%A0%81"
 
     - name: "10th Pacific Rim Conference on Mathematics"
@@ -1149,8 +1157,8 @@ sections:
       institution: "National Taiwan University"
       location: "Taipei, Taiwan"
       start_date: 2023-09-01
-      end_date:
-      status: current
+      end_date: 2026-07-31
+      status: past
 
     - name: "GRK 1821: Cohomological Methods in Geometry"
       summary: "Funded by Deutsche Forschungsgemeinschaft (DFG)."

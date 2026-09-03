@@ -3,11 +3,11 @@
 ## What this project is
 
 The personal academic website of Pedro Núñez, a mathematician working in
-algebraic geometry (currently a postdoc at National Taiwan University).
-The repository starts empty; the goal is to build the site from scratch,
-step by step. It replaces an old hand-written single-page site, whose
-content (bio, publications, teaching, travel map locations) Pedro will
-provide as each section is built.
+algebraic geometry (currently a Profesor Ayudante Doctor at the Polytechnic
+University of Madrid). The repository starts empty; the goal is to build
+the site from scratch, step by step. It replaces an old hand-written
+single-page site, whose content (bio, publications, teaching, travel map
+locations) Pedro will provide as each section is built.
 
 ## Tech stack and hosting
 
@@ -58,10 +58,8 @@ be responsive and readable on mobile. Language: English.
 
 ## Planned structure and content
 
-- **Home / About**: short bio (postdoc in Jungkai Alfred Chen's group at
-  NTU; previously PhD with Stefan Kebekus in Freiburg), profile photo,
-  link to CV (PDF), research interests (birational geometry, derived
-  categories).
+- **Home / About**: short bio, profile photo, link to CV (PDF),
+  research interests and brief list of publications.
 - **Research / Publications**: list of publications and preprints with
   arXiv and DOI links. Store these as structured data
   (e.g. `_data/publications.yml`) rather than hard-coded HTML, so adding
