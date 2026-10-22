@@ -45,7 +45,7 @@ permalink: /cv/
     <i>{{ pub.title }}</i>.
     {% assign coauthors = pub.authors | where_exp: "a", "a.name != site.data.cv.name" %}
     {% if coauthors.size > 0 %}
-    <br>with {% include author-list.html authors=coauthors link_class="cv-page-link" %}.
+    <br>With {% include author-list.html authors=coauthors link_class="cv-page-link" %}.
     {% endif %}
     {% if pub.journal %}
     <br>{{ pub.journal }} ({{ pub.date }}).
