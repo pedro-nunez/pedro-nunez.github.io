@@ -140,6 +140,14 @@ sections:
   # non-standard extra field, used by the site's own templates. Newest
   # first.
   publications:
+    - title: "Derived categories of threefolds near the Noether line"
+      authors:
+        - name: "Jungkai Alfred Chen"
+          url: "https://www.math.ntu.edu.tw/~jkchen/"
+        - name: "Pedro Núñez"
+      date: 2026
+      arxiv: "2610.29912"
+
     - title: "Extension of adapted differentials on klt orbifolds"
       authors:
         - name: "Pedro Núñez"
