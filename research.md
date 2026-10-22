@@ -21,10 +21,12 @@ of algebraic varieties. More specifically:</p>
 <ol reversed>
 {% for pub in site.data.cv.sections.publications %}
   <li>
-    <i>{{ pub.title }}</i>.
+    <i>{{ pub.title }}</i>
     {% assign coauthors = pub.authors | where_exp: "a", "a.name != site.data.cv.name" %}
     {% if coauthors.size > 0 %}
-    <br>with {% include author-list.html authors=coauthors link_class="person-link" %}.
+    <br>, with {% include author-list.html authors=coauthors link_class="person-link" %}.
+    {% else %}
+    .
     {% endif %}
     {% if pub.journal %}
     <br>{{ pub.journal }} ({{ pub.date }}).
