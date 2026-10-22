@@ -12,7 +12,7 @@ permalink: /research/
 of algebraic varieties. More specifically:</p>
 
 <ul>
-  <li>Semiorthogonal decompositions and their relation to the minimal model program.</li>
+  <li>Minimal model program and (non) existence of semiorthogonal decompositions.</li>
   <li>Campana's birational classification program and differential forms therein.</li>
 </ul>
 
@@ -30,7 +30,6 @@ of algebraic varieties. More specifically:</p>
     <br>{{ pub.journal }} ({{ pub.date }}).
     {% if pub.doi %} <a href="https://doi.org/{{ pub.doi }}" class="paper-link">DOI:{{ pub.doi }}</a>.{% endif %}
     {% else %}
-    <br>(Submitted.)
     {% endif %}
     {% if pub.arxiv %}
     <br>Preprint: <a href="https://arxiv.org/abs/{{ pub.arxiv }}" class="paper-link">arXiv:{{ pub.arxiv }}</a>.

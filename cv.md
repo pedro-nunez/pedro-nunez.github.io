@@ -51,7 +51,6 @@ permalink: /cv/
     <br>{{ pub.journal }} ({{ pub.date }}).
     {% if pub.doi %} <a href="https://doi.org/{{ pub.doi }}" class="cv-page-link">DOI:{{ pub.doi }}</a>.{% endif %}
     {% else %}
-    <br>(Submitted.)
     {% endif %}
     {% if pub.arxiv %}
     <br>Preprint: <a href="https://arxiv.org/abs/{{ pub.arxiv }}" class="cv-page-link">arXiv:{{ pub.arxiv }}</a>.
