@@ -112,6 +112,7 @@ sections:
       start_date: 2026-09-01
       end_date:
       status: current
+      summary: "In the School of Computer Systems Engineering (ETSISI)"
     - company: "National Taiwan University"
       position: "Postdoctoral Researcher"
       location: "Taipei, Taiwan"
@@ -1002,6 +1003,15 @@ sections:
   # in which language, day-to-day duties) that don't reduce to a
   # transformation of the per-course data. Newest first.
   teaching_experience:
+    - company: "Polytechnic University of Madrid"
+      position: "Lecturer"
+      location: "Madrid, Spain"
+      start_date: 2026-09-01
+      end_date: present
+      highlights:
+        - "Lecturer for *Logic and Discrete Mathematics* for first-year computer engineering majors."
+        - "Taught in Spanish."
+
     - company: "National Taiwan University"
       position: "Lecturer"
       location: "Taipei, Taiwan"
