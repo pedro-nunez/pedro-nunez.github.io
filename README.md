@@ -17,12 +17,17 @@ bundle exec jekyll serve
 Then open <http://127.0.0.1:4000>. The site rebuilds automatically as
 you edit files.
 
-## The "AG in Madrid" nav link
+## The algebraic geometry nav links
 
-The nav's "AG in Madrid" entry is a plain external link, not a page in
-this repo — that content now lives in its own repository,
-[`pedro-nunez/ag-in-madrid`](https://github.com/pedro-nunez/ag-in-madrid),
-deployed separately at <https://pedro-nunez.github.io/ag-in-madrid/>.
+The shared navigation in `_includes/header.html` includes two external
+links, each opening in a new tab and marked with an external-link icon:
+
+- **AG in Madrid** links to <https://pedro-nunez.github.io/madrid-ag/>.
+  Its content lives in the separate
+  [`pedro-nunez/madrid-ag`](https://github.com/pedro-nunez/madrid-ag)
+  repository.
+- **AG in Taiwan** links to <https://taiwan-ag.github.io/> immediately
+  after AG in Madrid.
 
 ## Regenerating the CV PDF
 

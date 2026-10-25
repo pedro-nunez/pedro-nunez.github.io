@@ -75,8 +75,9 @@ be responsive and readable on mobile. Language: English.
   (see Progress below) — a data-driven list rather than Jekyll posts,
   since the actual need was a curated events list, not individual
   articles. That page has since moved out to its own repository
-  (`pedro-nunez/ag-in-madrid`, see Progress), so this site's own nav
-  just links to it externally now.
+  (`pedro-nunez/madrid-ag`, see Progress), so this site's own nav
+  just links to it externally now. The nav also links to "AG in Taiwan"
+  at `https://taiwan-ag.github.io/`, immediately after "AG in Madrid".
 - External profile links: MathSciNet, ORCID, Mathematics Genealogy
   Project, GitHub, LaTeX templates repository. (Done — see Progress.)
 
@@ -830,15 +831,15 @@ Built, committed, step by step (see git log for the full sequence):
   immediately by the full page migration below, which took this feature
   with it.
 - **"Algebraic Geometry in Madrid" moved to its own repository**,
-  `pedro-nunez/ag-in-madrid` (completing the "To do" item that used to
+  `pedro-nunez/madrid-ag` (completing the "To do" item that used to
   be listed here), deployed as its own GitHub Pages *project* site at
-  `pedro-nunez.github.io/ag-in-madrid/` (`baseurl: "/ag-in-madrid"` in
+  `pedro-nunez.github.io/madrid-ag/` (`baseurl: "/madrid-ag"` in
   its own `_config.yml`, unlike this repo's user site with an empty
   `baseurl`). The new repo is a standalone Jekyll site with no shared
   build step with this one, so everything it needs was copied rather
   than referenced: `_data/madrid-events.yml`, `_includes/date-range.html`,
   the `.github/ISSUE_TEMPLATE/add-event.yml` issue form (now pointing
-  "Add event" at `pedro-nunez/ag-in-madrid`'s own issue tracker instead
+  "Add event" at `pedro-nunez/madrid-ag`'s own issue tracker instead
   of this repo's), and a *trimmed* copy of `main.css` (and
   `theme-toggle.js`/`info-toggle.js` verbatim) — same color
   variables/light-dark logic, fonts, and sizes, but only the rules that
@@ -857,7 +858,7 @@ Built, committed, step by step (see git log for the full sequence):
   `.info-popup` CSS rules were all deleted (the page's content and that
   feature only exist in the new repo now); `header.html`'s "AG in
   Madrid" nav link now points straight at
-  `https://pedro-nunez.github.io/ag-in-madrid/` instead of an internal
+  `https://pedro-nunez.github.io/madrid-ag/` instead of an internal
   permalink, dropping the now-meaningless "active page" check along with
   it (an external link can't match `page.url`). `.event-link` stayed in
   this repo's `main.css`, unlike the other AG-in-Madrid-specific
@@ -869,26 +870,26 @@ Built, committed, step by step (see git log for the full sequence):
   theme's `--accent-color` (maroon/goldenrod) instead, matching the
   hover treatment of every other link class on the site.
 - **Thin, low-contrast scrollbar**, ported verbatim from the
-  `ag-in-madrid` repo's `main.css`: `scrollbar-width`/`scrollbar-color`
+  `madrid-ag` repo's `main.css`: `scrollbar-width`/`scrollbar-color`
   for Firefox, plus the `::-webkit-scrollbar-*` pseudo-elements for
   WebKit/Blink browsers, both using the same fixed gray
   (`rgba(136, 136, 136, ...)`, not theme-dependent) so it looks
   identical in light/dark mode.
-- **"PDF version" button restyled** to match `ag-in-madrid`'s "Add
+- **"PDF version" button restyled** to match `madrid-ag`'s "Add
   event" button: muted (`--text-color` border/text at `opacity: 0.55`)
   by default, brightening to full-opacity `--accent-color` border/text
   on hover, no solid fill — replacing the old always-accent-colored
   outline that filled solid on hover. `.button` is now the only
   consumer of this style in this repo (the "Add event" button itself
-  lives in `ag-in-madrid` now, see above), so the old
+  lives in `madrid-ag` now, see above), so the old
   `--accent-color-hover`/`--button-text-color` variables (only ever
   used for that solid-fill hover) were removed as dead code. Pedro
   separately asked that comments not name the other repo explicitly
   (to keep the two repos' code decoupled in spirit, not just in build
   process); this button's own comment was rewritten to describe the
-  visual style itself rather than crediting `ag-in-madrid` by name —
+  visual style itself rather than crediting `madrid-ag` by name —
   the only place in this repo's code comments (as opposed to
-  `README.md`/`header.html`, which reference `ag-in-madrid` out of
+  `README.md`/`header.html`, which reference `madrid-ag` out of
   genuine necessity: an actual URL and its documentation) that had
   named it.
 - **"Last updated" bar**, resolving the corresponding To-do item below:
@@ -916,7 +917,7 @@ Built, committed, step by step (see git log for the full sequence):
   append) while every other page reads "Pedro Núñez — CV", "Pedro
   Núñez — Research", etc.
 - **Theme-toggle button now switches to `--accent-color` on hover**,
-  matching the same hover behavior already used on `ag-in-madrid`'s own
+  matching the same hover behavior already used on `madrid-ag`'s own
   copy of the button and ported here directly (`.theme-toggle:hover`
   was previously undefined, so hovering did nothing visually).
 - **"AG in Madrid" nav link now opens in a new, focused tab** with
@@ -930,6 +931,15 @@ Built, committed, step by step (see git log for the full sequence):
   out in full ("Algebraic Geometry in Madrid") first, tried it, and
   asked to revert to the shorter "AG in Madrid" — the new-tab/icon
   behavior was kept from that same round of changes.
+
+- **Algebraic geometry navigation links updated**: the Madrid repository
+  is now `pedro-nunez/madrid-ag`, with the shared nav pointing at
+  `https://pedro-nunez.github.io/madrid-ag/`; repository names and URLs
+  in `README.md` and these notes use the current name. Added "AG in
+  Taiwan" immediately after "AG in Madrid", linking to
+  `https://taiwan-ag.github.io/` with the same new-tab behavior,
+  `rel="noopener noreferrer"`, and external-link icon. Both entries
+  live in `_includes/header.html`, so they appear on every page.
 
 No known gaps remain open. (A previous revision of this file described
 published papers losing their arXiv link in the PDF as a gap to fix —
