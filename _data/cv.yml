@@ -928,18 +928,26 @@ sections:
   # dates. url (course link) and note (parenthetical clarification) are
   # non-standard extra fields. Newest first.
   teaching_courses:
+    - company: "the Polytechnic University of Madrid"
+      position: "Lecturer"
+      summary: "Logic and Discrete Mathematics"
+      url: "https://moodle.upm.es/titulaciones/oficiales/"
+      note: "(for Computer Engineering students)"
+      date: "Winter Term 2026/2027"
+      status: current
+
     - company: "National Taiwan University"
       position: "Lecturer"
       summary: "Calculus 3 and 4 Class 10"
       url: "https://webpageprodvm.ntu.edu.tw/calculus_en/cp.aspx?n=172162"
-      note: "(Calculus for Economics)"
+      note: "(for Economics students)"
       date: "Summer Term 2025"
 
     - company: "National Taiwan University"
       position: "Lecturer"
       summary: "Calculus 1 and 2 Class 10"
       url: "https://webpageprodvm.ntu.edu.tw/calculus_en/cp.aspx?n=172162"
-      note: "(Calculus for Economics)"
+      note: "(for Economics students)"
       date: "Winter Term 2024/2025"
 
     - company: "the University of Freiburg"

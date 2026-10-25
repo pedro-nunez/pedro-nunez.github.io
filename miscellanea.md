@@ -4,13 +4,13 @@ title: Miscellanea
 permalink: /miscellanea/
 ---
 
-# Miscellanea
+<h1>Miscellanea</h1>
 
-## Workflow
+<h2>Workflow</h2>
 
 - [LaTeX templates](https://github.com/pedro-nunez/latex-templates){: .external-link }.
 
-## Links
+<h2>Links</h2>
 
 - [MathSciNet](https://mathscinet.ams.org/mathscinet/MRAuthorID/1491527){: .external-link }.
 - [ORCID](https://orcid.org/0000-0002-6359-0891){: .external-link }.

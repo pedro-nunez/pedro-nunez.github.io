@@ -6,10 +6,26 @@ permalink: /teaching/
 
 <h1>Teaching</h1>
 
-<h2>Previous teaching</h2>
+<h2>Current teaching</h2>
+
+{% assign current_courses = site.data.cv.sections.teaching_courses | where_exp: "course", "course.status == 'current'" %}
 
 <ul>
-{% for course in site.data.cv.sections.teaching_courses %}
+{% for course in current_courses %}
+  <li>
+    {{ course.position }} for
+    <i>{% if course.url %}<a href="{{ course.url }}" class="teaching-course-link">{{ course.summary }}</a>{% else %}{{ course.summary }}{% endif %}</i>{% if course.note %} {{ course.note }}{% endif %}
+    during the {{ course.date }} at {{ course.company }}.
+  </li>
+{% endfor %}
+</ul>
+
+<h2>Previous teaching</h2>
+
+{% assign previous_courses = site.data.cv.sections.teaching_courses | where_exp: "course", "course.status != 'current'" %}
+
+<ul>
+{% for course in previous_courses %}
   <li>{{ course.position }} for <i>{% if course.url %}<a href="{{ course.url }}" class="teaching-course-link">{{ course.summary }}</a>{% else %}{{ course.summary }}{% endif %}</i>{% if course.note %} {{ course.note }}{% endif %} during the {{ course.date }} at {{ course.company }}.</li>
 {% endfor %}
 </ul>
